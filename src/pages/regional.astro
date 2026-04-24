@@ -1,0 +1,283 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Johor Bahru & Singapore Export Solutions | HexaEco Paper Honeycomb",
+  "description": "ISPM-15 exempt paper honeycomb pallets and boards for Johor Bahru, KL, and Singapore export corridors. JIT delivery to Shah Alam, Petaling Jaya, and Klang Valley.",
+  "url": "https://www.paperhoneycombboard.com/regional/",
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.paperhoneycombboard.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Regional Solutions" }
+    ]
+  }
+};
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "HexaEco Paper Honeycomb Board – KL Hub",
+  "description": "Local inventory in Kuala Lumpur. JIT delivery to Shah Alam, Petaling Jaya, Klang Valley, and Johor Bahru.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Kuala Lumpur",
+    "addressRegion": "Wilayah Persekutuan",
+    "addressCountry": "MY"
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Kuala Lumpur" },
+    { "@type": "City", "name": "Johor Bahru" },
+    { "@type": "City", "name": "Singapore" },
+    { "@type": "City", "name": "Shah Alam" },
+    { "@type": "City", "name": "Petaling Jaya" }
+  ],
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+    "opens": "00:00",
+    "closes": "23:59"
+  }
+};
+---
+
+<Layout
+  title="Johor Bahru & Singapore Export Solutions | HexaEco Paper Honeycomb"
+  description="ISPM-15 exempt pallets for seamless KL, JB & Singapore exports. No fumigation. $0.00 fumigation fees. 24/7 customs ready. JIT delivery to Shah Alam, Petaling Jaya, Klang Valley."
+  canonical="/regional/"
+  schema={schema}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} slot="head" />
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="regional-heading">
+    <div class="container hero__grid">
+      <div>
+        <span class="badge">ISPM-15 Exempt Pallets HQ</span>
+        <h1 class="hero__title" id="regional-heading">
+          Seamless Exports<br />From <span class="text-green">KL</span> to<br />the World.
+        </h1>
+        <p class="hero__desc">
+          Engineered for the Klang Valley industrial heartland. High-performance honeycomb tech that
+          bypasses fumigation, ensuring your cargo hits Port Klang and beyond without delay.
+        </p>
+        <div class="hero__actions">
+          <a href="/contact/" class="btn btn--green">Order KL-Stock Pallets Now</a>
+          <a href="/combat-zone/" class="btn btn--outline">View Tech Specs</a>
+        </div>
+      </div>
+      <div class="hero__img-wrap">
+        <img
+          src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80"
+          alt="Large warehouse with pallets – Klang Valley logistics hub for paper honeycomb export"
+          width="600" height="450"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE BADGES BAR -->
+  <div class="badges-bar section--dark" role="region" aria-label="Key regional features">
+    <div class="container badges-bar__inner">
+      <div class="badge-item">
+        <span class="badge-icon">🚛</span>
+        <div>
+          <strong>Fast Arrival</strong>
+          <p>Port Klang Hub</p>
+        </div>
+      </div>
+      <div class="badge-divider" aria-hidden="true"></div>
+      <div class="badge-item">
+        <span class="badge-icon">🌿</span>
+        <div>
+          <strong>Green Seal</strong>
+          <p>Certified Green Packaging</p>
+        </div>
+      </div>
+      <div class="badge-divider" aria-hidden="true"></div>
+      <div class="badge-item">
+        <span class="badge-icon">⚡</span>
+        <div>
+          <strong>Zero Heat</strong>
+          <p>No ISPM-15 Fumigation</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURE CARDS -->
+  <section class="section" aria-labelledby="features-heading">
+    <div class="container">
+      <h2 id="features-heading" class="sr-only">Why Choose HexaEco for Regional Exports</h2>
+      <div class="grid-2">
+        <article class="feature-card feature-card--peach">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <h3 class="feature-card__title">No Fumigation,<br />No Delays.</h3>
+            <div class="shield-icon" aria-hidden="true">🛡️</div>
+          </div>
+          <p class="feature-card__text" style="margin:1rem 0">
+            HexaEco pallets are manufactured from structural paper honeycomb. They are biologically inert,
+            making them naturally exempt from ISPM-15 regulations. Ship across the region or globally
+            without heat treatment or toxic bromide certificates.
+          </p>
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+            <span class="pill">Customs Ready</span>
+            <span class="pill">Instant Clearance</span>
+          </div>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-card__icon">✈️</div>
+          <h3 class="feature-card__title">Air Cargo Optimised</h3>
+          <p class="feature-card__text">
+            70% lighter than wood. Slash your KLIA Airfreight surcharges immediately.
+            Every gram saved is profit in your pocket.
+          </p>
+        </article>
+
+        <article class="feature-card feature-card--green">
+          <div class="feature-card__icon" style="background:#0a0a0a;color:#39FF14">🍃</div>
+          <h3 class="feature-card__title">Eco Certified</h3>
+          <p class="feature-card__text" style="color:rgba(0,0,0,0.7)">
+            Meets stringent environmental labeling standards. Perfect for ESG-focused MNCs
+            operating out of major industrial zones.
+          </p>
+        </article>
+
+        <article class="feature-card feature-card--dark">
+          <h3 class="feature-card__title">KL Logistics Hub Stock</h3>
+          <p class="feature-card__text">
+            Local inventory in Kuala Lumpur. We provide JIT (Just-In-Time) delivery to factories
+            in Shah Alam, Petaling Jaya, and Klang Valley.
+          </p>
+          <a href="/contact/" style="display:inline-block;margin-top:1.5rem;font-weight:700;color:#39FF14;font-size:0.8rem;letter-spacing:0.05em;text-transform:uppercase">
+            Check Local Availability →
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORT CONNECTIONS -->
+  <section class="section" aria-labelledby="port-heading">
+    <div class="container feature-row">
+      <div class="feature-row__content">
+        <h2 id="port-heading">Strategic Port Access</h2>
+        <ul class="port-list">
+          <li>
+            <strong>Klang Valley Industrial Zone</strong>
+            <p>Centralised hub for rapid regional distribution.</p>
+          </li>
+          <li>
+            <strong>Primary Port Connection</strong>
+            <p>Direct routes to Port Klang (North &amp; West Ports). Daily logistics shuttles.</p>
+          </li>
+          <li>
+            <strong>Regional Network</strong>
+            <p>Optimised transit times for nationwide and international export workflows.</p>
+          </li>
+        </ul>
+      </div>
+      <div class="feature-row__img">
+        <img
+          src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=700&q=80"
+          alt="Port Klang shipping container terminal – paper honeycomb pallet export hub"
+          width="600" height="400"
+          loading="lazy"
+        />
+        <div class="hub-badge">
+          <span class="hub-dot" aria-hidden="true"></span>
+          KL Hub Operational
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--green cta-block" aria-labelledby="regional-cta-heading">
+    <div class="container">
+      <h2 id="regional-cta-heading" class="cta-block__title cta-italic">
+        Stop Waiting for <em>Heat-Treatment.</em>
+      </h2>
+      <div class="cta-stats">
+        <div class="cta-stat-box">
+          <strong class="cta-stat-value">$0.00</strong>
+          <span class="cta-stat-label">Fumigation Fees</span>
+        </div>
+        <div class="cta-stat-box">
+          <strong class="cta-stat-value">24/7</strong>
+          <span class="cta-stat-label">Customs Ready</span>
+        </div>
+      </div>
+      <a href="/contact/" class="btn btn--dark cta-btn">Order KL-Stock Pallets Now</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .text-green { color: #39FF14; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+
+  .badges-bar { padding: 1.5rem 0; }
+  .badges-bar__inner { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
+  .badge-item { display: flex; align-items: center; gap: 0.75rem; }
+  .badge-icon { font-size: 1.5rem; }
+  .badge-item strong { display: block; font-size: 0.85rem; font-weight: 700; }
+  .badge-item p { font-size: 0.7rem; color: #888; letter-spacing: 0.05em; text-transform: uppercase; }
+  .badge-divider { width: 1px; height: 2.5rem; background: #333; }
+
+  .pill {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    background: #0a0a0a;
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .shield-icon { font-size: 1.5rem; }
+
+  .port-list { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; margin-top: 1.5rem; }
+  .port-list li { border-left: 3px solid #39FF14; padding-left: 1rem; }
+  .port-list strong { font-size: 0.9rem; display: block; margin-bottom: 0.2rem; }
+  .port-list p { font-size: 0.85rem; color: #666; }
+
+  .hub-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: #fff;
+    border: 2px solid #0a0a0a;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .hub-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #e83030;
+    display: inline-block;
+  }
+  .feature-row__img { position: relative; }
+
+  .cta-block__title { font-size: clamp(1.8rem, 4vw, 3rem); }
+  .cta-italic em { font-style: italic; text-decoration: underline; }
+  .cta-stats { display: flex; gap: 1.5rem; justify-content: center; margin: 2rem 0; flex-wrap: wrap; }
+  .cta-stat-box {
+    background: #fff;
+    border: 2px solid #0a0a0a;
+    padding: 1.25rem 2rem;
+    text-align: center;
+  }
+  .cta-stat-value { display: block; font-size: 2rem; font-weight: 800; }
+  .cta-stat-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #666; }
+  .cta-btn { margin-top: 0; }
+</style>

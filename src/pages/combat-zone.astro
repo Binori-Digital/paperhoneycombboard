@@ -1,0 +1,221 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Combat Zone – Paper Honeycomb vs Plywood vs Plastic | HexaEco",
+  "description": "Head-to-head material comparison. Paper honeycomb board vs plywood vs plastic. 5kg vs 25kg. ISPM-15 exempt. Save 70% on total shipping costs.",
+  "url": "https://www.paperhoneycombboard.com/combat-zone/",
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.paperhoneycombboard.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Combat Zone" }
+    ]
+  }
+};
+---
+
+<Layout
+  title="Combat Zone – Paper Honeycomb vs Plywood vs Plastic | HexaEco"
+  description="Paper honeycomb board vs plywood vs plastic. 5KG vs 25KG. Save 70% on total costs. ISPM-15 exempt vs required. 100% recyclable vs landfill. The numbers don't lie."
+  canonical="/combat-zone/"
+  schema={schema}
+>
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="combat-heading">
+    <div class="container hero__grid">
+      <div>
+        <span class="badge">Battle Report: V.04</span>
+        <h1 class="hero__title" id="combat-heading">Combat Zone</h1>
+        <p class="hero__desc">
+          Traditional shipping materials are heavy, regulated, and outdated. HexaEco Paper Honeycomb
+          isn't just an alternative; it's industrial dominance in a lightweight shell.
+        </p>
+      </div>
+      <div class="hero__img-wrap">
+        <img
+          src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80"
+          alt="Close-up of paper honeycomb cell structure showing hexagonal cross-section"
+          width="600" height="400"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARISON TABLE -->
+  <section class="section" aria-labelledby="compare-heading">
+    <div class="container">
+      <h2 id="compare-heading" class="sr-only">Material Performance Comparison</h2>
+      <div class="table-wrap" role="region" aria-label="Material comparison table" tabindex="0">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th scope="col">Performance Metric</th>
+              <th scope="col" class="col-phb">
+                <span class="check-icon" aria-hidden="true">✓</span> HexaEco Paper
+              </th>
+              <th scope="col">Plywood</th>
+              <th scope="col">Plastic</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Weight (Std Pallet)</th>
+              <td class="highlight col-phb">5KG</td>
+              <td>25KG</td>
+              <td>18KG</td>
+            </tr>
+            <tr>
+              <th scope="row">ISPM-15 Compliance</th>
+              <td class="col-phb">
+                <span aria-hidden="true">✓</span> <strong>Exempt</strong>
+              </td>
+              <td>
+                <span class="warn" aria-hidden="true">⚠</span> Required
+              </td>
+              <td>
+                <span aria-hidden="true">✓</span> Exempt
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Recyclability</th>
+              <td class="col-phb"><strong>100% (Curbside)</strong></td>
+              <td>Difficult / Landfill</td>
+              <td>Limited / Specialised</td>
+            </tr>
+            <tr>
+              <th scope="row">Total Savings</th>
+              <td class="highlight-bg col-phb">SAVE 70%</td>
+              <td><strong>Base Cost</strong></td>
+              <td>+40% Premium</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- WEIGHT = PROFIT ANGLE -->
+  <section class="section" aria-labelledby="profit-heading">
+    <div class="container profit-grid">
+      <div>
+        <h2 id="profit-heading">The Weight =<br />Profit Angle</h2>
+        <p style="color:#666;margin:1rem 0;line-height:1.7">
+          Every gram matters in the logistics battlefield. By switching from 25kg plywood to 5kg
+          HexaEco, you shed <mark class="highlight-text">20kg per pallet unit</mark>.
+        </p>
+
+        <table class="profit-table" aria-label="Air freight profit calculation">
+          <tbody>
+            <tr>
+              <td class="label">Average Air Freight Cost</td>
+              <td class="value">$4.50 / KG</td>
+            </tr>
+            <tr>
+              <td class="label">Weight Saved</td>
+              <td class="value">20 KG</td>
+            </tr>
+            <tr>
+              <td class="label">Direct Profit per Pallet</td>
+              <td class="value value--green">$90.00</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p style="font-size:0.85rem;color:#666;margin-top:1rem;line-height:1.6">
+          Scale this across a standard 500-pallet shipment and you've reclaimed
+          <strong style="text-decoration:underline">$45,000</strong> in pure bottom-line profit.
+        </p>
+      </div>
+
+      <div class="profit-images">
+        <div class="profit-img-main">
+          <img
+            src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&q=80"
+            alt="Air cargo plane – paper honeycomb reduces air freight costs by 80%"
+            width="450" height="300"
+            loading="lazy"
+          />
+          <span class="img-label">Air Logistics Efficiency</span>
+        </div>
+        <div class="profit-stat-green">
+          <strong>80%</strong>
+          <p>Lighter Than Wood</p>
+        </div>
+        <div class="profit-img-small">
+          <img
+            src="https://images.unsplash.com/photo-1553413077-190dd305871c?w=400&q=80"
+            alt="Warehouse with traditional wood pallets – costly and heavy"
+            width="300" height="200"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DARK BANNER -->
+  <section class="section section--dark cta-block" aria-labelledby="ditch-heading">
+    <div class="container">
+      <h2 id="ditch-heading" class="cta-block__title">
+        Stop Shipping Air.<br />Stop Paying for Heavy Waste.
+      </h2>
+      <div class="cta-block__actions" style="margin-top:2.5rem">
+        <a href="/contact/" class="btn btn--green">Ditch the Wood – Get a Quote</a>
+        <a href="/eco-lab/" class="btn btn--outline-white">View Technical Specs</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .check-icon { color: #0a0a0a; }
+  .warn { color: #e06b2d; }
+
+  .profit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .highlight-text {
+    background: #39FF14;
+    padding: 0 0.2rem;
+    font-weight: 700;
+  }
+
+  .profit-images { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .profit-img-main { grid-column: 1 / -1; position: relative; }
+  .profit-img-main img { width: 100%; object-fit: cover; }
+  .img-label {
+    position: absolute;
+    bottom: 0.75rem;
+    left: 0.75rem;
+    background: rgba(10,10,10,0.85);
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.6rem;
+  }
+  .profit-stat-green {
+    background: #39FF14;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    text-align: center;
+  }
+  .profit-stat-green strong { font-size: 2rem; font-weight: 800; display: block; }
+  .profit-stat-green p { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+  .profit-img-small img { width: 100%; height: 100%; object-fit: cover; }
+
+  @media (max-width: 768px) {
+    .profit-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .profit-images { grid-template-columns: 1fr 1fr; }
+  }
+</style>

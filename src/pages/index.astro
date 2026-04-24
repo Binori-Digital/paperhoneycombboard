@@ -1,0 +1,318 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is ISPM-15 exempt paper honeycomb board?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Paper honeycomb boards are biologically inert and naturally exempt from ISPM-15 phytosanitary regulations. Unlike wood pallets, they require no heat treatment or fumigation, enabling seamless international shipping."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much weight can you save with paper honeycomb vs plywood?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A standard HexaEco paper honeycomb pallet weighs approximately 5kg vs 25kg for plywood — saving 20kg per pallet. At $4.50/kg average air freight cost, that is $90 direct profit per pallet, or $45,000 on a 500-pallet shipment."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where is HexaEco paper honeycomb board available in Malaysia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "HexaEco maintains KL logistics hub stock in Kuala Lumpur with JIT delivery to Shah Alam, Petaling Jaya, Klang Valley, and Johor Bahru. Direct routes to Port Klang (North and West Ports) are available daily."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is paper honeycomb board 100% recyclable?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. HexaEco paper honeycomb is 100% curbside recyclable. Unlike plastic (limited/specialized recycling) or plywood (difficult/landfill), it meets stringent ESG environmental labeling standards perfect for MNCs in industrial zones."
+      }
+    }
+  ]
+};
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "HexaEco Paper Honeycomb Board",
+  "description": "Industrial-grade hexagonal honeycomb board for packaging, pallets, and creative structures. ISPM-15 exempt, 100% recyclable, 70% lighter than plywood.",
+  "brand": { "@type": "Brand", "name": "HexaEco" },
+  "manufacturer": {
+    "@type": "Organization",
+    "name": "HexaEco Paper Honeycomb Board",
+    "address": { "@type": "PostalAddress", "addressLocality": "Johor Bahru", "addressCountry": "MY" }
+  },
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock"
+  }
+};
+---
+
+<Layout
+  title="Paper Honeycomb Board – Industrial Structural Integrity | HexaEco"
+  description="Ditch the wood. Save 70% on export costs with ISPM-15 exempt paper honeycomb board from Malaysia. Heavyweight protection, featherweight footprint. Trusted by PALLITE, Tetra Pak & Schenker."
+  canonical="/"
+  schema={productSchema}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="container hero__grid">
+      <div>
+        <span class="badge badge--peach">Industrial Structural Integrity</span>
+        <h1 class="hero__title" id="hero-heading">The Future is<br />Honeycomb</h1>
+        <p class="hero__desc">
+          Ditch the wood. Save 70% on export costs with ISPM-15 exempt paper honeycomb solutions.
+          Heavyweight protection, featherweight footprint.
+        </p>
+        <div class="hero__actions">
+          <a href="#calculator" class="btn btn--green">Calculate My Savings</a>
+          <a href="/combat-zone/" class="btn btn--outline">View Specs</a>
+        </div>
+      </div>
+      <div class="hero__img-wrap">
+        <img
+          src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80"
+          alt="Paper honeycomb board hexagonal core structure – industrial packaging Malaysia"
+          width="600" height="450"
+          loading="eager"
+          fetchpriority="high"
+        />
+        <div class="hero__stat-badge">
+          <strong>3D Visualiser</strong>
+          <p>Expanding Structural Matrix</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar" role="region" aria-label="Key performance statistics">
+    <div class="container stats-bar__inner">
+      <div class="stat-box">
+        <div class="stat-box__value">70%</div>
+        <div class="stat-box__label">Cost Reduction</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-box__value">90%</div>
+        <div class="stat-box__label">Weight Savings</div>
+      </div>
+      <div class="stats-bar__divider" aria-hidden="true"></div>
+      <div>
+        <p class="stats-bar__brands-label">Trusted by Leaders</p>
+        <div class="stats-bar__brands">
+          <span>PALLITE</span>
+          <span>Tetra Pak</span>
+          <span>Schenker</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FUMIGATION FEATURE -->
+  <section class="section" aria-labelledby="fumigation-heading">
+    <div class="container feature-row">
+      <div class="feature-row__img">
+        <img
+          src="https://images.unsplash.com/photo-1553413077-190dd305871c?w=700&q=80"
+          alt="Industrial warehouse pallets – ISPM-15 exempt no fumigation required"
+          width="600" height="400"
+          loading="lazy"
+        />
+      </div>
+      <div class="feature-row__content">
+        <h2 id="fumigation-heading">The Fumigation<br />Headache is Over.</h2>
+        <div class="feature-card feature-card--peach" style="margin-top:1.5rem">
+          <h3 class="feature-card__title">The No-Paperwork Solution</h3>
+          <p class="feature-card__text">
+            Our materials are ISPM-15 exempt by design. No fumigation, no stamps, no border delays.
+            Just seamless transit for your high-value assets.
+          </p>
+        </div>
+        <div class="compliance-row">
+          <div class="feature-card__icon">📋</div>
+          <div>
+            <strong>Automated Compliance</strong>
+            <p>Certifications are pre-baked into the material properties of every unit.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WEIGHT SAVINGS CALCULATOR -->
+  <section class="section section--dark" id="calculator" aria-labelledby="calc-heading">
+    <div class="container calc-grid">
+      <div>
+        <h2 id="calc-heading" class="calc-title">Weight Savings<br />Calculator</h2>
+        <p class="calc-desc">
+          See how much fuel and carbon you'll save by switching from timber to HexaEco honeycomb.
+          High precision, zero fluff.
+        </p>
+        <a href="/contact/" class="btn btn--green">Open Widget</a>
+      </div>
+      <div class="calc-widget" role="form" aria-label="Weight savings calculator">
+        <label for="payload">Payload Weight (KG)</label>
+        <input type="number" id="payload" placeholder="e.g. 500" min="1" />
+        <label for="shipments">Monthly Shipment Volume</label>
+        <input type="number" id="shipments" placeholder="e.g. 250" min="1" />
+        <div class="calc-widget__result">
+          <span class="calc-widget__result-label">Estimated Savings</span>
+          <span class="calc-widget__result-value" id="savings-output">$1,240 / mo</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRY FOCUS -->
+  <section class="section" aria-labelledby="industry-heading">
+    <div class="container">
+      <div class="industry-header">
+        <div>
+          <p class="badge">Verticals</p>
+          <h2 id="industry-heading">Industry Focus</h2>
+        </div>
+        <a href="/eco-lab/" class="btn btn--outline view-all">View All Solutions</a>
+      </div>
+      <div class="grid-3">
+        <article class="feature-card">
+          <div class="feature-card__icon" style="background:#F5C8A0">⚙️</div>
+          <h3 class="feature-card__title">Electronics</h3>
+          <p class="feature-card__text">
+            Anti-static, shock-absorbent packaging for high-value components and microchips.
+          </p>
+          <a href="/eco-lab/" class="explore-link">Explore →</a>
+        </article>
+        <article class="feature-card">
+          <div class="feature-card__icon">🚛</div>
+          <h3 class="feature-card__title">Logistics</h3>
+          <p class="feature-card__text">
+            Load-bearing pallets and void fillers designed for high-density global shipping.
+          </p>
+          <a href="/regional/" class="explore-link">Explore →</a>
+        </article>
+        <article class="feature-card feature-card--dark">
+          <div class="feature-card__icon">🏗️</div>
+          <h3 class="feature-card__title">Creative Lab</h3>
+          <p class="feature-card__text">
+            Custom engineering for displays, temporary furniture, and structural architectural prototypes.
+          </p>
+          <a href="/eco-lab/" class="explore-link" style="color:#39FF14">Explore →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION (AEO optimisation) -->
+  <section class="section faq-section" aria-labelledby="faq-heading">
+    <div class="container faq-container">
+      <h2 id="faq-heading">Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>What is ISPM-15 exempt paper honeycomb board?</summary>
+          <p>Paper honeycomb boards are biologically inert and naturally exempt from ISPM-15 phytosanitary regulations. Unlike wood pallets, they require no heat treatment or fumigation — enabling seamless international shipping from Malaysia and Singapore.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How much weight can you save vs plywood?</summary>
+          <p>A standard HexaEco paper honeycomb pallet weighs ~5kg vs 25kg for plywood — saving 20kg per pallet. At $4.50/kg average air freight, that's $90 direct profit per pallet, or $45,000 on a 500-pallet shipment.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Where is HexaEco available in Malaysia?</summary>
+          <p>We maintain KL hub stock with JIT delivery to Shah Alam, Petaling Jaya, Klang Valley, and Johor Bahru. Direct routes to Port Klang (North &amp; West Ports) available daily.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is paper honeycomb board 100% recyclable?</summary>
+          <p>Yes. HexaEco paper honeycomb is 100% curbside recyclable with Kraft paper construction. It meets stringent ESG environmental labeling standards — ideal for ESG-focused MNCs in industrial zones.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero__stat-badge {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    background: rgba(10,10,10,0.92);
+    color: #fff;
+    padding: 0.75rem 1rem;
+    font-size: 0.8rem;
+  }
+  .hero__stat-badge strong { display: block; font-size: 1rem; margin-bottom: 0.2rem; }
+
+  .compliance-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+  .compliance-row p { font-size: 0.85rem; color: #666; margin-top: 0.2rem; }
+
+  .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .calc-title { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1rem; }
+  .calc-desc { color: #aaa; margin-bottom: 1.5rem; line-height: 1.7; }
+
+  .industry-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2.5rem; }
+  .view-all { font-size: 0.7rem; }
+  .explore-link { display: inline-block; margin-top: 1.5rem; font-weight: 700; font-size: 0.85rem; }
+
+  .faq-section { background: #f5f5f5; }
+  .faq-container { max-width: 800px; }
+  .faq-container h2 { margin-bottom: 2rem; }
+  .faq-list { display: flex; flex-direction: column; }
+  .faq-item { border-top: 2px solid #0a0a0a; }
+  .faq-item:last-child { border-bottom: 2px solid #0a0a0a; }
+  .faq-item summary {
+    padding: 1.25rem 0;
+    font-weight: 700;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.95rem;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 1.5rem; font-weight: 300; }
+  .faq-item[open] summary::after { content: '−'; }
+  .faq-item p { padding-bottom: 1.25rem; color: #444; line-height: 1.7; font-size: 0.9rem; }
+
+  @media (max-width: 768px) {
+    .calc-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .industry-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  }
+</style>
+
+<script>
+  const payload = document.getElementById('payload') as HTMLInputElement;
+  const shipments = document.getElementById('shipments') as HTMLInputElement;
+  const output = document.getElementById('savings-output');
+
+  function calc() {
+    const p = parseFloat(payload?.value) || 0;
+    const s = parseFloat(shipments?.value) || 0;
+    const weightSaved = p * 0.8;
+    const savings = weightSaved * 4.5 * s;
+    if (output) {
+      output.textContent = savings > 0
+        ? `$${savings.toLocaleString('en-US', { maximumFractionDigits: 0 })} / mo`
+        : '$0 / mo';
+    }
+  }
+
+  payload?.addEventListener('input', calc);
+  shipments?.addEventListener('input', calc);
+</script>

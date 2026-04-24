@@ -1,0 +1,126 @@
+---
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  schema?: object;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  ogImage = '/og-default.jpg',
+  schema,
+  noindex = false,
+} = Astro.props;
+
+const siteUrl = 'https://www.paperhoneycombboard.com';
+const canonicalUrl = canonical ? `${siteUrl}${canonical}` : `${siteUrl}${Astro.url.pathname}`;
+const fullTitle = title.includes('HexaEco') ? title : `${title} | HexaEco Paper Honeycomb Board`;
+---
+
+<!doctype html>
+<html lang="en-MY">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Primary Meta -->
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`${siteUrl}${ogImage}`} />
+    <meta property="og:site_name" content="HexaEco Paper Honeycomb Board" />
+    <meta property="og:locale" content="en_MY" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${siteUrl}${ogImage}`} />
+
+    <!-- Geo Meta (GEO optimisation) -->
+    <meta name="geo.region" content="MY-10" />
+    <meta name="geo.placename" content="Johor Bahru, Malaysia" />
+    <meta name="geo.position" content="1.4927;103.7414" />
+    <meta name="ICBM" content="1.4927, 103.7414" />
+
+    <!-- Structured Data -->
+    {schema && (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    )}
+
+    <!-- Global Organization Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "HexaEco Paper Honeycomb Board",
+      "alternateName": "PHB",
+      "url": siteUrl,
+      "logo": `${siteUrl}/logo.png`,
+      "description": "Industrial-grade paper honeycomb board manufacturer serving Malaysia, Singapore, and global export markets. ISPM-15 exempt, 70% lighter than plywood.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Johor Bahru",
+        "addressRegion": "Johor",
+        "addressCountry": "MY"
+      },
+      "areaServed": ["MY", "SG", "ASEAN"],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "areaServed": ["MY", "SG"],
+        "availableLanguage": ["English", "Malay", "Chinese"]
+      },
+      "sameAs": []
+    })} />
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#39FF14" />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+    <Nav />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style is:global>
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 1rem;
+    background: #39FF14;
+    color: #000;
+    padding: 0.5rem 1rem;
+    font-weight: 700;
+    font-size: 0.8rem;
+    z-index: 9999;
+    transition: top 0.1s;
+  }
+  .skip-link:focus { top: 1rem; }
+</style>

@@ -1,0 +1,72 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Contact – Get a Hex-Sample Kit | HexaEco Paper Honeycomb Board"
+  description="Request your architect-grade sample kit or talk to our engineers. Malaysia and Singapore paper honeycomb board supplier. JIT delivery to Klang Valley, JB, and Singapore."
+  canonical="/contact/"
+>
+  <section class="section" style="min-height:60vh">
+    <div class="container" style="max-width:640px">
+      <span class="badge">Get in Touch</span>
+      <h1 style="font-size:clamp(2rem,4vw,3rem);margin-bottom:1rem">Get a Hex-Sample Kit</h1>
+      <p style="color:#666;margin-bottom:2.5rem;line-height:1.7">
+        Request our architect-grade sample kit including three densities of structural honeycomb and our finish guide.
+        Or reach out to our engineering team directly.
+      </p>
+      <form name="contact" method="POST" data-netlify="true" class="contact-form">
+        <input type="hidden" name="form-name" value="contact" />
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" required placeholder="Your name" />
+        </div>
+        <div class="form-group">
+          <label for="company">Company</label>
+          <input type="text" id="company" name="company" placeholder="Your company" />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required placeholder="you@company.com" />
+        </div>
+        <div class="form-group">
+          <label for="inquiry">Inquiry Type</label>
+          <select id="inquiry" name="inquiry">
+            <option value="sample">Sample Kit Request</option>
+            <option value="quote">Quote / Bulk Order</option>
+            <option value="technical">Technical Specs</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="4" placeholder="Tell us about your project or requirements"></textarea>
+        </div>
+        <button type="submit" class="btn btn--green" style="width:100%;justify-content:center">Send Message</button>
+      </form>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-group label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    border: 2px solid #0a0a0a;
+    padding: 0.75rem 1rem;
+    font-family: inherit;
+    font-size: 0.9rem;
+    background: #fff;
+    transition: border-color 0.15s;
+    width: 100%;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: #39FF14;
+  }
+</style>
