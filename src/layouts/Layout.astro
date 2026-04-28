@@ -23,7 +23,7 @@ const {
 
 const siteUrl = 'https://www.paperhoneycombboard.com';
 const canonicalUrl = canonical ? `${siteUrl}${canonical}` : `${siteUrl}${Astro.url.pathname}`;
-const fullTitle = title.includes('HexaEco') ? title : `${title} | HexaEco Paper Honeycomb Board`;
+const fullTitle = title.includes('phb') ? title : `${title} | phb Paper Honeycomb Board`;
 ---
 
 <!doctype html>
@@ -45,7 +45,7 @@ const fullTitle = title.includes('HexaEco') ? title : `${title} | HexaEco Paper 
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={`${siteUrl}${ogImage}`} />
-    <meta property="og:site_name" content="HexaEco Paper Honeycomb Board" />
+    <meta property="og:site_name" content="phb Paper Honeycomb Board" />
     <meta property="og:locale" content="en_MY" />
 
     <!-- Twitter Card -->
@@ -69,7 +69,7 @@ const fullTitle = title.includes('HexaEco') ? title : `${title} | HexaEco Paper 
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Organization",
-      "name": "HexaEco Paper Honeycomb Board",
+      "name": "phb Paper Honeycomb Board",
       "alternateName": "PHB",
       "url": siteUrl,
       "logo": `${siteUrl}/logo.png`,
