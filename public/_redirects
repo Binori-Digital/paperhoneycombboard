@@ -1,0 +1,10 @@
+# Canonicalise non-www to www (301)
+https://paperhoneycombboard.com/* https://www.paperhoneycombboard.com/:splat 301!
+
+# Trailing-slash enforcement — non-slash → slash (301)
+/combat-zone  /combat-zone/  301
+/contact      /contact/      301
+/eco-lab      /eco-lab/      301
+/regional     /regional/     301
+/privacy      /privacy/      301
+/terms        /terms/        301
