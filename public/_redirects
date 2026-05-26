@@ -1,4 +1,6 @@
-# Canonicalise non-www to www (301)
+# Canonicalise non-www → www and HTTP → HTTPS (301)
+http://paperhoneycombboard.com/* https://www.paperhoneycombboard.com/:splat 301!
+http://www.paperhoneycombboard.com/* https://www.paperhoneycombboard.com/:splat 301!
 https://paperhoneycombboard.com/* https://www.paperhoneycombboard.com/:splat 301!
 
 # Trailing-slash enforcement — non-slash → slash (301)

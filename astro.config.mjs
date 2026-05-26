@@ -7,8 +7,9 @@ export default defineConfig({
   trailingSlash: 'always',
   integrations: [
     sitemap({
-      filter: (page) =>
-        !page.includes('/privacy/') && !page.includes('/terms/'),
+      changefreq: 'weekly',
+      lastmod: new Date(),
+      priority: 0.7,
     }),
   ],
   output: 'static',

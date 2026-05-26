@@ -85,6 +85,11 @@ h1, h2, h3, h4, h5 {
 .stat-box__label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.25rem; }
 
 /* ===== COMPARISON TABLE ===== */
+@keyframes phb-pulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.08); }
+}
+
 .compare-table { width: 100%; border-collapse: collapse; margin-top: 2rem; }
 .compare-table th, .compare-table td {
   padding: 1.25rem 1.5rem;
@@ -101,6 +106,11 @@ h1, h2, h3, h4, h5 {
 }
 .compare-table .col-phb { background: var(--green); }
 .compare-table .col-phb th { background: var(--green); }
+.compare-table td.col-phb .phb-text {
+  display: inline-block;
+  animation: phb-pulse 2.8s ease-in-out infinite;
+  transform-origin: center;
+}
 .compare-table td.highlight { font-weight: 800; color: var(--black); font-size: 1.25rem; }
 .compare-table td.highlight-bg { background: var(--green); font-weight: 800; font-size: 1.1rem; color: var(--black); }
 
