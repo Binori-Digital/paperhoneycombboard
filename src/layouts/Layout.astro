@@ -98,6 +98,13 @@ const fullTitle = title.includes('phb') ? title : `${title} | phb Paper Honeycom
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="theme-color" content="#39FF14" />
+
+    <!-- Redirect non-www to www -->
+    <script is:inline>
+      if (location.hostname === 'paperhoneycombboard.com') {
+        location.replace('https://www.paperhoneycombboard.com' + location.pathname + location.search + location.hash);
+      }
+    </script>
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to main content</a>
