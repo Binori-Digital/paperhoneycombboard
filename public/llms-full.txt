@@ -1,0 +1,106 @@
+# phb Paper Honeycomb Board — Full LLM Context
+
+> Industrial-grade paper honeycomb board manufacturer based in Johor Bahru, Malaysia. ISPM-15 exempt, 100% recyclable, 70% lighter than plywood. Serving Malaysia, Singapore, and global export markets.
+
+## Company Overview
+
+phb Paper Honeycomb Board manufactures hexagonal-core paper honeycomb products for industrial packaging, export pallets, and creative structural applications. The company is based in Johor Bahru, Malaysia, with a logistics hub in Kuala Lumpur providing JIT (Just-In-Time) delivery across the Klang Valley.
+
+- **Brand name**: phb (also referred to as PHB)
+- **Headquarters**: Johor Bahru, Johor, Malaysia
+- **Markets served**: Malaysia (MY), Singapore (SG), ASEAN, and global export
+- **Languages**: English, Malay, Chinese
+- **Website**: https://www.paperhoneycombboard.com
+
+## Core Product: Paper Honeycomb Board
+
+Paper honeycomb board is an engineered material with a hexagonal core structure sandwiched between flat liner sheets. It provides high compression strength at a fraction of the weight of traditional materials.
+
+### Key Specifications
+
+- **Weight**: ~5kg per standard pallet (vs 25kg plywood, 18kg plastic)
+- **Weight savings**: 70–90% lighter than wood equivalents
+- **Compression force**: 12kN
+- **ISPM-15 status**: Exempt — biologically inert, no fumigation or heat treatment required
+- **Recyclability**: 100% curbside recyclable (Kraft paper construction)
+- **Construction**: Hexagonal honeycomb core, Kraft paper liner
+
+### Cost Savings Model
+
+- Average air freight cost: $4.50/kg
+- Weight saved per pallet (vs plywood): 20kg
+- Direct profit per pallet: $90
+- Savings on 500-pallet shipment: $45,000
+- Total cost reduction claim: up to 70%
+
+## Product Applications
+
+### Industrial Packaging & Pallets
+- Export pallets (ISPM-15 exempt — no customs delays)
+- Void fillers for high-density shipping
+- Anti-static, shock-absorbent packaging for electronics and microchips
+- Load-bearing pallet solutions for air and sea cargo
+
+### Creative & Architectural (The Eco-Lab)
+- Lightweight structural panels for architecture
+- 1:1 scale prototyping and mockups
+- Recyclable art materials (accepts paint, graphite, and other mediums)
+- Laser-cut sculptural furniture
+- Modular playhouses and pop-up event structures
+- Temporary installations and immersive art galleries
+
+### Regional Logistics
+- KL hub stock with JIT delivery to Shah Alam, Petaling Jaya, Klang Valley, Johor Bahru
+- Direct routes to Port Klang (North and West Ports), daily logistics shuttles
+- KLIA airfreight optimisation
+- Singapore export corridor support
+- 24/7 customs-ready documentation
+
+## Competitive Comparison
+
+| Metric | phb Paper Honeycomb | Plywood | Plastic |
+|---|---|---|---|
+| Weight (std pallet) | 5kg | 25kg | 18kg |
+| ISPM-15 | Exempt | Required (fumigation) | Exempt |
+| Recyclability | 100% curbside | Difficult / landfill | Limited / specialised |
+| Total cost | Save 70% | Base cost | +40% premium |
+
+## Industry Verticals
+
+- **Electronics**: Anti-static packaging for high-value components
+- **Logistics**: Load-bearing pallets and void fillers for global shipping
+- **Creative/Architecture**: Custom structural panels, furniture, and art installations
+
+## Trusted By
+
+- PALLITE
+- Tetra Pak
+- Schenker
+
+## Frequently Asked Questions
+
+**Q: What is ISPM-15 exempt paper honeycomb board?**
+A: Paper honeycomb boards are biologically inert and naturally exempt from ISPM-15 phytosanitary regulations. Unlike wood pallets, they require no heat treatment or fumigation, enabling seamless international shipping.
+
+**Q: How much weight can you save with paper honeycomb vs plywood?**
+A: A standard phb pallet weighs approximately 5kg vs 25kg for plywood — saving 20kg per pallet. At $4.50/kg average air freight cost, that is $90 direct profit per pallet, or $45,000 on a 500-pallet shipment.
+
+**Q: Where is phb paper honeycomb board available in Malaysia?**
+A: phb maintains KL hub stock in Kuala Lumpur with JIT delivery to Shah Alam, Petaling Jaya, Klang Valley, and Johor Bahru. Direct routes to Port Klang (North and West Ports) are available daily.
+
+**Q: Is paper honeycomb board 100% recyclable?**
+A: Yes. phb paper honeycomb is 100% curbside recyclable with Kraft paper construction. It meets stringent ESG environmental labeling standards, ideal for ESG-focused MNCs in industrial zones.
+
+## Site Map
+
+- **/** — Home: product overview, savings calculator, industry verticals, FAQ
+- **/combat-zone/** — Material comparison: paper honeycomb vs plywood vs plastic
+- **/eco-lab/** — Creative applications: structural panels, prototyping, furniture
+- **/regional/** — Malaysia & Singapore logistics: KL hub, Port Klang, JIT delivery
+- **/contact/** — Request Hex-Sample Kit or contact engineering team
+- **/privacy/** — Privacy policy
+- **/terms/** — Terms of use
+
+## Contact
+
+To request a sample kit or get a quote, visit https://www.paperhoneycombboard.com/contact/

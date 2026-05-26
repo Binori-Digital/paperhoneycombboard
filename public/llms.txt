@@ -1,0 +1,19 @@
+# phb Paper Honeycomb Board
+
+> Industrial-grade paper honeycomb board manufacturer based in Johor Bahru, Malaysia. ISPM-15 exempt, 100% recyclable, 70% lighter than plywood. Serving Malaysia, Singapore, and global export markets.
+
+phb engineers hexagonal-core paper honeycomb into pallets, packaging, and structural panels for industrial logistics and creative applications. The material is biologically inert (no fumigation required), weighs ~5kg vs 25kg for plywood equivalents, and is curbside recyclable.
+
+## Pages
+
+- [Home](https://www.paperhoneycombboard.com/): Main landing page with product overview, weight savings calculator, industry verticals (electronics, logistics, creative lab), and FAQ.
+- [Combat Zone](https://www.paperhoneycombboard.com/combat-zone/): Head-to-head material comparison — paper honeycomb vs plywood vs plastic. Performance metrics: weight, ISPM-15 compliance, recyclability, and total cost savings.
+- [The Eco-Lab](https://www.paperhoneycombboard.com/eco-lab/): Creative and architectural applications — lightweight structural panels, 100% recyclable art materials, prototyping (85% weight reduction, 12kN compression), and furniture design.
+- [Regional Solutions](https://www.paperhoneycombboard.com/regional/): Malaysia and Singapore export logistics — KL hub stock, JIT delivery to Klang Valley/JB/Singapore, Port Klang access, ISPM-15 exempt pallets, air cargo optimisation.
+- [Contact](https://www.paperhoneycombboard.com/contact/): Request a Hex-Sample Kit or contact the engineering team. Form for name, company, email, interest area, and message.
+- [Privacy Policy](https://www.paperhoneycombboard.com/privacy/): Data collection and usage policy.
+- [Terms of Use](https://www.paperhoneycombboard.com/terms/): Website terms and conditions.
+
+## Optional
+
+- [Full LLM context](https://www.paperhoneycombboard.com/llms-full.txt): Detailed product specifications, key claims, and structured data for deeper understanding.
