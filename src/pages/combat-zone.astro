@@ -5,7 +5,7 @@ const schema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
   "name": "Combat Zone – Paper Honeycomb vs Plywood vs Plastic | phb",
-  "description": "Head-to-head material comparison. Paper honeycomb board vs plywood vs plastic. 5kg vs 25kg. ISPM-15 exempt. Save 70% on total shipping costs.",
+  "description": "Head-to-head material comparison. Paper honeycomb board vs plywood vs plastic. 5kg vs 25kg. ISPM-15 exempt. Save up to $90 per pallet on air freight.",
   "url": "https://www.paperhoneycombboard.com/combat-zone/",
   "breadcrumb": {
     "@type": "BreadcrumbList",
@@ -19,7 +19,7 @@ const schema = {
 
 <Layout
   title="Combat Zone – Paper Honeycomb vs Plywood vs Plastic | phb"
-  description="Paper honeycomb board vs plywood vs plastic. 5KG vs 25KG. Save 70% on total costs. ISPM-15 exempt vs required. 100% recyclable vs landfill. The numbers don't lie."
+  description="Paper honeycomb board vs plywood vs plastic. 5KG vs 25KG. Up to $90 saved per pallet on air freight. ISPM-15 exempt vs required. 100% recyclable vs landfill. The numbers don't lie."
   canonical="/combat-zone/"
   schema={schema}
 >
@@ -88,14 +88,18 @@ const schema = {
               <td>Limited / Specialised</td>
             </tr>
             <tr>
-              <th scope="row">Total Savings</th>
-              <td class="highlight-bg col-phb"><span class="phb-text">SAVE 70%</span></td>
+              <th scope="row">Air Freight Impact*</th>
+              <td class="highlight-bg col-phb"><span class="phb-text">SAVE ~$90 / PALLET</span></td>
               <td><strong>Base Cost</strong></td>
-              <td>+40% Premium</td>
+              <td>Premium Price</td>
             </tr>
           </tbody>
         </table>
       </div>
+      <p class="table-footnote">
+        *Estimate based on 20kg tare weight saved per pallet (5kg honeycomb vs 25kg wood) at an
+        assumed $4.50/KG air freight rate. Actual rates vary by route, carrier, and season.
+      </p>
     </div>
   </section>
 
@@ -120,15 +124,15 @@ const schema = {
               <td class="value">20 KG</td>
             </tr>
             <tr>
-              <td class="label">Direct Profit per Pallet</td>
+              <td class="label">Freight Saved per Pallet</td>
               <td class="value value--green">$90.00</td>
             </tr>
           </tbody>
         </table>
 
         <p style="font-size:0.85rem;color:#666;margin-top:1rem;line-height:1.6">
-          Scale this across a standard 500-pallet shipment and you've reclaimed
-          <strong style="text-decoration:underline">$45,000</strong> in pure bottom-line profit.
+          Scale this across a standard 500-pallet shipment and you've reclaimed an estimated
+          <strong style="text-decoration:underline">$45,000</strong> in air freight costs.
         </p>
       </div>
 
@@ -136,7 +140,7 @@ const schema = {
         <div class="profit-img-main">
           <img
             src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&q=80"
-            alt="Air cargo plane – paper honeycomb reduces air freight costs by 80%"
+            alt="Cargo aircraft being loaded on the tarmac"
             width="450" height="300"
             loading="lazy"
           />
@@ -149,7 +153,7 @@ const schema = {
         <div class="profit-img-small">
           <img
             src="https://images.unsplash.com/photo-1553413077-190dd305871c?w=400&q=80"
-            alt="Warehouse with traditional wood pallets – costly and heavy"
+            alt="Stacks of wooden pallets in a warehouse"
             width="300" height="200"
             loading="lazy"
           />
@@ -176,6 +180,7 @@ const schema = {
   .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
 
   .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .table-footnote { font-size: 0.75rem; color: #888; margin-top: 0.75rem; line-height: 1.5; }
   .check-icon { color: #0a0a0a; }
   .warn { color: #e06b2d; }
 

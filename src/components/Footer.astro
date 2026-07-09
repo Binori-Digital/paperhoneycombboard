@@ -1,11 +1,11 @@
 ---
 const { activePage = '' } = Astro.props;
+const year = new Date().getFullYear();
 const links = [
-  { href: '/regional/', label: 'JB Solutions' },
-  { href: '/regional/', label: 'KL Logistics' },
-  { href: '/regional/', label: 'Singapore Green' },
+  { href: '/regional/', label: 'Regional Solutions' },
   { href: '/eco-lab/', label: 'The Eco-Lab' },
-  { href: '/combat-zone/', label: 'Ditch the Wood' },
+  { href: '/combat-zone/', label: 'Combat Zone' },
+  { href: '/contact/', label: 'Contact' },
   { href: '/privacy/', label: 'Privacy' },
   { href: '/terms/', label: 'Terms' },
 ];
@@ -15,7 +15,7 @@ const links = [
   <div class="container footer__inner">
     <div class="footer__brand">
       <a href="/" class="footer__logo">phb</a>
-      <p class="footer__copy">© 2024 phb. Industrial Structural Integrity.</p>
+      <p class="footer__copy">© {year} phb. Industrial Structural Integrity.</p>
     </div>
     <nav aria-label="Footer navigation">
       <ul class="footer__links">

@@ -31,7 +31,6 @@ const fullTitle = title.includes('phb') ? title : `${title} | phb Paper Honeycom
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <!-- Primary Meta -->
     <title>{fullTitle}</title>
@@ -73,7 +72,7 @@ const fullTitle = title.includes('phb') ? title : `${title} | phb Paper Honeycom
       "alternateName": "PHB",
       "url": siteUrl,
       "logo": `${siteUrl}/logo.png`,
-      "description": "Industrial-grade paper honeycomb board manufacturer serving Malaysia, Singapore, and global export markets. ISPM-15 exempt, 70% lighter than plywood.",
+      "description": "Industrial-grade paper honeycomb board manufacturer serving Malaysia, Singapore, and global export markets. ISPM-15 exempt, up to 80% lighter than wood pallets.",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Johor Bahru",
@@ -99,12 +98,8 @@ const fullTitle = title.includes('phb') ? title : `${title} | phb Paper Honeycom
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="theme-color" content="#39FF14" />
 
-    <!-- Redirect non-www to www -->
-    <script is:inline>
-      if (location.hostname === 'paperhoneycombboard.com') {
-        location.replace('https://www.paperhoneycombboard.com' + location.pathname + location.search + location.hash);
-      }
-    </script>
+    <!-- Page-specific head content (extra JSON-LD schemas etc.) -->
+    <slot name="head" />
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to main content</a>

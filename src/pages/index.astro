@@ -18,7 +18,7 @@ const faqSchema = {
       "name": "How much weight can you save with paper honeycomb vs plywood?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "A standard phb paper honeycomb pallet weighs approximately 5kg vs 25kg for plywood — saving 20kg per pallet. At $4.50/kg average air freight cost, that is $90 direct profit per pallet, or $45,000 on a 500-pallet shipment."
+        "text": "A standard phb paper honeycomb pallet weighs approximately 5kg vs 25kg for plywood — saving 20kg per pallet. At a typical $4.50/kg air freight rate, that is around $90 in freight savings per pallet, or $45,000 on a 500-pallet shipment."
       }
     },
     {
@@ -44,7 +44,7 @@ const productSchema = {
   "@context": "https://schema.org",
   "@type": "Product",
   "name": "phb Paper Honeycomb Board",
-  "description": "Industrial-grade hexagonal honeycomb board for packaging, pallets, and creative structures. ISPM-15 exempt, 100% recyclable, 70% lighter than plywood.",
+  "description": "Industrial-grade hexagonal honeycomb board for packaging, pallets, and creative structures. ISPM-15 exempt, 100% recyclable, up to 80% lighter than wood pallets.",
   "brand": { "@type": "Brand", "name": "phb" },
   "manufacturer": {
     "@type": "Organization",
@@ -64,7 +64,7 @@ const productSchema = {
 
 <Layout
   title="Paper Honeycomb Board – Industrial Structural Integrity | phb"
-  description="Ditch the wood. Save 70% on export costs with ISPM-15 exempt paper honeycomb board from Malaysia. Heavyweight protection, featherweight footprint. Trusted by PALLITE, Tetra Pak & Schenker."
+  description="Ditch the wood. Paper honeycomb board from Malaysia — ISPM-15 exempt and up to 80% lighter than wood pallets, saving up to $90 per pallet on air freight. Heavyweight protection, featherweight footprint."
   canonical="/"
   schema={productSchema}
 >
@@ -76,12 +76,12 @@ const productSchema = {
       <video
         class="hero__video"
         src="/media/hero-morph.mp4"
-        poster="/media/hero-poster.png"
+        poster="/media/hero-poster.jpg"
         muted
         loop
         autoplay
         playsinline
-        preload="auto"
+        preload="metadata"
         aria-hidden="true"
       ></video>
       <div class="hero__scrim" aria-hidden="true"></div>
@@ -90,8 +90,8 @@ const productSchema = {
         <span class="badge badge--peach">Industrial Structural Integrity</span>
         <h1 class="hero__title" id="hero-heading">The Future is<br />Honeycomb</h1>
         <p class="hero__desc">
-          Ditch the wood. Save 70% on export costs with ISPM-15 exempt paper honeycomb solutions.
-          Heavyweight protection, featherweight footprint.
+          Ditch the wood. ISPM-15 exempt paper honeycomb solutions — up to 80% lighter than
+          wood pallets. Heavyweight protection, featherweight footprint.
         </p>
         <div class="hero__actions">
           <a href="#calculator" class="btn btn--green">Calculate My Savings</a>
@@ -115,20 +115,20 @@ const productSchema = {
   <div class="stats-bar" role="region" aria-label="Key performance statistics">
     <div class="container stats-bar__inner">
       <div class="stat-box">
-        <div class="stat-box__value">70%</div>
-        <div class="stat-box__label">Cost Reduction</div>
+        <div class="stat-box__value">80%</div>
+        <div class="stat-box__label">Lighter Than Wood Pallets</div>
       </div>
       <div class="stat-box">
-        <div class="stat-box__value">90%</div>
-        <div class="stat-box__label">Weight Savings</div>
+        <div class="stat-box__value">$90</div>
+        <div class="stat-box__label">Air Freight Saved / Pallet</div>
       </div>
       <div class="stats-bar__divider" aria-hidden="true"></div>
       <div>
-        <p class="stats-bar__brands-label">Trusted by Leaders</p>
+        <p class="stats-bar__brands-label">Built for Demanding Industries</p>
         <div class="stats-bar__brands">
-          <span>PALLITE</span>
-          <span>Tetra Pak</span>
-          <span>Schenker</span>
+          <span>Electronics</span>
+          <span>Furniture</span>
+          <span>Logistics</span>
         </div>
       </div>
     </div>
@@ -140,7 +140,7 @@ const productSchema = {
       <div class="feature-row__img">
         <img
           src="https://images.unsplash.com/photo-1553413077-190dd305871c?w=700&q=80"
-          alt="Industrial warehouse pallets – ISPM-15 exempt no fumigation required"
+          alt="Pallets stacked in an industrial warehouse"
           width="600" height="400"
           loading="lazy"
         />
@@ -171,19 +171,19 @@ const productSchema = {
       <div>
         <h2 id="calc-heading" class="calc-title">Weight Savings<br />Calculator</h2>
         <p class="calc-desc">
-          See how much fuel and carbon you'll save by switching from timber to phb honeycomb.
-          High precision, zero fluff.
+          Each phb pallet weighs ~5kg vs ~25kg for wood — 20kg less tare weight per pallet.
+          Enter your monthly pallet volume and freight rate to see the estimated air-freight saving.
         </p>
         <a href="/contact/" class="btn btn--green">Open Widget</a>
       </div>
       <div class="calc-widget" role="form" aria-label="Weight savings calculator">
-        <label for="payload">Payload Weight (KG)</label>
-        <input type="number" id="payload" placeholder="e.g. 500" min="1" />
-        <label for="shipments">Monthly Shipment Volume</label>
-        <input type="number" id="shipments" placeholder="e.g. 250" min="1" />
+        <label for="pallets">Pallets Shipped per Month</label>
+        <input type="number" id="pallets" placeholder="e.g. 250" min="1" />
+        <label for="rate">Air Freight Rate ($ / KG)</label>
+        <input type="number" id="rate" placeholder="e.g. 4.50" min="0" step="0.1" value="4.50" />
         <div class="calc-widget__result">
           <span class="calc-widget__result-label">Estimated Savings</span>
-          <span class="calc-widget__result-value" id="savings-output">$1,240 / mo</span>
+          <span class="calc-widget__result-value" id="savings-output">$0 / mo</span>
         </div>
       </div>
     </div>
@@ -239,7 +239,7 @@ const productSchema = {
         </details>
         <details class="faq-item">
           <summary>How much weight can you save vs plywood?</summary>
-          <p>A standard phb paper honeycomb pallet weighs ~5kg vs 25kg for plywood — saving 20kg per pallet. At $4.50/kg average air freight, that's $90 direct profit per pallet, or $45,000 on a 500-pallet shipment.</p>
+          <p>A standard phb paper honeycomb pallet weighs ~5kg vs 25kg for plywood — saving 20kg per pallet. At a typical $4.50/kg air freight rate, that's around $90 in freight savings per pallet, or $45,000 on a 500-pallet shipment.</p>
         </details>
         <details class="faq-item">
           <summary>Where is phb available in Malaysia?</summary>
@@ -409,15 +409,17 @@ const productSchema = {
 </style>
 
 <script>
-  const payload = document.getElementById('payload') as HTMLInputElement;
-  const shipments = document.getElementById('shipments') as HTMLInputElement;
+  const pallets = document.getElementById('pallets') as HTMLInputElement;
+  const rate = document.getElementById('rate') as HTMLInputElement;
   const output = document.getElementById('savings-output');
 
+  // ~20kg tare weight saved per pallet (5kg honeycomb vs 25kg wood)
+  const KG_SAVED_PER_PALLET = 20;
+
   function calc() {
-    const p = parseFloat(payload?.value) || 0;
-    const s = parseFloat(shipments?.value) || 0;
-    const weightSaved = p * 0.8;
-    const savings = weightSaved * 4.5 * s;
+    const n = parseFloat(pallets?.value) || 0;
+    const r = parseFloat(rate?.value) || 0;
+    const savings = n * KG_SAVED_PER_PALLET * r;
     if (output) {
       output.textContent = savings > 0
         ? `$${savings.toLocaleString('en-US', { maximumFractionDigits: 0 })} / mo`
@@ -425,8 +427,8 @@ const productSchema = {
     }
   }
 
-  payload?.addEventListener('input', calc);
-  shipments?.addEventListener('input', calc);
+  pallets?.addEventListener('input', calc);
+  rate?.addEventListener('input', calc);
 
   // ===== Animated scroll-scrub hero =====
   const hero = document.querySelector('.hero') as HTMLElement | null;

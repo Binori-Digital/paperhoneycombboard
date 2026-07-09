@@ -205,7 +205,7 @@ h1, h2, h3, h4, h5 {
 .profit-table tr:last-child { border-bottom: none; }
 .profit-table .label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--gray-500); }
 .profit-table .value { font-weight: 700; }
-.profit-table .value--green { color: var(--green); font-size: 1.2rem; font-weight: 800; }
+.profit-table .value--green { background: var(--green); color: var(--black); padding: 0 0.35rem; font-size: 1.2rem; font-weight: 800; }
 
 /* ===== FEATURE ROW ===== */
 .feature-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: var(--border); margin-bottom: 1.5rem; }

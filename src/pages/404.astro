@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Page Not Found | phb"
+  description="The page you're looking for doesn't exist. Explore phb paper honeycomb board solutions."
+  noindex={true}
+>
+  <section class="section" style="min-height:60vh;display:flex;align-items:center">
+    <div class="container" style="max-width:640px;text-align:center">
+      <span class="badge">Error 404</span>
+      <h1 style="font-size:clamp(2.5rem,6vw,4.5rem);margin-bottom:1rem">Page Not Found</h1>
+      <p style="color:#666;margin-bottom:2.5rem;line-height:1.7">
+        This page doesn't exist — but our honeycomb boards definitely do.
+      </p>
+      <div class="cta-block__actions">
+        <a href="/" class="btn btn--green">Back to Home</a>
+        <a href="/contact/" class="btn btn--outline">Contact Us</a>
+      </div>
+    </div>
+  </section>
+</Layout>

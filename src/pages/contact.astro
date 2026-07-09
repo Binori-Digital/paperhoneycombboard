@@ -15,8 +15,11 @@ import Layout from '../layouts/Layout.astro';
         Request our architect-grade sample kit including three densities of structural honeycomb and our finish guide.
         Or reach out to our engineering team directly.
       </p>
-      <form name="contact" method="POST" data-netlify="true" class="contact-form">
+      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="contact-form">
         <input type="hidden" name="form-name" value="contact" />
+        <p class="bot-field" aria-hidden="true">
+          <label>Don't fill this out if you're human: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+        </p>
         <div class="form-group">
           <label for="name">Full Name</label>
           <input type="text" id="name" name="name" required placeholder="Your name" />
@@ -50,6 +53,7 @@ import Layout from '../layouts/Layout.astro';
 
 <style>
   .contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
+  .bot-field { position: absolute; left: -9999px; opacity: 0; }
   .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
   .form-group label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
   .form-group input,
