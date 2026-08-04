@@ -19,14 +19,32 @@ const schema = {
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "name": "phb Paper Honeycomb Board – KL Hub",
-  "description": "Local inventory in Kuala Lumpur. JIT delivery to Shah Alam, Petaling Jaya, Klang Valley, and Johor Bahru.",
+  "name": "phb Paper Honeycomb Board – Quinocycle Sdn Bhd",
+  "description": "Local inventory in the Klang Valley. JIT delivery to Shah Alam, Petaling Jaya, Kuala Lumpur, and Johor Bahru.",
+  "telephone": "+60389626381",
+  "email": "sales@quinocycle.com",
   "address": {
     "@type": "PostalAddress",
-    "addressLocality": "Kuala Lumpur",
-    "addressRegion": "Wilayah Persekutuan",
+    "streetAddress": "No.13, Jalan Taming P/1, Taming Jaya",
+    "addressLocality": "Balakong",
+    "postalCode": "43300",
+    "addressRegion": "Selangor",
     "addressCountry": "MY"
   },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "17:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "09:00",
+      "closes": "13:00"
+    }
+  ],
   "areaServed": [
     { "@type": "City", "name": "Kuala Lumpur" },
     { "@type": "City", "name": "Johor Bahru" },
