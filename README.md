@@ -1,4 +1,4 @@
-# HexaEco Paper Honeycomb Board — Website
+# Paper Honeycomb Board — Website
 
 Fast, static Astro website for **www.paperhoneycombboard.com** — an industrial paper honeycomb board manufacturer serving Malaysia, Singapore, and global export markets.
 
