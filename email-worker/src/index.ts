@@ -69,7 +69,9 @@ export default {
       return Response.json({ ok: true });
     } catch (err: any) {
       console.error(`Email send failed: ${err?.code} ${err?.message}`);
-      return Response.json({ ok: false, error: err?.code ?? 'send_failed' }, { status: 502 });
+      // 200 with ok:false — Cloudflare replaces 5xx bodies with its own error
+      // page, which would hide the error detail from the frontend
+      return Response.json({ ok: false, error: err?.code ?? 'send_failed' });
     }
   },
 };
