@@ -80,10 +80,11 @@ const contactSchema = {
             <label for="message">Message</label>
             <textarea id="message" name="message" rows="4" placeholder="Tell us about your project or requirements"></textarea>
           </div>
-          <button type="submit" class="btn btn--green" id="submit-btn" style="width:100%;justify-content:center">Send Message</button>
+          <button type="submit" class="btn btn--green" id="submit-btn" style="width:100%;justify-content:center">Send via WhatsApp</button>
           <p class="form-note" id="form-note">
-            Your message goes straight to our sales team at sales@quinocycle.com.
-            Prefer chat? <a href="https://wa.me/60168916381" id="wa-fallback" target="_blank" rel="noopener" style="text-decoration:underline;font-weight:700">WhatsApp us instead</a>.
+            Sending opens WhatsApp with your enquiry pre-filled — just press send there and it
+            reaches our sales team instantly. Prefer email?
+            <a href="mailto:sales@quinocycle.com" id="email-fallback" style="text-decoration:underline;font-weight:700">sales@quinocycle.com</a>
           </p>
           <p class="form-status" id="form-status" role="status" aria-live="polite" hidden></p>
         </form>
@@ -237,9 +238,8 @@ const contactSchema = {
 
 <script>
   const form = document.getElementById('enquiry-form') as HTMLFormElement | null;
-  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement | null;
   const statusEl = document.getElementById('form-status') as HTMLElement | null;
-  const waFallback = document.getElementById('wa-fallback') as HTMLAnchorElement | null;
+  const emailFallback = document.getElementById('email-fallback') as HTMLAnchorElement | null;
 
   function buildWhatsAppText(data: FormData): string {
     const inquirySelect = document.getElementById('inquiry') as HTMLSelectElement | null;
@@ -256,56 +256,27 @@ const contactSchema = {
     ].join('\n').trim();
   }
 
-  function showStatus(kind: 'ok' | 'err', html: string) {
-    if (!statusEl) return;
-    statusEl.hidden = false;
-    statusEl.className = `form-status form-status--${kind}`;
-    statusEl.innerHTML = html;
-  }
-
-  // Keep the WhatsApp fallback link pre-filled with whatever is typed
-  form?.addEventListener('input', () => {
-    if (!waFallback || !form) return;
-    const text = buildWhatsAppText(new FormData(form));
-    waFallback.href = `https://wa.me/60168916381?text=${encodeURIComponent(text)}`;
-  });
-
-  form?.addEventListener('submit', async (e) => {
+  form?.addEventListener('submit', (e) => {
     e.preventDefault();
     if (!form) return;
     const data = new FormData(form);
+    if (data.get('bot-field')) return; // honeypot tripped — silently drop
 
-    if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
-    if (statusEl) statusEl.hidden = true;
+    const text = buildWhatsAppText(data);
+    window.open(`https://wa.me/60168916381?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
 
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: data.get('name'),
-          company: data.get('company'),
-          email: data.get('email'),
-          inquiry: (document.getElementById('inquiry') as HTMLSelectElement)?.selectedOptions[0]?.textContent ?? '',
-          message: data.get('message'),
-          botField: data.get('bot-field'),
-        }),
-      });
-      const result = await res.json().catch(() => ({ ok: false }));
-
-      if (res.ok && result.ok) {
-        form.reset();
-        showStatus('ok', '✓ Message sent. Our sales team will get back to you within one business day.');
-      } else {
-        throw new Error(result.error || `HTTP ${res.status}`);
-      }
-    } catch {
-      const text = buildWhatsAppText(data);
-      showStatus('err',
-        `Sorry — sending failed. Please <a href="https://wa.me/60168916381?text=${encodeURIComponent(text)}" target="_blank" rel="noopener" style="text-decoration:underline">WhatsApp us</a> ` +
-        `or email <a href="mailto:sales@quinocycle.com" style="text-decoration:underline">sales@quinocycle.com</a> instead.`);
-    } finally {
-      if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Send Message'; }
+    if (statusEl) {
+      statusEl.hidden = false;
+      statusEl.className = 'form-status form-status--ok';
+      statusEl.textContent = '✓ WhatsApp opened with your enquiry — press send there to reach us instantly.';
     }
+  });
+
+  // Keep the email fallback pre-filled with whatever is typed
+  form?.addEventListener('input', () => {
+    if (!emailFallback || !form) return;
+    const subject = encodeURIComponent('Website enquiry – Paper Honeycomb Board sample kit');
+    const body = encodeURIComponent(buildWhatsAppText(new FormData(form)));
+    emailFallback.href = `mailto:sales@quinocycle.com?subject=${subject}&body=${body}`;
   });
 </script>
