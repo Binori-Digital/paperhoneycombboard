@@ -3,10 +3,19 @@ http://paperhoneycombboard.com/* https://www.paperhoneycombboard.com/:splat 301!
 http://www.paperhoneycombboard.com/* https://www.paperhoneycombboard.com/:splat 301!
 https://paperhoneycombboard.com/* https://www.paperhoneycombboard.com/:splat 301!
 
+# Old URLs → new keyword URLs (301)
+/combat-zone/  /honeycomb-board-vs-plywood/  301
+/combat-zone   /honeycomb-board-vs-plywood/  301
+/eco-lab/      /honeycomb-panels/            301
+/eco-lab       /honeycomb-panels/            301
+
 # Trailing-slash enforcement — non-slash → slash (301)
-/combat-zone  /combat-zone/  301
+/honeycomb-board-vs-plywood  /honeycomb-board-vs-plywood/  301
+/honeycomb-panels            /honeycomb-panels/            301
+/honeycomb-box               /honeycomb-box/               301
+/honeycomb-pallet            /honeycomb-pallet/            301
+/paper-honeycomb-board-guide /paper-honeycomb-board-guide/ 301
 /contact      /contact/      301
-/eco-lab      /eco-lab/      301
 /regional     /regional/     301
 /privacy      /privacy/      301
 /terms        /terms/        301

@@ -36,7 +36,7 @@ const contactSchema = {
 ---
 
 <Layout
-  title="Contact – Get a Paper Honeycomb Board Sample Kit | phb"
+  title="Contact Honeycomb Board Supplier Malaysia – Sample Kit | phb"
   description="Contact Quinocycle Sdn Bhd in Balakong, Selangor — WhatsApp +6016-891 6381, call 03-8962 6381, or email sales@quinocycle.com. Request your architect-grade honeycomb sample kit."
   canonical="/contact/"
   schema={contactSchema}
@@ -263,7 +263,11 @@ const contactSchema = {
     if (data.get('bot-field')) return; // honeypot tripped — silently drop
 
     const text = buildWhatsAppText(data);
-    window.open(`https://wa.me/60168916381?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
+    const waUrl = `https://wa.me/60168916381?text=${encodeURIComponent(text)}`;
+    // Popup blockers (esp. mobile in-app browsers) can kill window.open —
+    // fall back to same-tab navigation, which always works for wa.me links
+    const win = window.open(waUrl, '_blank', 'noopener');
+    if (!win) window.location.href = waUrl;
 
     if (statusEl) {
       statusEl.hidden = false;

@@ -1,0 +1,220 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Honeycomb Box & Honeycomb Crate",
+  "description": "Heavy-duty paper honeycomb boxes and crates — a lightweight, ISPM-15 exempt, 100% recyclable alternative to wooden crates for machinery, electronics, and export packaging. Made in Malaysia.",
+  "brand": { "@type": "Brand", "name": "phb" },
+  "manufacturer": {
+    "@type": "Organization",
+    "name": "Quinocycle Sdn Bhd",
+    "address": { "@type": "PostalAddress", "addressLocality": "Balakong", "addressRegion": "Selangor", "addressCountry": "MY" }
+  },
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock",
+    "url": "https://www.paperhoneycombboard.com/contact/",
+    "description": "Custom sizes — contact for a quote."
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a honeycomb box?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A honeycomb box is a heavy-duty packaging crate built from paper honeycomb board — kraft paper formed into a hexagonal core and laminated between flat liners. It delivers crate-level protection at a fraction of the weight of wood, is ISPM-15 exempt for export, and is 100% recyclable."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can a honeycomb box replace a wooden crate for export?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. For most machinery, electronics, and furniture shipments, honeycomb crates match wooden crate protection while cutting tare weight by up to 80% and skipping ISPM-15 fumigation entirely — paper packaging is exempt from phytosanitary treatment requirements."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much weight can a honeycomb box carry?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Load capacity depends on board thickness, cell size, and construction. Typical phb honeycomb crate walls handle the same duty as plywood panels for static loads, with edge crush strength engineered to your cargo. Share your cargo weight and dimensions and our engineers will spec the right build."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where can I buy honeycomb boxes in Malaysia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "phb (Quinocycle Sdn Bhd) manufactures honeycomb boxes and crates in Balakong, Selangor, with delivery across the Klang Valley, Kuala Lumpur, Johor Bahru, and Singapore. Contact us via WhatsApp +6016-891 6381 or sales@quinocycle.com for a quote."
+      }
+    }
+  ]
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.paperhoneycombboard.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Honeycomb Box" }
+  ]
+};
+---
+
+<Layout
+  title="Honeycomb Box & Crate Malaysia – Wooden Crate Alternative | phb"
+  description="Heavy-duty honeycomb boxes & crates made in Malaysia. ISPM-15 exempt wooden crate alternative — up to 80% lighter, 100% recyclable. Custom sizes for machinery, electronics & export."
+  canonical="/honeycomb-box/"
+  schema={productSchema}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} slot="head" />
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="box-heading">
+    <div class="container hero__grid">
+      <div>
+        <span class="badge">Product – Honeycomb Box</span>
+        <h1 class="hero__title" id="box-heading">Honeycomb Box<br />&amp; Crate</h1>
+        <p class="hero__desc">
+          The wooden crate, reinvented in kraft paper. phb honeycomb boxes protect machinery,
+          electronics, and export cargo at up to 80% less weight — with zero ISPM-15 fumigation,
+          zero splinters, and 100% curbside recyclability.
+        </p>
+        <div class="hero__actions">
+          <a href="/contact/" class="btn btn--green">Get a Crate Quote</a>
+          <a href="/honeycomb-board-vs-plywood/" class="btn btn--outline">Compare vs Wood</a>
+        </div>
+      </div>
+      <div class="hero__img-wrap">
+        <img
+          src="https://images.unsplash.com/photo-1553413077-190dd305871c?w=800&q=80"
+          alt="Heavy-duty packaging crates stacked in a warehouse"
+          width="600" height="450"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section class="section" aria-labelledby="why-box-heading">
+    <div class="container">
+      <h2 id="why-box-heading">Why Switch From Wooden Crates?</h2>
+      <div class="grid-3" style="margin-top:2.5rem">
+        <article class="feature-card">
+          <div class="feature-card__icon">⚖️</div>
+          <h3 class="feature-card__title">Up to 80% Lighter</h3>
+          <p class="feature-card__text">
+            A honeycomb crate replacing a plywood equivalent sheds most of the tare weight —
+            cutting air and sea freight bills on every single shipment.
+          </p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-card__icon">🛃</div>
+          <h3 class="feature-card__title">ISPM-15 Exempt</h3>
+          <p class="feature-card__text">
+            Paper packaging needs no heat treatment, no fumigation, and no stamps.
+            Your crates clear customs without phytosanitary paperwork or delays.
+          </p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-card__icon">♻️</div>
+          <h3 class="feature-card__title">100% Recyclable</h3>
+          <p class="feature-card__text">
+            Kraft paper construction goes straight into the recycling stream at destination —
+            no crate return logistics, no disposal fees, and a clean ESG story.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPLICATIONS -->
+  <section class="section section--dark" aria-labelledby="box-apps-heading">
+    <div class="container">
+      <h2 id="box-apps-heading">What Ships in a Honeycomb Box?</h2>
+      <div class="grid-4" style="margin-top:2.5rem">
+        <div class="stat-box"><div class="stat-box__value">⚙️</div><div class="stat-box__label">Machinery &amp; Equipment</div></div>
+        <div class="stat-box"><div class="stat-box__value">💻</div><div class="stat-box__label">Electronics &amp; Servers</div></div>
+        <div class="stat-box"><div class="stat-box__value">🪑</div><div class="stat-box__label">Furniture &amp; Fixtures</div></div>
+        <div class="stat-box"><div class="stat-box__value">🚗</div><div class="stat-box__label">Automotive Parts</div></div>
+      </div>
+      <p style="color:#aaa;margin-top:2rem;max-width:640px;line-height:1.7">
+        Every crate is engineered to the cargo: wall thickness, cell size, corner posts, pallet base,
+        and internal honeycomb cushioning are all specified from your weight, dimensions, and transit route.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faq-section" aria-labelledby="box-faq-heading">
+    <div class="container faq-container">
+      <h2 id="box-faq-heading">Honeycomb Box FAQ</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>What is a honeycomb box?</summary>
+          <p>A heavy-duty packaging crate built from paper honeycomb board — kraft paper formed into a hexagonal core and laminated between flat liners. Crate-level protection at a fraction of the weight of wood.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can it replace a wooden crate for export?</summary>
+          <p>Yes. For most machinery, electronics, and furniture shipments, honeycomb crates match wooden crate protection while cutting tare weight by up to 80% — and paper packaging is fully exempt from ISPM-15 fumigation.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How much weight can it carry?</summary>
+          <p>Depends on board thickness, cell size, and construction. Share your cargo weight and dimensions and our engineers will spec the right build for static and dynamic loads.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Where can I buy honeycomb boxes in Malaysia?</summary>
+          <p>We manufacture in Balakong, Selangor, and deliver across the Klang Valley, KL, Johor Bahru, and Singapore. <a href="/contact/" style="text-decoration:underline">Contact us</a> for a quote.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--green cta-block" aria-labelledby="box-cta-heading">
+    <div class="container">
+      <h2 id="box-cta-heading" class="cta-block__title">Crate up. Weigh less.</h2>
+      <p class="cta-block__desc">
+        Send us your cargo dimensions and weight — get a honeycomb crate spec and quote within one business day.
+      </p>
+      <div class="cta-block__actions">
+        <a href="/contact/" class="btn btn--dark">Get a Quote</a>
+        <a href="/honeycomb-pallet/" class="btn btn--outline">See Honeycomb Pallets</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .faq-section { background: #f5f5f5; }
+  .faq-container { max-width: 800px; }
+  .faq-container h2 { margin-bottom: 2rem; }
+  .faq-list { display: flex; flex-direction: column; }
+  .faq-item { border-top: 2px solid #0a0a0a; }
+  .faq-item:last-child { border-bottom: 2px solid #0a0a0a; }
+  .faq-item summary {
+    padding: 1.25rem 0;
+    font-weight: 700;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.95rem;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 1.5rem; font-weight: 300; }
+  .faq-item[open] summary::after { content: '−'; }
+  .faq-item p { padding-bottom: 1.25rem; color: #444; line-height: 1.7; font-size: 0.9rem; }
+</style>

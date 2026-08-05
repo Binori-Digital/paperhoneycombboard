@@ -1,0 +1,221 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Honeycomb Paper Pallet",
+  "description": "ISPM-15 exempt paper pallets made from honeycomb board — ~5kg vs 25kg for wood, saving up to $90 per pallet on air freight. Manufactured in Malaysia for export shippers.",
+  "brand": { "@type": "Brand", "name": "phb" },
+  "manufacturer": {
+    "@type": "Organization",
+    "name": "Quinocycle Sdn Bhd",
+    "address": { "@type": "PostalAddress", "addressLocality": "Balakong", "addressRegion": "Selangor", "addressCountry": "MY" }
+  },
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock",
+    "url": "https://www.paperhoneycombboard.com/contact/",
+    "description": "Standard and custom sizes — contact for a quote."
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a honeycomb paper pallet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A honeycomb paper pallet is a shipping pallet made from paper honeycomb board — hexagonal kraft paper cores laminated between liners. A standard unit weighs around 5kg versus roughly 25kg for a wooden pallet, while carrying comparable static loads for most export cargo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are paper pallets ISPM-15 exempt?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Processed paper materials are biologically inert and fully exempt from ISPM-15 phytosanitary regulations — no heat treatment, no fumigation, no stamps, and no border delays in any export market."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does a paper pallet save on air freight?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Switching from a 25kg wooden pallet to a ~5kg honeycomb pallet saves about 20kg of tare weight per pallet. At a typical $4.50/kg air freight rate, that is roughly $90 saved per pallet — about $45,000 across a 500-pallet program."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where can I buy paper pallets in Malaysia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "phb (Quinocycle Sdn Bhd) manufactures honeycomb paper pallets in Balakong, Selangor, with JIT delivery across the Klang Valley, Kuala Lumpur, Shah Alam, Petaling Jaya, Johor Bahru, and Singapore. WhatsApp +6016-891 6381 or email sales@quinocycle.com."
+      }
+    }
+  ]
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.paperhoneycombboard.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Honeycomb Pallet" }
+  ]
+};
+---
+
+<Layout
+  title="Paper Pallet Malaysia – ISPM-15 Exempt Honeycomb Pallets | phb"
+  description="Honeycomb paper pallets from Malaysia: ~5kg vs 25kg wood, ISPM-15 exempt, no fumigation, up to $90/pallet air freight savings. JIT delivery KL, Selangor, JB & Singapore."
+  canonical="/honeycomb-pallet/"
+  schema={productSchema}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} slot="head" />
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="pallet-heading">
+    <div class="container hero__grid">
+      <div>
+        <span class="badge">Product – Paper Pallet</span>
+        <h1 class="hero__title" id="pallet-heading">Honeycomb<br />Paper Pallet</h1>
+        <p class="hero__desc">
+          ~5kg where wood weighs 25kg. ISPM-15 exempt where wood needs fumigation.
+          The phb honeycomb pallet is the export shipper's cheat code: full pallet duty,
+          a fraction of the freight bill.
+        </p>
+        <div class="hero__actions">
+          <a href="/contact/" class="btn btn--green">Get a Pallet Quote</a>
+          <a href="/#calculator" class="btn btn--outline">Calculate My Savings</a>
+        </div>
+      </div>
+      <div class="hero__img-wrap">
+        <img
+          src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80"
+          alt="Pallets being moved by forklift in a distribution warehouse"
+          width="600" height="450"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- NUMBERS -->
+  <section class="section section--dark" aria-labelledby="pallet-numbers-heading">
+    <div class="container">
+      <h2 id="pallet-numbers-heading">The Pallet Math</h2>
+      <div class="grid-4" style="margin-top:2.5rem">
+        <div class="stat-box"><div class="stat-box__value">~5KG</div><div class="stat-box__label">Honeycomb Pallet Weight</div></div>
+        <div class="stat-box"><div class="stat-box__value">25KG</div><div class="stat-box__label">Typical Wooden Pallet</div></div>
+        <div class="stat-box"><div class="stat-box__value">$90</div><div class="stat-box__label">Saved Per Air Pallet*</div></div>
+        <div class="stat-box"><div class="stat-box__value">$0</div><div class="stat-box__label">Fumigation Fees</div></div>
+      </div>
+      <p style="font-size:0.75rem;color:#888;margin-top:1.5rem">
+        *Estimate at a typical $4.50/KG air freight rate on 20kg tare weight saved. Rates vary by route and season.
+      </p>
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section class="section" aria-labelledby="pallet-benefits-heading">
+    <div class="container">
+      <h2 id="pallet-benefits-heading">Why Export Shippers Switch</h2>
+      <div class="grid-2" style="margin-top:2.5rem">
+        <article class="feature-card feature-card--peach">
+          <h3 class="feature-card__title">No ISPM-15. Ever.</h3>
+          <p class="feature-card__text" style="margin-top:0.75rem">
+            Paper pallets are biologically inert and exempt from all phytosanitary regulations.
+            No heat treatment, no methyl bromide, no stamps, no rejected consignments at the border.
+            Ship to any market, any day.
+          </p>
+        </article>
+        <article class="feature-card">
+          <h3 class="feature-card__title">One-Person Handling</h3>
+          <p class="feature-card__text" style="margin-top:0.75rem">
+            At ~5kg, one worker lifts and positions a pallet without strain or injury risk.
+            Faster loading, safer warehouse, lower workers' comp exposure.
+          </p>
+        </article>
+        <article class="feature-card">
+          <h3 class="feature-card__title">Clean &amp; Consistent</h3>
+          <p class="feature-card__text" style="margin-top:0.75rem">
+            No splinters, no nails, no mold, no moisture-swollen boards. Every pallet arrives
+            dimensionally identical — ideal for automated lines and cleanroom-adjacent logistics.
+          </p>
+        </article>
+        <article class="feature-card feature-card--dark">
+          <h3 class="feature-card__title">Disposal Is Recycling</h3>
+          <p class="feature-card__text" style="margin-top:0.75rem">
+            Consignees drop the pallet straight into paper recycling. No return logistics,
+            no disposal fees, and a measurable ESG win on every shipment.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faq-section" aria-labelledby="pallet-faq-heading">
+    <div class="container faq-container">
+      <h2 id="pallet-faq-heading">Paper Pallet FAQ</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>What is a honeycomb paper pallet?</summary>
+          <p>A shipping pallet made from paper honeycomb board — hexagonal kraft cores laminated between liners. ~5kg per unit versus roughly 25kg for wood, with comparable static load capacity for most export cargo.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Are paper pallets ISPM-15 exempt?</summary>
+          <p>Yes — processed paper is fully exempt from ISPM-15. No heat treatment, fumigation, stamps, or border delays in any export market.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How much does one save on air freight?</summary>
+          <p>About 20kg tare weight per pallet — roughly $90 at a typical $4.50/kg air rate, or ~$45,000 across a 500-pallet program.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Where can I buy paper pallets in Malaysia?</summary>
+          <p>Manufactured in Balakong, Selangor with JIT delivery across the Klang Valley, KL, JB, and Singapore. <a href="/contact/" style="text-decoration:underline">Get a quote</a>.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--green cta-block" aria-labelledby="pallet-cta-heading">
+    <div class="container">
+      <h2 id="pallet-cta-heading" class="cta-block__title">Stop paying to ship wood.</h2>
+      <div class="cta-block__actions" style="margin-top:2rem">
+        <a href="/contact/" class="btn btn--dark">Order Pallets</a>
+        <a href="/honeycomb-box/" class="btn btn--outline">See Honeycomb Crates</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .faq-section { background: #f5f5f5; }
+  .faq-container { max-width: 800px; }
+  .faq-container h2 { margin-bottom: 2rem; }
+  .faq-list { display: flex; flex-direction: column; }
+  .faq-item { border-top: 2px solid #0a0a0a; }
+  .faq-item:last-child { border-bottom: 2px solid #0a0a0a; }
+  .faq-item summary {
+    padding: 1.25rem 0;
+    font-weight: 700;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.95rem;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 1.5rem; font-weight: 300; }
+  .faq-item[open] summary::after { content: '−'; }
+  .faq-item p { padding-bottom: 1.25rem; color: #444; line-height: 1.7; font-size: 0.9rem; }
+</style>

@@ -13,4 +13,9 @@ export default defineConfig({
     }),
   ],
   output: 'static',
+  // Force scripts into external files — the site's CSP (script-src 'self')
+  // blocks inline <script> blocks, which Astro otherwise emits for small scripts
+  vite: {
+    build: { assetsInlineLimit: 0 },
+  },
 });

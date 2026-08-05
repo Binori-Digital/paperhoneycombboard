@@ -1,0 +1,338 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Paper Honeycomb Board: The Complete Guide",
+  "description": "What paper honeycomb board is, how it's made, its strength and weight properties, ISPM-15 exemption, applications, and how it compares to plywood, plastic, and corrugated.",
+  "author": { "@type": "Organization", "name": "phb Paper Honeycomb Board (Quinocycle Sdn Bhd)" },
+  "publisher": { "@type": "Organization", "name": "phb Paper Honeycomb Board", "logo": { "@type": "ImageObject", "url": "https://www.paperhoneycombboard.com/logo.png" } },
+  "mainEntityOfPage": "https://www.paperhoneycombboard.com/paper-honeycomb-board-guide/"
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is paper honeycomb board?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Paper honeycomb board is a sandwich material made of a hexagonal kraft-paper core glued between two flat paper liners. The hexagonal geometry — the same structure bees use — gives it an exceptional strength-to-weight ratio: rigid enough to replace plywood in pallets, crates, and panels while weighing up to 80% less." }
+    },
+    {
+      "@type": "Question",
+      "name": "How is honeycomb board made?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Kraft paper sheets are glued in offset lines, stacked, pressed, and cut into slices. Each slice is then expanded like an accordion into a hexagonal-cell core, dried for stability, and laminated between top and bottom liner sheets to form a rigid sandwich board." }
+    },
+    {
+      "@type": "Question",
+      "name": "How strong is paper honeycomb board?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Strength depends on cell size, core thickness, and paper grade. Small cells and thicker cores handle higher loads. Engineered honeycomb panels can withstand compression forces around 12kN and carry pallet-duty static loads comparable to plywood — while a full pallet weighs only ~5kg versus ~25kg for wood." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is honeycomb board waterproof?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Standard paper honeycomb board is not waterproof — like all paper products it loses strength when saturated. For humid or wet transit conditions, boards can be specified with moisture-resistant coatings, PE lamination, or wax treatments, and cargo is typically wrapped in film as with any packaging." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is paper honeycomb board ISPM-15 exempt?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. ISPM-15 regulates solid wood packaging, which can harbor pests. Processed paper products are biologically inert and fully exempt — honeycomb pallets and crates need no heat treatment, no fumigation, and no IPPC stamps for international shipping." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is honeycomb board better than plywood for pallets?",
+      "acceptedAnswer": { "@type": "Answer", "text": "For most export shipments, yes: a honeycomb pallet weighs ~5kg versus ~25kg for plywood (saving roughly $90 per pallet at typical air freight rates), needs no ISPM-15 treatment, produces no splinters or nails, and is curbside recyclable. Plywood retains the edge for repeated-reuse closed-loop pallets and continuously wet environments." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is honeycomb board recyclable?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes — 100%. Honeycomb board is kraft paper and water-based adhesive, so it goes into the standard paper recycling stream. Unlike wood (usually landfilled) or plastic pallets (specialised recycling only), disposal at destination is free and clean." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is honeycomb board used for?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Main uses: paper pallets, heavy-duty export crates and boxes, protective packaging (edge protectors, corner blocks, void fill, cushioning), furniture cores (most flat-pack furniture uses honeycomb cores), doors, retail and exhibition displays, and lightweight architectural panels." }
+    }
+  ]
+};
+---
+
+<Layout
+  title="Paper Honeycomb Board: The Complete Guide | phb"
+  description="What is paper honeycomb board? How it's made, strength, weight, ISPM-15 exemption, waterproofing, applications, and honeycomb vs plywood vs corrugated — the complete guide."
+  canonical="/paper-honeycomb-board-guide/"
+  schema={articleSchema}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />
+
+  <article>
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="guide-heading">
+    <div class="container" style="max-width:800px">
+      <span class="badge">The Complete Guide</span>
+      <h1 id="guide-heading" style="font-size:clamp(2.2rem,5vw,3.6rem);margin-bottom:1rem">Paper Honeycomb Board: The Complete Guide</h1>
+      <p style="color:#666;line-height:1.7;font-size:1.05rem">
+        Everything buyers, engineers, and packaging managers need to know about paper honeycomb
+        board — what it is, how it's made, how strong it really is, and when it beats plywood,
+        plastic, and corrugated. Written by the manufacturing team at phb, Malaysia.
+      </p>
+      <nav aria-label="Table of contents" class="toc">
+        <strong>In this guide:</strong>
+        <ol>
+          <li><a href="#what-is">What is paper honeycomb board?</a></li>
+          <li><a href="#how-made">How is it made?</a></li>
+          <li><a href="#strength">How strong is it?</a></li>
+          <li><a href="#ispm15">Why is it ISPM-15 exempt?</a></li>
+          <li><a href="#applications">What is it used for?</a></li>
+          <li><a href="#comparison">Honeycomb vs plywood vs plastic vs corrugated</a></li>
+          <li><a href="#choosing">How to choose the right board</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <section class="section guide-body">
+    <div class="container" style="max-width:800px">
+
+      <h2 id="what-is">What Is Paper Honeycomb Board?</h2>
+      <p>
+        Paper honeycomb board is a <strong>sandwich material</strong>: a core of kraft paper formed
+        into hexagonal cells, glued between two flat paper liners. The hexagon — the same geometry
+        bees evolved for maximum storage with minimum wax — distributes load across cell walls so
+        efficiently that a board that is mostly <em>air</em> behaves structurally like solid timber.
+      </p>
+      <p>
+        The result is one of the best strength-to-weight ratios of any packaging material:
+        a standard honeycomb pallet weighs <strong>around 5kg</strong> where its plywood equivalent
+        weighs <strong>around 25kg</strong> — up to 80% lighter for comparable static duty.
+        The same principle is used in aircraft floors and race car panels (with aluminium or aramid
+        cores); paper honeycomb brings that engineering to packaging economics.
+      </p>
+
+      <h2 id="how-made">How Is Honeycomb Board Made?</h2>
+      <p>The manufacturing process has five steps:</p>
+      <ol class="guide-list">
+        <li><strong>Gluing:</strong> kraft paper sheets receive parallel glue lines, offset between layers.</li>
+        <li><strong>Stacking &amp; pressing:</strong> hundreds of sheets are stacked and bonded into a block.</li>
+        <li><strong>Slicing:</strong> the block is cut into slices at the target core thickness.</li>
+        <li><strong>Expanding:</strong> each slice is stretched like an accordion — the offset glue lines open into hexagonal cells — then dried to hold the shape.</li>
+        <li><strong>Laminating:</strong> the expanded core is glued between top and bottom liners, creating the rigid sandwich board.</li>
+      </ol>
+      <p>
+        Board properties are tuned through <strong>cell size</strong> (smaller cells = more walls =
+        higher strength), <strong>core thickness</strong> (10mm to 100mm+), <strong>paper grammage</strong>,
+        and <strong>liner grade</strong>. That's why honeycomb spans everything from lightweight void
+        fill to pallet decks carrying industrial machinery.
+      </p>
+
+      <h2 id="strength">How Strong Is Paper Honeycomb Board?</h2>
+      <p>
+        Stronger than most first-time buyers expect. Compression strength comes from the cell walls
+        loaded on-edge — the same reason a sheet of paper that flops flat can support a book when
+        rolled into a tube. Engineered honeycomb panels handle compression forces around
+        <strong>12kN</strong>, and pallet-grade builds carry the same static loads as plywood decks
+        for typical export cargo.
+      </p>
+      <p>Three variables drive load capacity:</p>
+      <ul class="guide-list">
+        <li><strong>Cell size:</strong> 8–25mm typical; smaller cells for higher point loads.</li>
+        <li><strong>Core thickness:</strong> thicker cores resist bending over longer spans.</li>
+        <li><strong>Paper grade:</strong> higher-grammage kraft and multi-ply liners for heavy duty.</li>
+      </ul>
+      <p>
+        One honest caveat: standard board is <strong>not waterproof</strong>. Saturated paper loses
+        strength, so wet-transit applications use moisture-resistant coatings or PE lamination, and
+        cargo is film-wrapped as with any packaging. For continuously wet environments, honeycomb
+        is the wrong material — that's plywood's remaining stronghold.
+      </p>
+
+      <h2 id="ispm15">Why Is Honeycomb Board ISPM-15 Exempt?</h2>
+      <p>
+        <strong>ISPM-15</strong> is the international phytosanitary standard requiring solid wood
+        packaging (pallets, crates, dunnage) to be heat-treated or fumigated and stamped, because
+        raw wood can carry invasive pests. <strong>Processed paper is biologically inert</strong> —
+        the pulping and pressing process eliminates any pest pathway — so paper honeycomb packaging
+        is fully exempt worldwide.
+      </p>
+      <p>In practice, switching from wood to honeycomb means:</p>
+      <ul class="guide-list">
+        <li>No heat treatment or methyl bromide fumigation fees</li>
+        <li>No IPPC stamps or phytosanitary certificates</li>
+        <li>No consignments rejected or quarantined at the border for non-compliant wood</li>
+        <li>Same-day shipping readiness — no treatment scheduling</li>
+      </ul>
+
+      <h2 id="applications">What Is Honeycomb Board Used For?</h2>
+      <ul class="guide-list">
+        <li><strong><a href="/honeycomb-pallet/">Paper pallets</a></strong> — export shipping's biggest tare-weight win: ~5kg per pallet, ISPM-15 exempt.</li>
+        <li><strong><a href="/honeycomb-box/">Heavy-duty boxes &amp; crates</a></strong> — wooden crate replacement for machinery, electronics, and furniture.</li>
+        <li><strong>Protective packaging</strong> — edge protectors, corner blocks, void fillers, and cushioning inserts.</li>
+        <li><strong>Furniture cores</strong> — most flat-pack furniture uses honeycomb cores inside doors, desktops, and shelving.</li>
+        <li><strong><a href="/honeycomb-panels/">Display &amp; architectural panels</a></strong> — exhibition stands, retail displays, stage sets, and 1:1 prototypes.</li>
+        <li><strong>Automotive &amp; white goods dunnage</strong> — part separators and transport frames on production lines.</li>
+      </ul>
+
+      <h2 id="comparison">Honeycomb vs Plywood vs Plastic vs Corrugated</h2>
+      <div class="table-wrap" role="region" aria-label="Material comparison" tabindex="0">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th scope="col">Property</th>
+              <th scope="col" class="col-phb">Honeycomb</th>
+              <th scope="col">Plywood</th>
+              <th scope="col">Plastic</th>
+              <th scope="col">Corrugated</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Pallet weight</th>
+              <td class="col-phb"><strong>~5KG</strong></td>
+              <td>~25KG</td>
+              <td>~18KG</td>
+              <td>~4KG (light duty)</td>
+            </tr>
+            <tr>
+              <th scope="row">ISPM-15</th>
+              <td class="col-phb"><strong>Exempt</strong></td>
+              <td>Required</td>
+              <td>Exempt</td>
+              <td>Exempt</td>
+            </tr>
+            <tr>
+              <th scope="row">Heavy loads</th>
+              <td class="col-phb"><strong>Yes (engineered)</strong></td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>Limited</td>
+            </tr>
+            <tr>
+              <th scope="row">Recyclability</th>
+              <td class="col-phb"><strong>100% curbside</strong></td>
+              <td>Difficult / landfill</td>
+              <td>Specialised only</td>
+              <td>100% curbside</td>
+            </tr>
+            <tr>
+              <th scope="row">Wet environments</th>
+              <td class="col-phb">Coated builds only</td>
+              <td><strong>Good</strong></td>
+              <td><strong>Best</strong></td>
+              <td>Poor</td>
+            </tr>
+            <tr>
+              <th scope="row">Unit cost</th>
+              <td class="col-phb"><strong>Low–medium</strong></td>
+              <td>Medium</td>
+              <td>High</td>
+              <td>Lowest</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Rule of thumb: <strong>corrugated</strong> for light cartons, <strong>plastic</strong> for
+        closed-loop reuse in wet plants, <strong>plywood</strong> for permanently wet or
+        decade-reuse duty, and <strong>honeycomb</strong> for everything that ships — especially
+        one-way export where tare weight and ISPM-15 paperwork are pure cost.
+        See the full <a href="/honeycomb-board-vs-plywood/">honeycomb vs plywood vs plastic comparison</a>.
+      </p>
+
+      <h2 id="choosing">How to Choose the Right Honeycomb Board</h2>
+      <ol class="guide-list">
+        <li><strong>Start from the cargo:</strong> weight, dimensions, fragility, and stacking plan determine core thickness and cell size.</li>
+        <li><strong>Map the journey:</strong> air freight rewards every gram saved; sea freight cares more about compression stacking; humid routes need coated liners.</li>
+        <li><strong>Check compliance:</strong> exporting? Honeycomb's ISPM-15 exemption removes the treatment step entirely.</li>
+        <li><strong>Prototype at 1:1:</strong> a sample kit with different densities lets your team drop-test before committing a production run.</li>
+      </ol>
+      <p>
+        That's exactly what our <a href="/contact/">sample kit</a> is for — three densities of
+        structural honeycomb plus our finish guide, shipped from our Balakong, Selangor facility
+        to anywhere in Malaysia and Singapore.
+      </p>
+
+      <h2 id="faq">Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>What is paper honeycomb board?</summary>
+          <p>A sandwich material of hexagonal kraft-paper cells laminated between flat liners — plywood-class rigidity at up to 80% less weight.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is honeycomb board waterproof?</summary>
+          <p>Standard board is not. Moisture-resistant coatings or PE lamination are available for humid routes; permanently wet duty suits plywood or plastic better.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is it really strong enough to replace wood?</summary>
+          <p>For most one-way export duty, yes — engineered builds handle ~12kN compression and pallet-grade static loads. Share your cargo specs and we'll engineer the build.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Does it need ISPM-15 treatment?</summary>
+          <p>No. Processed paper is biologically inert and exempt worldwide — no fumigation, no stamps, no delays.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Who makes honeycomb board in Malaysia?</summary>
+          <p>phb — Quinocycle Sdn Bhd — manufactures in Balakong, Selangor, serving the Klang Valley, KL, Johor Bahru, and Singapore. <a href="/contact/" style="text-decoration:underline">Contact us</a>.</p>
+        </details>
+      </div>
+
+      <div class="cta-inline">
+        <h2>Ready to test it yourself?</h2>
+        <p>Get the architect-grade sample kit — three densities, finish guide, delivered fast.</p>
+        <a href="/contact/" class="btn btn--green">Get a Paper Honeycomb Board Sample Kit</a>
+      </div>
+
+    </div>
+  </section>
+  </article>
+</Layout>
+
+<style>
+  .toc {
+    border: 2px solid #0a0a0a;
+    background: #f5f5f5;
+    padding: 1.25rem 1.5rem;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+  }
+  .toc ol { margin: 0.6rem 0 0 1.2rem; display: flex; flex-direction: column; gap: 0.35rem; }
+  .toc a { text-decoration: underline; }
+
+  .guide-body h2 { margin: 2.75rem 0 1rem; font-size: 1.6rem; scroll-margin-top: 90px; }
+  .guide-body h2:first-child { margin-top: 0; }
+  .guide-body p { line-height: 1.8; color: #333; margin-bottom: 1rem; }
+  .guide-body a { text-decoration: underline; }
+  .guide-list { margin: 0 0 1rem 1.3rem; display: flex; flex-direction: column; gap: 0.5rem; line-height: 1.7; color: #333; }
+
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1rem; }
+
+  .faq-list { display: flex; flex-direction: column; margin-top: 1rem; }
+  .faq-item { border-top: 2px solid #0a0a0a; }
+  .faq-item:last-child { border-bottom: 2px solid #0a0a0a; }
+  .faq-item summary {
+    padding: 1.1rem 0;
+    font-weight: 700;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.95rem;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 1.5rem; font-weight: 300; }
+  .faq-item[open] summary::after { content: '−'; }
+  .faq-item p { padding-bottom: 1.1rem; }
+
+  .cta-inline {
+    border: 2px solid #0a0a0a;
+    background: #39FF14;
+    padding: 2rem;
+    margin-top: 3rem;
+    text-align: center;
+  }
+  .cta-inline h2 { margin: 0 0 0.5rem; }
+  .cta-inline p { margin-bottom: 1.25rem; }
+</style>
