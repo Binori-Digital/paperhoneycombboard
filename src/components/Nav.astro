@@ -1,18 +1,53 @@
 ---
+interface Props { locale?: string; }
+const { locale = 'en' } = Astro.props;
+
+// Nav labels per language
+const navText: Record<string, { links: string[]; cta: string }> = {
+  en: { links: ['Industry Solutions', 'The Eco-Lab', 'Combat Zone', 'Regional', 'Contact Us'], cta: 'Get a Paper Honeycomb Board Sample Kit' },
+  ms: { links: ['Penyelesaian Industri', 'Eco-Lab', 'Perbandingan Bahan', 'Serantau', 'Hubungi Kami'], cta: 'Dapatkan Kit Sampel Honeycomb' },
+  zh: { links: ['行业解决方案', '环保实验室', '材料对比', '区域服务', '联系我们'], cta: '获取蜂窝纸板样品套装' },
+  ja: { links: ['産業ソリューション', 'エコラボ', '素材比較', '地域展開', 'お問い合わせ'], cta: 'サンプルキットを請求' },
+  ko: { links: ['산업 솔루션', '에코랩', '소재 비교', '지역 서비스', '문의하기'], cta: '샘플 키트 신청' },
+};
+const t = navText[locale] ?? navText.en;
+
+// Home + contact are translated; other pages exist in English only
+const prefix = locale === 'en' ? '' : '/' + locale;
+const homeHref = prefix + '/';
 const navLinks = [
-  { href: '/', label: 'Industry Solutions' },
-  { href: '/honeycomb-panels/', label: 'The Eco-Lab' },
-  { href: '/honeycomb-board-vs-plywood/', label: 'Combat Zone' },
-  { href: '/regional/', label: 'Regional' },
-  { href: '/contact/', label: 'Contact Us' },
+  { href: homeHref, label: t.links[0] },
+  { href: '/honeycomb-panels/', label: t.links[1] },
+  { href: '/honeycomb-board-vs-plywood/', label: t.links[2] },
+  { href: '/regional/', label: t.links[3] },
+  { href: prefix + '/contact/', label: t.links[4] },
 ];
-const { currentPath = '' } = Astro.props;
-const path = Astro.url?.pathname ?? currentPath;
+const ctaHref = prefix + '/contact/';
+
+const path = Astro.url?.pathname ?? '';
+// Path without any locale prefix, for language switching
+const basePath = path.replace(/^\/(ms|zh|ja|ko)(?=\/|$)/, '') || '/';
+const translatedPaths = ['/', '/contact/'];
+const langHref = (code: string) => {
+  const target = translatedPaths.includes(basePath) ? basePath : '/';
+  if (code === 'en') return translatedPaths.includes(basePath) ? basePath : (basePath || '/');
+  return '/' + code + target;
+};
+
+const languages = [
+  { code: 'en', label: 'English', flag: 'my' },
+  { code: 'ms', label: 'Bahasa Malaysia', flag: 'my' },
+  { code: 'zh', label: '中文', flag: 'my' },
+  { code: 'ja', label: '日本語', flag: 'jp' },
+  { code: 'ko', label: '한국어', flag: 'kr' },
+];
+const current = languages.find(l => l.code === locale) ?? languages[0];
+const shortLabel: Record<string, string> = { en: 'EN', ms: 'BM', zh: '中文', ja: 'JA', ko: 'KO' };
 ---
 
 <header class="nav">
   <div class="container nav__inner">
-    <a href="/" class="nav__logo" aria-label="PHB - Paper Honeycomb Board">phb.</a>
+    <a href={homeHref} class="nav__logo" aria-label="PHB - Paper Honeycomb Board">phb.</a>
     <nav aria-label="Main navigation">
       <ul class="nav__links">
         {navLinks.map(link => (
@@ -27,7 +62,46 @@ const path = Astro.url?.pathname ?? currentPath;
         ))}
       </ul>
     </nav>
-    <a href="/contact/" class="btn btn--green nav__cta">Get a Paper Honeycomb Board Sample Kit</a>
+
+    <details class="lang" id="lang-menu">
+      <summary class="lang__current" aria-label="Select language">
+        <span class="flag" aria-hidden="true">
+          {current.flag === 'my' && (
+            <svg viewBox="0 0 24 24"><defs><clipPath id="cf-my-cur"><circle cx="12" cy="12" r="12"/></clipPath></defs><g clip-path="url(#cf-my-cur)"><rect width="24" height="24" fill="#fff"/><g fill="#cc0001"><rect y="0" width="24" height="1.75"/><rect y="3.5" width="24" height="1.75"/><rect y="7" width="24" height="1.75"/><rect y="10.5" width="24" height="1.75"/><rect y="14" width="24" height="1.75"/><rect y="17.5" width="24" height="1.75"/><rect y="21" width="24" height="1.75"/></g><rect width="13" height="12.25" fill="#010066"/><circle cx="5.5" cy="6" r="3.1" fill="#fc0"/><circle cx="6.7" cy="6" r="2.6" fill="#010066"/><path fill="#fc0" d="M10.2 6l1.9.44-1.86.55 1.19 1.54-1.7-.95-.48 1.86-.47-1.86-1.7.95 1.19-1.54L6.4 6.44 8.3 6l-1.9-.44 1.87-.55-1.19-1.54 1.7.95.47-1.86.48 1.86 1.7-.95-1.19 1.54 1.86.55z"/></g></svg>
+          )}
+          {current.flag === 'jp' && (
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#fff"/><circle cx="12" cy="12" r="11.5" fill="none" stroke="#e5e5e5"/><circle cx="12" cy="12" r="6" fill="#bc002d"/></svg>
+          )}
+          {current.flag === 'kr' && (
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#fff"/><circle cx="12" cy="12" r="11.5" fill="none" stroke="#e5e5e5"/><path d="M6 12a6 6 0 0 1 12 0z" fill="#cd2e3a"/><path d="M18 12a6 6 0 0 1-12 0z" fill="#0047a0"/><circle cx="9" cy="12" r="3" fill="#cd2e3a"/><circle cx="15" cy="12" r="3" fill="#0047a0"/></svg>
+          )}
+        </span>
+        <span class="lang__code">{shortLabel[locale]}</span>
+        <span class="lang__chevron" aria-hidden="true">▾</span>
+      </summary>
+      <ul class="lang__list">
+        {languages.map(l => (
+          <li>
+            <a href={langHref(l.code)} class:list={['lang__option', { 'lang__option--active': l.code === locale }]} hreflang={l.code} lang={l.code}>
+              <span class="flag" aria-hidden="true">
+                {l.flag === 'my' && (
+                  <svg viewBox="0 0 24 24"><defs><clipPath id={'cf-my-' + l.code}><circle cx="12" cy="12" r="12"/></clipPath></defs><g clip-path={'url(#cf-my-' + l.code + ')'}><rect width="24" height="24" fill="#fff"/><g fill="#cc0001"><rect y="0" width="24" height="1.75"/><rect y="3.5" width="24" height="1.75"/><rect y="7" width="24" height="1.75"/><rect y="10.5" width="24" height="1.75"/><rect y="14" width="24" height="1.75"/><rect y="17.5" width="24" height="1.75"/><rect y="21" width="24" height="1.75"/></g><rect width="13" height="12.25" fill="#010066"/><circle cx="5.5" cy="6" r="3.1" fill="#fc0"/><circle cx="6.7" cy="6" r="2.6" fill="#010066"/><path fill="#fc0" d="M10.2 6l1.9.44-1.86.55 1.19 1.54-1.7-.95-.48 1.86-.47-1.86-1.7.95 1.19-1.54L6.4 6.44 8.3 6l-1.9-.44 1.87-.55-1.19-1.54 1.7.95.47-1.86.48 1.86 1.7-.95-1.19 1.54 1.86.55z"/></g></svg>
+                )}
+                {l.flag === 'jp' && (
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#fff"/><circle cx="12" cy="12" r="11.5" fill="none" stroke="#e5e5e5"/><circle cx="12" cy="12" r="6" fill="#bc002d"/></svg>
+                )}
+                {l.flag === 'kr' && (
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#fff"/><circle cx="12" cy="12" r="11.5" fill="none" stroke="#e5e5e5"/><path d="M6 12a6 6 0 0 1 12 0z" fill="#cd2e3a"/><path d="M18 12a6 6 0 0 1-12 0z" fill="#0047a0"/><circle cx="9" cy="12" r="3" fill="#cd2e3a"/><circle cx="15" cy="12" r="3" fill="#0047a0"/></svg>
+                )}
+              </span>
+              <span>{l.label}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </details>
+
+    <a href={ctaHref} class="btn btn--green nav__cta">{t.cta}</a>
     <button class="nav__burger" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -45,7 +119,7 @@ const path = Astro.url?.pathname ?? currentPath;
   .nav__inner {
     display: flex;
     align-items: center;
-    gap: 2.5rem;
+    gap: 1.75rem;
     height: 64px;
   }
   .nav__logo {
@@ -58,7 +132,7 @@ const path = Astro.url?.pathname ?? currentPath;
   .nav__links {
     display: flex;
     list-style: none;
-    gap: 2rem;
+    gap: 1.5rem;
   }
   .nav__link {
     font-size: 0.75rem;
@@ -72,7 +146,7 @@ const path = Astro.url?.pathname ?? currentPath;
   }
   .nav__link:hover { color: #0a0a0a; }
   .nav__link--active { color: #0a0a0a; border-bottom-color: #0a0a0a; }
-  .nav__cta { padding: 0.5rem 1.25rem; font-size: 0.7rem; }
+  .nav__cta { padding: 0.5rem 1rem; font-size: 0.65rem; }
   .nav__burger {
     display: none;
     flex-direction: column;
@@ -89,11 +163,60 @@ const path = Astro.url?.pathname ?? currentPath;
     background: #0a0a0a;
   }
 
+  /* ===== Language selector ===== */
+  .lang { position: relative; flex-shrink: 0; }
+  .lang__current {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    cursor: pointer;
+    list-style: none;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 0.35rem 0.5rem;
+    border: 2px solid #0a0a0a;
+    background: #fff;
+    user-select: none;
+  }
+  .lang__current::-webkit-details-marker { display: none; }
+  .lang__chevron { font-size: 0.6rem; }
+  .lang[open] .lang__chevron { transform: rotate(180deg); }
+  .flag { display: inline-flex; width: 20px; height: 20px; flex-shrink: 0; }
+  .flag svg { width: 100%; height: 100%; display: block; }
+  .lang__list {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    min-width: 190px;
+    background: #fff;
+    border: 2px solid #0a0a0a;
+    list-style: none;
+    z-index: 200;
+    box-shadow: 4px 4px 0 rgba(10, 10, 10, 0.15);
+  }
+  .lang__option {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 0.85rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: background 0.1s;
+  }
+  .lang__option:hover { background: #f5f5f5; }
+  .lang__option--active { background: #39FF14; }
+  .lang__list li + li { border-top: 1px solid #e5e5e5; }
+
+  @media (max-width: 1100px) {
+    .nav__cta { display: none; }
+  }
   @media (max-width: 768px) {
     .nav__links { display: none; }
-    .nav__cta { display: none; }
     .nav__burger { display: flex; }
     .nav__logo { margin-right: 0; }
+    .nav__inner { gap: 1rem; }
+    .lang { margin-left: auto; }
   }
 </style>
 
@@ -112,5 +235,11 @@ const path = Astro.url?.pathname ?? currentPath;
     navLinks.style.background = '#fff';
     navLinks.style.padding = '1rem 2rem';
     navLinks.style.borderBottom = '2px solid #0a0a0a';
+  });
+
+  // Close the language menu when clicking outside it
+  const lang = document.getElementById('lang-menu') as HTMLDetailsElement | null;
+  document.addEventListener('click', (e) => {
+    if (lang?.open && !lang.contains(e.target as Node)) lang.open = false;
   });
 </script>

@@ -1,0 +1,243 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { homeDicts } from '../i18n/locales';
+
+interface Props { locale: string; }
+const { locale } = Astro.props;
+const t = homeDicts[locale];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": t.lang,
+  "mainEntity": t.faq.map(f => ({
+    "@type": "Question",
+    "name": f.q,
+    "acceptedAnswer": { "@type": "Answer", "text": f.a },
+  })),
+};
+
+const alternates = [
+  { code: 'en', href: '/' },
+  { code: 'ms', href: '/ms/' },
+  { code: 'zh', href: '/zh/' },
+  { code: 'ja', href: '/ja/' },
+  { code: 'ko', href: '/ko/' },
+  { code: 'x-default', href: '/' },
+];
+const contactHref = `/${locale}/contact/`;
+---
+
+<Layout
+  title={t.title}
+  description={t.description}
+  canonical={`/${locale}/`}
+  lang={t.lang}
+  locale={locale}
+  alternates={alternates}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="hero__stage">
+      <video
+        class="hero__video"
+        src="/media/hero-morph.mp4"
+        poster="/media/hero-poster.jpg"
+        muted
+        loop
+        autoplay
+        playsinline
+        preload="metadata"
+        aria-hidden="true"
+      ></video>
+      <div class="hero__scrim" aria-hidden="true"></div>
+      <div class="container hero__overlay">
+        <span class="badge badge--peach">{t.heroBadge}</span>
+        <h1 class="hero__title" id="hero-heading">{t.heroTitle[0]}<br />{t.heroTitle[1]}</h1>
+        <p class="hero__desc">{t.heroDesc}</p>
+        <div class="hero__actions">
+          <a href="#calculator" class="btn btn--green">{t.ctaCalc}</a>
+          <a href="/honeycomb-board-vs-plywood/" class="btn btn--outline-white">{t.ctaSpecs}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar" role="region">
+    <div class="container stats-bar__inner">
+      <div class="stat-box">
+        <div class="stat-box__value">{t.statWeight[0]}</div>
+        <div class="stat-box__label">{t.statWeight[1]}</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-box__value">{t.statFreight[0]}</div>
+        <div class="stat-box__label">{t.statFreight[1]}</div>
+      </div>
+      <div class="stats-bar__divider" aria-hidden="true"></div>
+      <div>
+        <p class="stats-bar__brands-label">{t.industriesLabel}</p>
+        <div class="stats-bar__brands">
+          {t.industries.map(i => <span>{i}</span>)}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FUMIGATION FEATURE -->
+  <section class="section">
+    <div class="container feature-row">
+      <div class="feature-row__img">
+        <img
+          src="https://images.unsplash.com/photo-1553413077-190dd305871c?w=700&q=80"
+          alt=""
+          width="600" height="400"
+          loading="lazy"
+        />
+      </div>
+      <div class="feature-row__content">
+        <h2>{t.fumTitle[0]}<br />{t.fumTitle[1]}</h2>
+        <div class="feature-card feature-card--peach" style="margin-top:1.5rem">
+          <h3 class="feature-card__title">{t.fumCardTitle}</h3>
+          <p class="feature-card__text">{t.fumCardText}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALCULATOR -->
+  <section class="section section--dark" id="calculator">
+    <div class="container calc-grid">
+      <div>
+        <h2 class="calc-title">{t.calcTitle[0]}<br />{t.calcTitle[1]}</h2>
+        <p class="calc-desc">{t.calcDesc}</p>
+        <a href={contactHref} class="btn btn--green">{t.ctaFinalBtn}</a>
+      </div>
+      <div class="calc-widget" role="form">
+        <label for="currency">{t.calcCurrency}</label>
+        <select id="currency">
+          <option value="RM" selected>RM – Ringgit Malaysia</option>
+          <option value="USD">USD – US Dollar</option>
+        </select>
+        <label for="pallets">{t.calcPallets}</label>
+        <input type="number" id="pallets" placeholder="250" min="1" />
+        <label for="rate">{t.calcRate}</label>
+        <input type="number" id="rate" placeholder="20.00" min="0" step="0.1" value="20.00" />
+        <div class="calc-widget__result">
+          <span class="calc-widget__result-label">{t.calcResult}</span>
+          <span class="calc-widget__result-value" id="savings-output">RM 0</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faq-section">
+    <div class="container faq-container">
+      <h2>{t.faqTitle}</h2>
+      <div class="faq-list">
+        {t.faq.map(f => (
+          <details class="faq-item">
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--green cta-block">
+    <div class="container">
+      <h2 class="cta-block__title">{t.ctaFinalTitle}</h2>
+      <div class="cta-block__actions" style="margin-top:2rem">
+        <a href={contactHref} class="btn btn--dark">{t.ctaFinalBtn}</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero { position: relative; padding: 0; background: var(--black); }
+  .hero__stage {
+    position: relative;
+    height: 82vh;
+    min-height: 520px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+  .hero__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+  .hero__scrim {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(90deg, rgba(10,10,10,0.88) 0%, rgba(10,10,10,0.55) 45%, rgba(10,10,10,0.12) 100%),
+      linear-gradient(0deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0) 45%);
+  }
+  .hero__overlay { position: relative; z-index: 2; width: 100%; color: var(--white); }
+  .hero__overlay .hero__title { color: var(--white); font-size: clamp(2.3rem, 5.5vw, 4.5rem); margin-bottom: 1.25rem; }
+  .hero__overlay .hero__desc { color: rgba(255,255,255,0.82); max-width: 500px; margin-bottom: 2rem; line-height: 1.7; }
+  .hero__actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .calc-title { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1rem; }
+  .calc-desc { color: #aaa; margin-bottom: 1.5rem; line-height: 1.7; }
+
+  .faq-section { background: #f5f5f5; }
+  .faq-container { max-width: 800px; }
+  .faq-container h2 { margin-bottom: 2rem; }
+  .faq-list { display: flex; flex-direction: column; }
+  .faq-item { border-top: 2px solid #0a0a0a; }
+  .faq-item:last-child { border-bottom: 2px solid #0a0a0a; }
+  .faq-item summary {
+    padding: 1.25rem 0;
+    font-weight: 700;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.95rem;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 1.5rem; font-weight: 300; }
+  .faq-item[open] summary::after { content: '−'; }
+  .faq-item p { padding-bottom: 1.25rem; color: #444; line-height: 1.7; font-size: 0.9rem; }
+
+  @media (max-width: 768px) {
+    .calc-grid { grid-template-columns: 1fr; gap: 2rem; }
+  }
+</style>
+
+<script>
+  const pallets = document.getElementById('pallets') as HTMLInputElement;
+  const rate = document.getElementById('rate') as HTMLInputElement;
+  const currency = document.getElementById('currency') as HTMLSelectElement;
+  const output = document.getElementById('savings-output');
+
+  const KG_SAVED_PER_PALLET = 20;
+  const DEFAULT_RATES: Record<string, number> = { RM: 20, USD: 4.5 };
+  const fmt = (cur: string, v: number) => {
+    const n = v.toLocaleString('en-US', { maximumFractionDigits: 0 });
+    return cur === 'USD' ? `$${n}` : `RM ${n}`;
+  };
+
+  function calc() {
+    const cur = currency?.value || 'RM';
+    const n = parseFloat(pallets?.value) || 0;
+    const r = parseFloat(rate?.value) || 0;
+    if (output) output.textContent = fmt(cur, n * KG_SAVED_PER_PALLET * r);
+  }
+
+  pallets?.addEventListener('input', calc);
+  rate?.addEventListener('input', calc);
+  currency?.addEventListener('change', () => {
+    if (rate) rate.value = String(DEFAULT_RATES[currency.value] ?? 20);
+    calc();
+  });
+</script>

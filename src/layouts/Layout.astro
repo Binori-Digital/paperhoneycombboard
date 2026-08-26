@@ -10,6 +10,9 @@ interface Props {
   ogImage?: string;
   schema?: object;
   noindex?: boolean;
+  lang?: string;
+  locale?: string;
+  alternates?: { code: string; href: string }[];
 }
 
 const {
@@ -19,7 +22,15 @@ const {
   ogImage = '/og-default.jpg',
   schema,
   noindex = false,
+  lang = 'en-MY',
+  locale = 'en',
+  alternates = [],
 } = Astro.props;
+
+const ogLocaleMap: Record<string, string> = {
+  'en-MY': 'en_MY', 'ms-MY': 'ms_MY', 'zh-MY': 'zh_MY', 'ja': 'ja_JP', 'ko': 'ko_KR',
+};
+const ogLocale = ogLocaleMap[lang] ?? 'en_MY';
 
 const siteUrl = 'https://www.paperhoneycombboard.com';
 const canonicalUrl = canonical ? `${siteUrl}${canonical}` : `${siteUrl}${Astro.url.pathname}`;
@@ -27,7 +38,7 @@ const fullTitle = title.includes('phb') ? title : `${title} | phb Paper Honeycom
 ---
 
 <!doctype html>
-<html lang="en-MY">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -37,6 +48,9 @@ const fullTitle = title.includes('phb') ? title : `${title} | phb Paper Honeycom
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
+    {alternates.map(a => (
+      <link rel="alternate" hreflang={a.code} href={`${siteUrl}${a.href}`} />
+    ))}
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -45,7 +59,7 @@ const fullTitle = title.includes('phb') ? title : `${title} | phb Paper Honeycom
     <meta property="og:description" content={description} />
     <meta property="og:image" content={`${siteUrl}${ogImage}`} />
     <meta property="og:site_name" content="phb Paper Honeycomb Board" />
-    <meta property="og:locale" content="en_MY" />
+    <meta property="og:locale" content={ogLocale} />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -108,7 +122,7 @@ const fullTitle = title.includes('phb') ? title : `${title} | phb Paper Honeycom
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to main content</a>
-    <Nav />
+    <Nav locale={locale} />
     <main id="main">
       <slot />
     </main>

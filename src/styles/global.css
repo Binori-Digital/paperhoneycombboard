@@ -185,7 +185,8 @@ h1, h2, h3, h4, h5 {
   background: rgba(255,255,255,0.05);
 }
 .calc-widget label { display: block; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.5rem; }
-.calc-widget input {
+.calc-widget input,
+.calc-widget select {
   width: 100%;
   padding: 0.75rem 1rem;
   background: transparent;
@@ -195,6 +196,7 @@ h1, h2, h3, h4, h5 {
   margin-bottom: 1rem;
   font-family: var(--font);
 }
+.calc-widget select option { background: #0a0a0a; color: #fff; }
 .calc-widget__result { display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid #333; }
 .calc-widget__result-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
 .calc-widget__result-value { font-size: 2rem; font-weight: 800; color: var(--green); }

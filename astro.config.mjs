@@ -5,6 +5,11 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://www.paperhoneycombboard.com',
   trailingSlash: 'always',
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'ms', 'zh', 'ja', 'ko'],
+    routing: { prefixDefaultLocale: false },
+  },
   integrations: [
     sitemap({
       changefreq: 'weekly',

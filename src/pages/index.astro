@@ -67,6 +67,14 @@ const productSchema = {
   description="Paper honeycomb board manufacturer in Malaysia. ISPM-15 exempt honeycomb boards, boxes & pallets — up to 80% lighter than wood, saving up to $90 per pallet on air freight. Get a sample kit."
   canonical="/"
   schema={productSchema}
+  alternates={[
+    { code: 'en', href: '/' },
+    { code: 'ms', href: '/ms/' },
+    { code: 'zh', href: '/zh/' },
+    { code: 'ja', href: '/ja/' },
+    { code: 'ko', href: '/ko/' },
+    { code: 'x-default', href: '/' },
+  ]}
 >
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />
 
@@ -177,13 +185,18 @@ const productSchema = {
         <a href="/contact/" class="btn btn--green">Open Widget</a>
       </div>
       <div class="calc-widget" role="form" aria-label="Weight savings calculator">
+        <label for="currency">Currency</label>
+        <select id="currency">
+          <option value="RM" selected>RM – Malaysian Ringgit</option>
+          <option value="USD">USD – US Dollar</option>
+        </select>
         <label for="pallets">Pallets Shipped per Month</label>
         <input type="number" id="pallets" placeholder="e.g. 250" min="1" />
-        <label for="rate">Air Freight Rate ($ / KG)</label>
-        <input type="number" id="rate" placeholder="e.g. 4.50" min="0" step="0.1" value="4.50" />
+        <label for="rate">Air Freight Rate (per KG)</label>
+        <input type="number" id="rate" placeholder="e.g. 20.00" min="0" step="0.1" value="20.00" />
         <div class="calc-widget__result">
           <span class="calc-widget__result-label">Estimated Savings</span>
-          <span class="calc-widget__result-value" id="savings-output">$0 / mo</span>
+          <span class="calc-widget__result-value" id="savings-output">RM 0 / mo</span>
         </div>
       </div>
     </div>
@@ -411,24 +424,33 @@ const productSchema = {
 <script>
   const pallets = document.getElementById('pallets') as HTMLInputElement;
   const rate = document.getElementById('rate') as HTMLInputElement;
+  const currency = document.getElementById('currency') as HTMLSelectElement;
   const output = document.getElementById('savings-output');
 
   // ~20kg tare weight saved per pallet (5kg honeycomb vs 25kg wood)
   const KG_SAVED_PER_PALLET = 20;
+  // Typical air freight rates per KG by currency (editable by the user)
+  const DEFAULT_RATES: Record<string, number> = { RM: 20, USD: 4.5 };
+
+  const fmt = (cur: string, v: number) => {
+    const n = v.toLocaleString('en-US', { maximumFractionDigits: 0 });
+    return cur === 'USD' ? `$${n}` : `RM ${n}`;
+  };
 
   function calc() {
+    const cur = currency?.value || 'RM';
     const n = parseFloat(pallets?.value) || 0;
     const r = parseFloat(rate?.value) || 0;
     const savings = n * KG_SAVED_PER_PALLET * r;
-    if (output) {
-      output.textContent = savings > 0
-        ? `$${savings.toLocaleString('en-US', { maximumFractionDigits: 0 })} / mo`
-        : '$0 / mo';
-    }
+    if (output) output.textContent = `${fmt(cur, savings)} / mo`;
   }
 
   pallets?.addEventListener('input', calc);
   rate?.addEventListener('input', calc);
+  currency?.addEventListener('change', () => {
+    if (rate) rate.value = String(DEFAULT_RATES[currency.value] ?? 20);
+    calc();
+  });
 
   // ===== Animated scroll-scrub hero =====
   const hero = document.querySelector('.hero') as HTMLElement | null;
