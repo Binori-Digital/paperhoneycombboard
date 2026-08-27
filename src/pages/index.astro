@@ -483,9 +483,17 @@ const productSchema = {
     background-image: var(--bg);
     background-size: cover;
     background-position: center;
-    transition: transform 0.7s ease;
+    animation: pain-drift 18s ease-in-out infinite alternate;
+    will-change: transform;
   }
-  .pain-band:hover::before { transform: scale(1.05); }
+  .pain-band:nth-child(even)::before {
+    animation-duration: 24s;
+    animation-direction: alternate-reverse;
+  }
+  @keyframes pain-drift {
+    0%   { transform: scale(1.02) translate(0, 0); }
+    100% { transform: scale(1.14) translate(1.5%, -1.5%); }
+  }
   .pain-band::after {
     content: '';
     position: absolute;
@@ -592,8 +600,7 @@ const productSchema = {
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .pain-band::before { transition: none; }
-    .pain-band:hover::before { transform: none; }
+    .pain-band::before { animation: none; }
     :global(.alarm) { animation: none; }
   }
   @media (max-width: 768px) {
