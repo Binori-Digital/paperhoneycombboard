@@ -4,11 +4,11 @@ const { locale = 'en' } = Astro.props;
 
 // Nav labels per language
 const navText: Record<string, { links: string[]; cta: string }> = {
-  en: { links: ['Industry Solutions', 'The Eco-Lab', 'Combat Zone', 'Regional', 'Contact Us'], cta: 'Get a Paper Honeycomb Board Sample Kit' },
-  ms: { links: ['Penyelesaian Industri', 'Eco-Lab', 'Perbandingan Bahan', 'Serantau', 'Hubungi Kami'], cta: 'Dapatkan Kit Sampel Honeycomb' },
-  zh: { links: ['行业解决方案', '环保实验室', '材料对比', '区域服务', '联系我们'], cta: '获取蜂窝纸板样品套装' },
-  ja: { links: ['産業ソリューション', 'エコラボ', '素材比較', '地域展開', 'お問い合わせ'], cta: 'サンプルキットを請求' },
-  ko: { links: ['산업 솔루션', '에코랩', '소재 비교', '지역 서비스', '문의하기'], cta: '샘플 키트 신청' },
+  en: { links: ['Industry Solutions', 'The Eco-Lab', 'Combat Zone', 'Regional', 'Story', 'Contact Us'], cta: 'Get a Paper Honeycomb Board Sample Kit' },
+  ms: { links: ['Penyelesaian Industri', 'Eco-Lab', 'Perbandingan Bahan', 'Serantau', 'Cerita', 'Hubungi Kami'], cta: 'Dapatkan Kit Sampel Honeycomb' },
+  zh: { links: ['行业解决方案', '环保实验室', '材料对比', '区域服务', '案例故事', '联系我们'], cta: '获取蜂窝纸板样品套装' },
+  ja: { links: ['産業ソリューション', 'エコラボ', '素材比較', '地域展開', 'ストーリー', 'お問い合わせ'], cta: 'サンプルキットを請求' },
+  ko: { links: ['산업 솔루션', '에코랩', '소재 비교', '지역 서비스', '스토리', '문의하기'], cta: '샘플 키트 신청' },
 };
 const t = navText[locale] ?? navText.en;
 
@@ -20,18 +20,20 @@ const navLinks = [
   { href: '/honeycomb-panels/', label: t.links[1] },
   { href: '/honeycomb-board-vs-plywood/', label: t.links[2] },
   { href: '/regional/', label: t.links[3] },
-  { href: prefix + '/contact/', label: t.links[4] },
+  { href: prefix + '/story/', label: t.links[4] },
+  { href: prefix + '/contact/', label: t.links[5] },
 ];
 const ctaHref = prefix + '/contact/';
 
 const path = Astro.url?.pathname ?? '';
 // Path without any locale prefix, for language switching
 const basePath = path.replace(/^\/(ms|zh|ja|ko)(?=\/|$)/, '') || '/';
-const translatedPaths = ['/', '/contact/'];
+// Pages that exist in every language — including all /story/ articles.
+const translatedPaths = ['/', '/contact/', '/story/'];
+const isTranslated = translatedPaths.includes(basePath) || basePath.startsWith('/story/');
 const langHref = (code: string) => {
-  const target = translatedPaths.includes(basePath) ? basePath : '/';
-  if (code === 'en') return translatedPaths.includes(basePath) ? basePath : (basePath || '/');
-  return '/' + code + target;
+  const target = isTranslated ? basePath : '/';
+  return code === 'en' ? target : '/' + code + target;
 };
 
 const languages = [

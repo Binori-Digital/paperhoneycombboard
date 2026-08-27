@@ -1,0 +1,314 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { bySlug, posts, readingMinutes } from '../content/stories';
+import { LOCALES, LOCALE_LANG, postPath, storyPath, prefixFor, formatDate } from '../content/stories/types';
+import type { Locale } from '../content/stories/types';
+
+interface Props { slug: string; locale: Locale; }
+const { slug, locale } = Astro.props;
+
+const post = bySlug(slug)!;
+const t = post.i18n[locale];
+const site = 'https://www.paperhoneycombboard.com';
+const url = `${site}${postPath(locale, slug)}`;
+const prefix = prefixFor(locale);
+const minutes = readingMinutes(post, locale);
+
+const related = post.related
+  .map((s) => posts.find((p) => p.slug === s))
+  .filter(Boolean)
+  .slice(0, 2);
+
+const alternates = [
+  ...LOCALES.map((l) => ({ code: l, href: postPath(l, slug) })),
+  { code: 'x-default', href: postPath('en', slug) },
+];
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: t.title,
+  description: t.description,
+  image: post.image,
+  datePublished: post.date,
+  dateModified: post.date,
+  inLanguage: LOCALE_LANG[locale],
+  keywords: t.tags.join(', '),
+  author: { '@type': 'Organization', name: 'phb Paper Honeycomb Board (Quinocycle Sdn Bhd)', url: site },
+  publisher: {
+    '@type': 'Organization',
+    name: 'phb Paper Honeycomb Board',
+    logo: { '@type': 'ImageObject', url: `${site}/logo.png` },
+  },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  inLanguage: LOCALE_LANG[locale],
+  mainEntity: t.faq.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${site}${prefix}/` },
+    { '@type': 'ListItem', position: 2, name: 'Story', item: `${site}${storyPath(locale)}` },
+    { '@type': 'ListItem', position: 3, name: t.title },
+  ],
+};
+
+const ctaPrimaryHref = `${prefix}/contact/`;
+const ctaSecondaryHref = slug === 'air-freight-tare-weight-cost'
+  ? '/honeycomb-pallet/'
+  : slug === 'ppwr-packaging-regulation-exporters' || slug === 'manual-handling-injuries-packaging-disposal'
+    ? '/honeycomb-box/'
+    : slug === 'timber-price-volatility-quality-defects'
+      ? '/paper-honeycomb-board-guide/'
+      : '/honeycomb-pallet/';
+---
+
+<Layout
+  title={t.title}
+  description={t.description}
+  canonical={postPath(locale, slug)}
+  ogImage={post.image}
+  lang={LOCALE_LANG[locale]}
+  locale={locale}
+  alternates={alternates}
+  schema={articleSchema}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} slot="head" />
+
+  <article class="post">
+    <header class="post__head">
+      <div class="container post__head-inner">
+        <a href={storyPath(locale)} class="post__back">&larr; Story</a>
+        <h1 class="post__title">{t.title}</h1>
+        <p class="post__excerpt">{t.excerpt}</p>
+        <p class="post__meta">
+          <time datetime={post.date}>{formatDate(post.date, locale)}</time>
+          <span aria-hidden="true">&middot;</span>
+          <span>{minutes} {t.readLabel}</span>
+        </p>
+      </div>
+    </header>
+
+    <figure class="post__figure">
+      <img src={post.image} alt={t.imageAlt} width="1600" height="900" loading="eager" fetchpriority="high" />
+    </figure>
+
+    <div class="container post__body">
+      {t.intro.map((p) => <p class="post__lead">{p}</p>)}
+
+      <aside class="takeaways" aria-label={t.takeawaysLabel}>
+        <h2>{t.takeawaysLabel}</h2>
+        <ul>
+          {t.takeaways.map((k) => <li>{k}</li>)}
+        </ul>
+      </aside>
+
+      {t.sections.map((s) => (
+        <section class="post__section">
+          <h2>{s.h}</h2>
+          {s.p.map((p) => <p>{p}</p>)}
+        </section>
+      ))}
+
+      <section class="post__section post__faq">
+        <h2>{t.faqLabel}</h2>
+        <div class="faq-list">
+          {t.faq.map((f) => (
+            <details class="faq-item">
+              <summary>{f.q}</summary>
+              <p>{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <section class="post-cta">
+        <h2>{t.ctaTitle}</h2>
+        <p>{t.ctaText}</p>
+        <div class="post-cta__actions">
+          <a href={ctaPrimaryHref} class="btn btn--dark">{t.ctaPrimary}</a>
+          <a href={ctaSecondaryHref} class="btn btn--outline">{t.ctaSecondary}</a>
+        </div>
+      </section>
+
+      <ul class="post__tags" aria-label="Topics">
+        {t.tags.map((tag) => <li>{tag}</li>)}
+      </ul>
+
+      {related.length > 0 && (
+        <section class="post__related">
+          <h2>{t.relatedLabel}</h2>
+          <div class="post__related-grid">
+            {related.map((r) => (
+              <a href={postPath(locale, r!.slug)} class="rel-card">
+                <div class="rel-card__img" style={`--bg:url('${r!.image}')`} aria-hidden="true"></div>
+                <div class="rel-card__body">
+                  <h3>{r!.i18n[locale].title}</h3>
+                  <p>{r!.i18n[locale].excerpt}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .post__head { padding: 3.5rem 0 2rem; }
+  .post__head-inner { max-width: 780px; }
+  .post__back {
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border-bottom: 2px solid #39FF14;
+    padding-bottom: 2px;
+  }
+  .post__title {
+    font-size: clamp(1.9rem, 4.2vw, 3.2rem);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    line-height: 1.12;
+    margin: 1.25rem 0 1rem;
+  }
+  .post__excerpt { font-size: 1.05rem; color: #555; line-height: 1.75; }
+  .post__meta {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+    margin-top: 1.25rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #888;
+  }
+
+  .post__figure { margin: 0 0 3rem; border-top: 2px solid #0a0a0a; border-bottom: 2px solid #0a0a0a; }
+  .post__figure img { width: 100%; aspect-ratio: 16 / 7; object-fit: cover; }
+
+  .post__body { max-width: 780px; }
+  .post__lead { font-size: 1.05rem; line-height: 1.85; color: #222; margin-bottom: 1.25rem; }
+
+  .takeaways {
+    border: 2px solid #0a0a0a;
+    background: #f5f5f5;
+    padding: 1.75rem 2rem;
+    margin: 2.5rem 0;
+  }
+  .takeaways h2 {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .takeaways ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+  .takeaways li {
+    position: relative;
+    padding-left: 1.3rem;
+    line-height: 1.7;
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+  .takeaways li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 0.65rem;
+    height: 0.65rem;
+    background: #39FF14;
+    border: 1px solid #0a0a0a;
+  }
+
+  .post__section { margin-top: 2.75rem; }
+  .post__section h2 {
+    font-size: clamp(1.3rem, 2.4vw, 1.75rem);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    margin-bottom: 1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 2px solid #0a0a0a;
+  }
+  .post__section p { line-height: 1.85; color: #333; margin-bottom: 1rem; }
+
+  .faq-list { display: flex; flex-direction: column; }
+  .faq-item { border-top: 1px solid #ddd; }
+  .faq-item:first-child { border-top: none; }
+  .faq-item summary {
+    padding: 1.1rem 0;
+    font-weight: 700;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.95rem;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 1.4rem; font-weight: 300; }
+  .faq-item[open] summary::after { content: '\2212'; }
+  .faq-item p { padding-bottom: 1.1rem; color: #444; line-height: 1.8; font-size: 0.92rem; }
+
+  .post-cta {
+    background: #39FF14;
+    border: 2px solid #0a0a0a;
+    padding: 2.25rem 2rem;
+    margin: 3rem 0 2rem;
+  }
+  .post-cta h2 { font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-weight: 900; margin-bottom: 0.6rem; }
+  .post-cta p { line-height: 1.7; margin-bottom: 1.5rem; font-weight: 500; }
+  .post-cta__actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+  .post__tags { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 3rem; }
+  .post__tags li {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #666;
+    border: 1px solid #ccc;
+    padding: 0.3rem 0.65rem;
+  }
+
+  .post__related { border-top: 2px solid #0a0a0a; padding-top: 2rem; margin-bottom: 4rem; }
+  .post__related h2 {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+  }
+  .post__related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+  .rel-card { border: 2px solid #0a0a0a; display: flex; flex-direction: column; transition: transform 0.15s; }
+  .rel-card:hover { transform: translateY(-3px); }
+  .rel-card__img {
+    height: 130px;
+    background-image: var(--bg);
+    background-size: cover;
+    background-position: center;
+    border-bottom: 2px solid #0a0a0a;
+  }
+  .rel-card__body { padding: 1.1rem 1.25rem 1.35rem; }
+  .rel-card__body h3 { font-size: 1rem; font-weight: 800; line-height: 1.35; margin-bottom: 0.45rem; }
+  .rel-card__body p { font-size: 0.85rem; color: #666; line-height: 1.6; }
+
+  @media (max-width: 768px) {
+    .post__related-grid { grid-template-columns: 1fr; }
+    .post__figure img { aspect-ratio: 16 / 10; }
+  }
+</style>

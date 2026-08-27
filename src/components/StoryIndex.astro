@@ -1,0 +1,255 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { posts, readingMinutes } from '../content/stories';
+import { LOCALES, LOCALE_LANG, postPath, storyPath, prefixFor, formatDate } from '../content/stories/types';
+import type { Locale } from '../content/stories/types';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const site = 'https://www.paperhoneycombboard.com';
+const prefix = prefixFor(locale);
+
+const copy: Record<Locale, { badge: string; title: string; sub: string; latest: string; all: string; read: string }> = {
+  en: {
+    badge: 'Story',
+    title: 'Cargo Packaging, Decoded',
+    sub: 'Field notes on export compliance, freight cost, and the packaging decisions that quietly shape your margin — written by the people who manufacture the alternative.',
+    latest: 'Latest',
+    all: 'All articles',
+    read: 'Read article',
+  },
+  ms: {
+    badge: 'Cerita',
+    title: 'Pembungkusan Kargo, Dihuraikan',
+    sub: 'Nota lapangan tentang pematuhan eksport, kos tambang, dan keputusan pembungkusan yang senyap-senyap membentuk margin anda — ditulis oleh mereka yang mengeluarkan alternatifnya.',
+    latest: 'Terkini',
+    all: 'Semua artikel',
+    read: 'Baca artikel',
+  },
+  zh: {
+    badge: '案例故事',
+    title: '货运包装，深度解读',
+    sub: '关于出口合规、运费成本，以及那些悄然决定利润的包装选择的一线笔记 — 由制造替代方案的人亲笔撰写。',
+    latest: '最新',
+    all: '全部文章',
+    read: '阅读文章',
+  },
+  ja: {
+    badge: 'ストーリー',
+    title: '貨物梱包を読み解く',
+    sub: '輸出コンプライアンス、運賃コスト、そして利益率を静かに左右する梱包の意思決定に関する現場ノート — 代替素材をつくる当事者が執筆しています。',
+    latest: '最新',
+    all: 'すべての記事',
+    read: '記事を読む',
+  },
+  ko: {
+    badge: '스토리',
+    title: '화물 포장, 제대로 읽기',
+    sub: '수출 규정 준수, 운임 비용, 그리고 마진을 조용히 좌우하는 포장 의사결정에 대한 현장 노트 — 대안을 직접 만드는 사람들이 씁니다.',
+    latest: '최신',
+    all: '전체 글',
+    read: '글 읽기',
+  },
+};
+const c = copy[locale];
+
+const alternates = [
+  ...LOCALES.map((l) => ({ code: l, href: storyPath(l) })),
+  { code: 'x-default', href: storyPath('en') },
+];
+
+const blogSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Blog',
+  name: `${c.title} | phb`,
+  description: c.sub,
+  url: `${site}${storyPath(locale)}`,
+  inLanguage: LOCALE_LANG[locale],
+  publisher: { '@type': 'Organization', name: 'phb Paper Honeycomb Board', logo: { '@type': 'ImageObject', url: `${site}/logo.png` } },
+  blogPost: posts.map((p) => ({
+    '@type': 'BlogPosting',
+    headline: p.i18n[locale].title,
+    description: p.i18n[locale].description,
+    image: p.image,
+    datePublished: p.date,
+    url: `${site}${postPath(locale, p.slug)}`,
+  })),
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${site}${prefix}/` },
+    { '@type': 'ListItem', position: 2, name: 'Story' },
+  ],
+};
+
+const [lead, ...rest] = posts;
+---
+
+<Layout
+  title={`${c.title} | phb Story`}
+  description={c.sub}
+  canonical={storyPath(locale)}
+  lang={LOCALE_LANG[locale]}
+  locale={locale}
+  alternates={alternates}
+  schema={blogSchema}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} slot="head" />
+
+  <section class="story-hero">
+    <div class="container story-hero__inner">
+      <span class="badge">{c.badge}</span>
+      <h1 class="story-hero__title">{c.title}</h1>
+      <p class="story-hero__sub">{c.sub}</p>
+    </div>
+  </section>
+
+  <section class="section story-list">
+    <div class="container">
+      <a href={postPath(locale, lead.slug)} class="lead-card">
+        <div class="lead-card__img" style={`--bg:url('${lead.image}')`} aria-hidden="true"></div>
+        <div class="lead-card__body">
+          <span class="lead-card__flag">{c.latest}</span>
+          <h2>{lead.i18n[locale].title}</h2>
+          <p>{lead.i18n[locale].excerpt}</p>
+          <p class="lead-card__meta">
+            <time datetime={lead.date}>{formatDate(lead.date, locale)}</time>
+            <span aria-hidden="true">&middot;</span>
+            <span>{readingMinutes(lead, locale)} {lead.i18n[locale].readLabel}</span>
+          </p>
+          <span class="lead-card__cta">{c.read} &rarr;</span>
+        </div>
+      </a>
+
+      <h2 class="story-list__heading">{c.all}</h2>
+      <div class="story-grid">
+        {rest.map((p) => (
+          <a href={postPath(locale, p.slug)} class="story-card">
+            <div class="story-card__img" style={`--bg:url('${p.image}')`} aria-hidden="true"></div>
+            <div class="story-card__body">
+              <h3>{p.i18n[locale].title}</h3>
+              <p>{p.i18n[locale].excerpt}</p>
+              <p class="story-card__meta">
+                <time datetime={p.date}>{formatDate(p.date, locale)}</time>
+                <span aria-hidden="true">&middot;</span>
+                <span>{readingMinutes(p, locale)} {p.i18n[locale].readLabel}</span>
+              </p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .story-hero { background: var(--black); color: var(--white); padding: 4rem 0 3.5rem; }
+  .story-hero__inner { max-width: 760px; }
+  .story-hero__title {
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+    margin: 0.75rem 0 1rem;
+  }
+  .story-hero__sub { color: #aaa; line-height: 1.8; font-size: 1.02rem; }
+
+  .lead-card {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    border: 2px solid #0a0a0a;
+    margin-bottom: 3.5rem;
+    transition: transform 0.15s;
+  }
+  .lead-card:hover { transform: translateY(-3px); }
+  .lead-card__img {
+    background-image: var(--bg);
+    background-size: cover;
+    background-position: center;
+    min-height: 320px;
+    border-right: 2px solid #0a0a0a;
+  }
+  .lead-card__body { padding: 2.25rem; display: flex; flex-direction: column; justify-content: center; }
+  .lead-card__flag {
+    display: inline-block;
+    align-self: flex-start;
+    background: #39FF14;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.7rem;
+    margin-bottom: 1rem;
+  }
+  .lead-card__body h2 {
+    font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+  }
+  .lead-card__body > p { color: #555; line-height: 1.75; font-size: 0.98rem; }
+  .lead-card__meta {
+    font-size: 0.7rem !important;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #999 !important;
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  .lead-card__cta {
+    margin-top: 1.5rem;
+    font-weight: 800;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-bottom: 2px solid #39FF14;
+    align-self: flex-start;
+    padding-bottom: 2px;
+  }
+
+  .story-list__heading {
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #0a0a0a;
+    margin-bottom: 1.75rem;
+  }
+  .story-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .story-card { border: 2px solid #0a0a0a; display: flex; flex-direction: column; transition: transform 0.15s; }
+  .story-card:hover { transform: translateY(-3px); }
+  .story-card__img {
+    height: 165px;
+    background-image: var(--bg);
+    background-size: cover;
+    background-position: center;
+    border-bottom: 2px solid #0a0a0a;
+  }
+  .story-card__body { padding: 1.35rem 1.5rem 1.6rem; display: flex; flex-direction: column; flex: 1; }
+  .story-card__body h3 { font-size: 1.05rem; font-weight: 800; line-height: 1.32; margin-bottom: 0.55rem; }
+  .story-card__body > p { font-size: 0.87rem; color: #666; line-height: 1.65; flex: 1; }
+  .story-card__meta {
+    font-size: 0.68rem !important;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: #999 !important;
+    display: flex;
+    gap: 0.45rem;
+    margin-top: 1rem;
+  }
+
+  @media (max-width: 900px) {
+    .story-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    .lead-card { grid-template-columns: 1fr; }
+    .lead-card__img { min-height: 220px; border-right: none; border-bottom: 2px solid #0a0a0a; }
+    .story-grid { grid-template-columns: 1fr; }
+  }
+</style>

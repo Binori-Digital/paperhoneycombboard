@@ -1,0 +1,12 @@
+---
+import StoryPost from "../../components/StoryPost.astro";
+import { posts } from "../../content/stories";
+
+export function getStaticPaths() {
+  return posts.map((p) => ({ params: { slug: p.slug } }));
+}
+
+const { slug } = Astro.params;
+---
+
+<StoryPost slug={slug!} locale="en" />
