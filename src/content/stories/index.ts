@@ -7,9 +7,14 @@ import { post as p02 } from './post-02-ppwr';
 import { post as p03 } from './post-03-tare-weight';
 import { post as p04 } from './post-04-timber';
 import { post as p05 } from './post-05-handling';
+import { post as p06 } from './post-06-humidity';
+import { post as p07 } from './post-07-dimensional-weight';
+import { post as p08 } from './post-08-automation';
+import { post as p09 } from './post-09-electronics';
+import { post as p10 } from './post-10-furniture';
 
 /** Newest first. */
-export const posts: Post[] = [p01, p02, p03, p04, p05].sort(
+export const posts: Post[] = [p01, p02, p03, p04, p05, p06, p07, p08, p09, p10].sort(
   (a, b) => b.date.localeCompare(a.date),
 );
 
