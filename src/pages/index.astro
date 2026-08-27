@@ -46,30 +46,35 @@ const pains = [
   {
     img: 'https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=1600&q=70',
     title: 'Rejected at the Border',
+    titleHtml: '<span class="alarm">Rejected</span> at the Border',
     text: 'US customs intercepted 24,000+ non-compliant wood packaging shipments in 2025. Fumigation is restricted in 47 countries — one missing ISPM-15 stamp strands your cargo.',
     solution: 'Paper honeycomb is ISPM-15 exempt by nature. No treatment, no stamps, no rejections.',
   },
   {
     img: 'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=1600&q=70',
     title: 'The Regulation Wave Has Landed',
+    titleHtml: 'The <span class="alarm">Regulation</span> Wave Has Landed',
     text: "The EU's PPWR is now in force: recyclability mandates, EPR fees, plastic taxes, foam bans. Non-compliant packaging has become a growing cost line.",
     solution: '100% curbside-recyclable kraft — one material, zero packaging-waste liability.',
   },
   {
     img: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1600&q=70',
     title: 'Paying Freight on Dead Weight',
+    titleHtml: 'Paying Freight on <span class="alarm">Dead Weight</span>',
     text: 'A 25kg wooden pallet is billed like cargo. Multiply by hundreds of shipments a month, and tare weight quietly eats your margin.',
     solution: '~5kg per pallet — up to 80% lighter, saving around RM400 per air pallet.',
   },
   {
     img: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1600&q=70',
     title: "Timber You Can't Trust",
+    titleHtml: 'Timber You <span class="alarm">Can\'t Trust</span>',
     text: 'Lumber prices swing with every cycle. Boards warp, absorb moisture, grow mold, jam automated lines, and splinter into cargo claims.',
     solution: 'Engineered paper cores — consistent dimensions, no nails, no mold, stable supply.',
   },
   {
     img: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1600&q=70',
     title: 'Heavy Packaging Hurts People',
+    titleHtml: 'Heavy Packaging <span class="alarm">Hurts</span> People',
     text: 'Two-person lifts and strain injuries at your dock — then your customer pays to landfill the crate at theirs.',
     solution: 'One-person handling at ~5kg. Disposal is simply paper recycling.',
   },
@@ -181,7 +186,7 @@ const productSchema = {
   <section class="section pains-section" aria-labelledby="pains-heading">
     <div class="container pains-header">
       <span class="badge">The State of the Industry</span>
-      <h2 id="pains-heading" class="pains-title">Five Problems Draining<br />Conventional Supply Chains</h2>
+      <h2 id="pains-heading" class="pains-title">Five <span class="alarm">Problems</span> Draining<br />Conventional Supply Chains</h2>
       <p class="pains-sub">
         If you ship on wood, plastic, or foam, you're fighting all five — every single day.
         We built phb to end them.
@@ -192,7 +197,7 @@ const productSchema = {
         <article class="pain-band" style={`--bg:url('${p.img}')`}>
           <span class="pain-band__num" aria-hidden="true">0{i + 1}</span>
           <div class="container pain-band__inner">
-            <h3 class="pain-band__title">{p.title}</h3>
+            <h3 class="pain-band__title" set:html={p.titleHtml} />
             <p class="pain-band__text">{p.text}</p>
           </div>
         </article>
@@ -575,9 +580,21 @@ const productSchema = {
   .pains-closer__list p { font-weight: 700; line-height: 1.55; font-size: 1rem; }
   .pains-closer .cta-block__actions { justify-content: flex-start; }
 
+  /* Red alarm words — pulsing urgency */
+  :global(.alarm) {
+    color: #ff3131;
+    display: inline-block;
+    animation: alarm-pulse 1.5s ease-in-out infinite;
+  }
+  @keyframes alarm-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.45; }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .pain-band::before { transition: none; }
     .pain-band:hover::before { transform: none; }
+    :global(.alarm) { animation: none; }
   }
   @media (max-width: 768px) {
     .pain-band { min-height: 300px; }
