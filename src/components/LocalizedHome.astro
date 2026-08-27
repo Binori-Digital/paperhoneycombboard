@@ -27,6 +27,15 @@ const alternates = [
   { code: 'x-default', href: '/' },
 ];
 const contactHref = `/${locale}/contact/`;
+
+// Background imagery for the pain bands — shared with the English homepage
+const painImages = [
+  'https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=1600&q=70',
+  'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=1600&q=70',
+  'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1600&q=70',
+  'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1600&q=70',
+  'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1600&q=70',
+];
 ---
 
 <Layout
@@ -86,6 +95,47 @@ const contactHref = `/${locale}/contact/`;
       </div>
     </div>
   </div>
+
+  <!-- INDUSTRY PAIN POINTS -->
+  <section class="section pains-section" aria-labelledby="pains-heading">
+    <div class="container pains-header">
+      <span class="badge">{t.painsBadge}</span>
+      <h2 id="pains-heading" class="pains-title" set:html={t.painsTitleHtml} />
+      <p class="pains-sub">{t.painsSub}</p>
+    </div>
+    <div class="pains">
+      {t.pains.map((p, i) => (
+        <article class="pain-band" style={`--bg:url('${painImages[i]}')`}>
+          <span class="pain-band__num" aria-hidden="true">0{i + 1}</span>
+          <div class="container pain-band__inner">
+            <h3 class="pain-band__title" set:html={p.titleHtml} />
+            <p class="pain-band__text">{p.text}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+    <div class="pains-closer">
+      <div class="container">
+        <span class="badge badge--dark">{t.closerBadge}</span>
+        <h3 class="pains-closer__title" set:html={t.closerTitleHtml} />
+        <ul class="pains-closer__list">
+          {t.pains.map((p, i) => (
+            <li>
+              <span class="pains-closer__num" aria-hidden="true">0{i + 1}</span>
+              <div>
+                <strong>{p.title}</strong>
+                <p>{p.solution}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+        <div class="cta-block__actions">
+          <a href={contactHref} class="btn btn--dark">{t.closerCtaSample}</a>
+          <a href="/paper-honeycomb-board-guide/" class="btn btn--outline">{t.closerCtaGuide}</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- FUMIGATION FEATURE -->
   <section class="section">
@@ -184,6 +234,150 @@ const contactHref = `/${locale}/contact/`;
   .hero__overlay .hero__title { color: var(--white); font-size: clamp(2.3rem, 5.5vw, 4.5rem); margin-bottom: 1.25rem; }
   .hero__overlay .hero__desc { color: rgba(255,255,255,0.82); max-width: 500px; margin-bottom: 2rem; line-height: 1.7; }
   .hero__actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  /* ===== INDUSTRY PAIN POINTS ===== */
+  .pains-section { padding: 5rem 0 0; background: var(--black); }
+  .pains-header { color: var(--white); margin-bottom: 3rem; }
+  .pains-title { font-size: clamp(1.9rem, 4vw, 3rem); margin: 0.5rem 0 1rem; }
+  .pains-sub { color: #aaa; max-width: 560px; line-height: 1.8; }
+
+  .pains { display: flex; flex-direction: column; gap: 2px; }
+  .pain-band {
+    position: relative;
+    overflow: hidden;
+    min-height: 400px;
+    display: flex;
+    align-items: flex-end;
+  }
+  .pain-band::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: var(--bg);
+    background-size: cover;
+    background-position: center;
+    animation: pain-drift 18s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+  .pain-band:nth-child(even)::before {
+    animation-duration: 24s;
+    animation-direction: alternate-reverse;
+  }
+  @keyframes pain-drift {
+    0%   { transform: scale(1.02) translate(0, 0); }
+    100% { transform: scale(1.14) translate(1.5%, -1.5%); }
+  }
+  .pain-band::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(10,10,10,0.93) 0%, rgba(10,10,10,0.74) 48%, rgba(10,10,10,0.35) 100%);
+  }
+  .pain-band__inner {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    padding-top: 2.5rem;
+    padding-bottom: 2.25rem;
+    color: var(--white);
+  }
+  .pain-band__num {
+    position: absolute;
+    top: 1.25rem;
+    right: 2rem;
+    z-index: 1;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 900;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+  }
+  .pain-band__title {
+    font-size: clamp(2rem, 5vw, 3.9rem);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    line-height: 1.12;
+    max-width: 850px;
+  }
+  .pain-band__text {
+    max-width: 580px;
+    color: rgba(255, 255, 255, 0.85);
+    margin-top: 1rem;
+    line-height: 1.8;
+    font-size: 0.95rem;
+  }
+
+  :global(.alarm) {
+    color: #ff3131;
+    display: inline-block;
+    animation: alarm-pulse 1.5s ease-in-out infinite;
+  }
+  @keyframes alarm-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.45; }
+  }
+
+  .pains-closer {
+    background: var(--green);
+    color: var(--black);
+    padding: 5rem 0;
+    margin-top: 2px;
+  }
+  .pains-closer__title {
+    font-size: clamp(2rem, 4.5vw, 3.6rem);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin: 0.75rem 0 2.5rem;
+  }
+  .pains-closer__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    max-width: 780px;
+    margin-bottom: 2.5rem;
+  }
+  .pains-closer__list li {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    padding: 1.15rem 0;
+    border-top: 2px solid var(--black);
+  }
+  .pains-closer__list li:last-child { border-bottom: 2px solid var(--black); }
+  .pains-closer__num {
+    flex-shrink: 0;
+    width: 2.4rem;
+    height: 2.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--black);
+    color: var(--green);
+    font-weight: 800;
+    font-size: 0.85rem;
+  }
+  .pains-closer__list strong {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    color: rgba(0, 0, 0, 0.65);
+    margin-bottom: 0.3rem;
+  }
+  .pains-closer__list p { font-weight: 700; line-height: 1.7; font-size: 1rem; }
+  .pains-closer .cta-block__actions { justify-content: flex-start; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pain-band::before { animation: none; }
+    :global(.alarm) { animation: none; }
+  }
+  @media (max-width: 768px) {
+    .pain-band__num { right: 1rem; top: 0.9rem; }
+    .pain-band::after {
+      background: linear-gradient(90deg, rgba(10,10,10,0.94) 0%, rgba(10,10,10,0.8) 60%, rgba(10,10,10,0.55) 100%);
+    }
+  }
 
   .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
   .calc-title { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1rem; }

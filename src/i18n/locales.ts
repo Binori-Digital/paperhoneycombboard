@@ -27,6 +27,14 @@ export interface HomeDict {
   faq: { q: string; a: string }[];
   ctaFinalTitle: string;
   ctaFinalBtn: string;
+  painsBadge: string;
+  painsTitleHtml: string;   // may contain <span class="alarm"> and <br />
+  painsSub: string;
+  pains: { title: string; titleHtml: string; text: string; solution: string }[];
+  closerBadge: string;
+  closerTitleHtml: string;
+  closerCtaSample: string;
+  closerCtaGuide: string;
 }
 
 export interface ContactDict {
@@ -81,6 +89,45 @@ export const homeDicts: Record<string, HomeDict> = {
     ],
     ctaFinalTitle: 'Sedia untuk mencuba?',
     ctaFinalBtn: 'Dapatkan Kit Sampel Honeycomb',
+    painsBadge: 'Keadaan Industri Hari Ini',
+    painsTitleHtml: 'Lima <span class="alarm">Masalah</span> Yang Membebankan<br />Rantaian Bekalan Konvensional',
+    painsSub: 'Jika anda menghantar menggunakan kayu, plastik atau foam, anda berdepan kelima-limanya — setiap hari. Kami membina phb untuk menamatkannya.',
+    pains: [
+      {
+        title: 'Ditolak di Sempadan',
+        titleHtml: '<span class="alarm">Ditolak</span> di Sempadan',
+        text: 'Kastam AS menahan lebih 24,000 penghantaran pembungkusan kayu yang tidak patuh pada 2025. Fumigasi kini dihadkan di 47 negara — satu cop ISPM-15 yang tertinggal boleh mengandaskan kargo anda.',
+        solution: 'Honeycomb kertas dikecualikan ISPM-15 secara semula jadi. Tiada rawatan, tiada cop, tiada penolakan.',
+      },
+      {
+        title: 'Gelombang Peraturan Telah Tiba',
+        titleHtml: 'Gelombang <span class="alarm">Peraturan</span> Telah Tiba',
+        text: 'PPWR Kesatuan Eropah kini berkuat kuasa: mandat kitar semula, yuran EPR, cukai plastik, larangan foam. Pembungkusan yang tidak patuh menjadi kos yang semakin membesar.',
+        solution: 'Kraft 100% boleh dikitar semula — satu bahan, sifar liabiliti sisa pembungkusan.',
+      },
+      {
+        title: 'Membayar Tambang Untuk Berat Mati',
+        titleHtml: 'Membayar Tambang Untuk <span class="alarm">Berat Mati</span>',
+        text: 'Palet kayu 25kg dicaj seperti kargo. Darabkan dengan ratusan penghantaran sebulan, dan berat tara senyap-senyap memakan margin anda.',
+        solution: '~5kg setiap palet — sehingga 80% lebih ringan, menjimatkan sekitar RM400 setiap palet udara.',
+      },
+      {
+        title: 'Kayu Yang Tidak Boleh Dipercayai',
+        titleHtml: 'Kayu Yang <span class="alarm">Tidak Boleh Dipercayai</span>',
+        text: 'Harga kayu turun naik mengikut kitaran. Papan meleding, menyerap lembapan, berkulat, menyekat barisan automasi, dan menyerpih menjadi tuntutan kargo.',
+        solution: 'Teras kertas terjurutera — dimensi konsisten, tiada paku, tiada kulat, bekalan stabil.',
+      },
+      {
+        title: 'Pembungkusan Berat Mencederakan Pekerja',
+        titleHtml: 'Pembungkusan Berat <span class="alarm">Mencederakan</span> Pekerja',
+        text: 'Angkatan dua orang dan kecederaan otot di dok anda — kemudian pelanggan anda pula membayar untuk melupuskan peti itu.',
+        solution: 'Pengendalian seorang pada ~5kg. Pelupusan hanyalah kitar semula kertas.',
+      },
+    ],
+    closerBadge: 'Jawapan phb',
+    closerTitleHtml: 'Lima Masalah.<br />Satu Bahan. Selesai.',
+    closerCtaSample: 'Dapatkan Kit Sampel',
+    closerCtaGuide: 'Baca Panduan Lengkap',
   },
   zh: {
     lang: 'zh-MY',
@@ -113,6 +160,45 @@ export const homeDicts: Record<string, HomeDict> = {
     ],
     ctaFinalTitle: '准备好试用了吗？',
     ctaFinalBtn: '获取蜂窝纸板样品套装',
+    painsBadge: '行业现状',
+    painsTitleHtml: '五大<span class="alarm">难题</span>正在拖垮<br />传统供应链',
+    painsSub: '如果您仍在使用木材、塑料或泡沫包装，这五大难题每天都在困扰您。phb 就是为终结它们而生。',
+    pains: [
+      {
+        title: '在边境被拒收',
+        titleHtml: '在边境<span class="alarm">被拒收</span>',
+        text: '2025年美国海关查获超过24,000批不合规木质包装。47个国家已限制熏蒸处理 — 少一个ISPM-15标识，您的货物就会被扣留。',
+        solution: '纸蜂窝天然豁免ISPM-15。无需处理、无需盖章、绝不被拒。',
+      },
+      {
+        title: '法规浪潮已经到来',
+        titleHtml: '<span class="alarm">法规</span>浪潮已经到来',
+        text: '欧盟PPWR已正式生效：可回收强制要求、EPR费用、塑料税、泡沫禁令。不合规包装正成为不断上涨的成本项。',
+        solution: '100%可回收牛皮纸 — 单一材质，零包装废弃物责任。',
+      },
+      {
+        title: '为无效重量支付运费',
+        titleHtml: '为<span class="alarm">无效重量</span>支付运费',
+        text: '25公斤的木托盘按货物计费。乘以每月数百次出货，皮重正在悄悄吞噬您的利润。',
+        solution: '每托盘约5公斤 — 轻达80%，每个空运托盘节省约RM400。',
+      },
+      {
+        title: '无法信赖的木材',
+        titleHtml: '<span class="alarm">无法信赖</span>的木材',
+        text: '木材价格随周期剧烈波动。板材翘曲、吸潮、发霉、卡住自动化产线，木刺更会引发货损索赔。',
+        solution: '工程纸芯 — 尺寸一致、无钉、无霉变、供应稳定。',
+      },
+      {
+        title: '沉重包装伤害员工',
+        titleHtml: '沉重包装<span class="alarm">伤害</span>员工',
+        text: '需要两人搬运、造成腰背劳损 — 而您的客户还要付费将木箱送去填埋。',
+        solution: '约5公斤，一人即可搬运。废弃处理就是普通纸类回收。',
+      },
+    ],
+    closerBadge: 'phb 的答案',
+    closerTitleHtml: '五大难题。<br />一种材料。全部解决。',
+    closerCtaSample: '获取样品套装',
+    closerCtaGuide: '阅读完整指南',
   },
   ja: {
     lang: 'ja',
@@ -145,6 +231,45 @@ export const homeDicts: Record<string, HomeDict> = {
     ],
     ctaFinalTitle: 'まずはお試しください',
     ctaFinalBtn: 'サンプルキットを請求する',
+    painsBadge: '業界の現状',
+    painsTitleHtml: '従来のサプライチェーンを蝕む<br />5つの<span class="alarm">問題</span>',
+    painsSub: '木材・プラスチック・発泡材で出荷している限り、この5つと毎日戦うことになります。phbはそれを終わらせるために生まれました。',
+    pains: [
+      {
+        title: '国境での荷止め',
+        titleHtml: '国境での<span class="alarm">荷止め</span>',
+        text: '2025年、米国税関は基準を満たさない木材梱包を24,000件以上差し止めました。燻蒸処理は47か国で規制強化 — ISPM-15の刻印ひとつ欠けるだけで貨物が止まります。',
+        solution: 'ペーパーハニカムは本質的にISPM-15適用外。処理も刻印も不要、差し止めもありません。',
+      },
+      {
+        title: '規制の波が到来',
+        titleHtml: '<span class="alarm">規制</span>の波が到来',
+        text: 'EUのPPWRが施行済み：リサイクル義務、EPR費用、プラスチック税、発泡材禁止。非適合な梱包材は年々膨らむコストになりました。',
+        solution: '100%リサイクル可能なクラフト紙 — 単一素材で、包装廃棄物の負担ゼロ。',
+      },
+      {
+        title: '死荷重に運賃を払う',
+        titleHtml: '<span class="alarm">死荷重</span>に運賃を払う',
+        text: '25kgの木製パレットは貨物と同じ料率で課金されます。月に数百件を掛け合わせれば、風袋重量が静かに利益を削ります。',
+        solution: '1枚約5kg — 最大80%軽量、空輸パレット1枚あたり約US$90の削減。',
+      },
+      {
+        title: '信頼できない木材',
+        titleHtml: '<span class="alarm">信頼できない</span>木材',
+        text: '木材価格は市況で乱高下。板は反り、湿気を吸い、カビが生え、自動ラインを止め、ささくれが貨物クレームにつながります。',
+        solution: '設計されたペーパーコア — 寸法が一定、釘なし、カビなし、安定供給。',
+      },
+      {
+        title: '重い梱包が人を傷つける',
+        titleHtml: '重い梱包が人を<span class="alarm">傷つける</span>',
+        text: '二人がかりの持ち上げと腰痛の労災。そして納品先は、その木箱の廃棄費用を負担することになります。',
+        solution: '約5kgで一人作業。廃棄は紙リサイクルに出すだけです。',
+      },
+    ],
+    closerBadge: 'phbの答え',
+    closerTitleHtml: '5つの問題を、<br />1つの素材で解決。',
+    closerCtaSample: 'サンプルキットを請求',
+    closerCtaGuide: '完全ガイドを読む',
   },
   ko: {
     lang: 'ko',
@@ -177,6 +302,45 @@ export const homeDicts: Record<string, HomeDict> = {
     ],
     ctaFinalTitle: '직접 테스트해 보세요',
     ctaFinalBtn: '샘플 키트 신청하기',
+    painsBadge: '업계 현황',
+    painsTitleHtml: '기존 공급망을 갉아먹는<br />다섯 가지 <span class="alarm">문제</span>',
+    painsSub: '목재, 플라스틱, 폼으로 출하한다면 이 다섯 가지와 매일 싸우게 됩니다. phb는 이를 끝내기 위해 만들어졌습니다.',
+    pains: [
+      {
+        title: '국경에서 반려',
+        titleHtml: '국경에서 <span class="alarm">반려</span>',
+        text: '2025년 미국 세관은 기준 미달 목재 포장 화물을 24,000건 이상 적발했습니다. 훈증은 47개국에서 규제가 강화 — ISPM-15 각인 하나만 빠져도 화물이 묶입니다.',
+        solution: '종이 허니컴은 본질적으로 ISPM-15 면제. 처리도, 각인도, 반려도 없습니다.',
+      },
+      {
+        title: '규제의 물결이 도착했다',
+        titleHtml: '<span class="alarm">규제</span>의 물결이 도착했다',
+        text: 'EU PPWR이 시행 중입니다: 재활용 의무, EPR 부담금, 플라스틱세, 폼 금지. 비적합 포장재는 계속 커지는 비용 항목이 되었습니다.',
+        solution: '100% 재활용 가능한 크라프트 — 단일 소재, 포장 폐기물 부담 제로.',
+      },
+      {
+        title: '죽은 무게에 운임 지불',
+        titleHtml: '<span class="alarm">죽은 무게</span>에 운임 지불',
+        text: '25kg 목재 팔레트도 화물과 같은 요율로 청구됩니다. 월 수백 건을 곱하면 자체 중량이 조용히 마진을 갉아먹습니다.',
+        solution: '팔레트당 약 5kg — 최대 80% 경량화, 항공 팔레트당 약 US$90 절감.',
+      },
+      {
+        title: '믿을 수 없는 목재',
+        titleHtml: '<span class="alarm">믿을 수 없는</span> 목재',
+        text: '목재 가격은 경기마다 요동칩니다. 판재는 휘고, 습기를 먹고, 곰팡이가 슬고, 자동화 라인을 멈추게 하며, 가시가 화물 클레임으로 이어집니다.',
+        solution: '엔지니어링 페이퍼 코어 — 일정한 치수, 못 없음, 곰팡이 없음, 안정적 공급.',
+      },
+      {
+        title: '무거운 포장은 사람을 다치게 한다',
+        titleHtml: '무거운 포장은 사람을 <span class="alarm">다치게</span> 한다',
+        text: '2인 1조 운반과 근골격계 부상이 우리 물류장에서 발생하고, 고객사는 그 목재 상자를 폐기하는 비용을 부담합니다.',
+        solution: '약 5kg으로 1인 취급 가능. 폐기는 그냥 종이 재활용입니다.',
+      },
+    ],
+    closerBadge: 'phb의 해답',
+    closerTitleHtml: '다섯 가지 문제.<br />하나의 소재로 해결.',
+    closerCtaSample: '샘플 키트 신청',
+    closerCtaGuide: '완전 가이드 읽기',
   },
 };
 
