@@ -194,22 +194,25 @@ const productSchema = {
           <div class="container pain-band__inner">
             <h3 class="pain-band__title">{p.title}</h3>
             <p class="pain-band__text">{p.text}</p>
-            <div class="pain-band__solution">
-              <strong>Solved →</strong>
-              <p>{p.solution}</p>
-            </div>
           </div>
         </article>
       ))}
     </div>
     <div class="pains-closer">
       <div class="container">
-        <h3 class="pains-closer__title">Five problems. One material.</h3>
-        <p class="pains-closer__text">
-          phb paper honeycomb was engineered around these exact failures — ISPM-15 exempt,
-          100% recyclable, up to 80% lighter. That's why exporters across Malaysia and
-          Singapore are making the switch.
-        </p>
+        <span class="badge badge--dark">The phb Answer</span>
+        <h3 class="pains-closer__title">Five Problems.<br />One Material. Solved.</h3>
+        <ul class="pains-closer__list">
+          {pains.map((p, i) => (
+            <li>
+              <span class="pains-closer__num" aria-hidden="true">0{i + 1}</span>
+              <div>
+                <strong>{p.title}</strong>
+                <p>{p.solution}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
         <div class="cta-block__actions">
           <a href="/contact/" class="btn btn--dark">Get a Sample Kit</a>
           <a href="/paper-honeycomb-board-guide/" class="btn btn--outline">Read the Complete Guide</a>
@@ -464,7 +467,7 @@ const productSchema = {
   .pain-band {
     position: relative;
     overflow: hidden;
-    min-height: 320px;
+    min-height: 400px;
     display: flex;
     align-items: flex-end;
   }
@@ -504,44 +507,73 @@ const productSchema = {
     -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
   }
   .pain-band__title {
-    font-size: clamp(1.35rem, 2.6vw, 2rem);
+    font-size: clamp(2.2rem, 5.5vw, 4.25rem);
+    font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
+    line-height: 1.02;
+    max-width: 850px;
   }
   .pain-band__text {
     max-width: 560px;
     color: rgba(255, 255, 255, 0.85);
-    margin-top: 0.6rem;
+    margin-top: 1rem;
     line-height: 1.65;
-    font-size: 0.92rem;
+    font-size: 0.95rem;
   }
-  .pain-band__solution {
-    display: flex;
-    gap: 0.6rem;
-    align-items: baseline;
-    margin-top: 1.15rem;
-    border-left: 3px solid var(--green);
-    padding-left: 0.9rem;
-    max-width: 560px;
-  }
-  .pain-band__solution strong {
-    color: var(--green);
-    text-transform: uppercase;
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-    flex-shrink: 0;
-  }
-  .pain-band__solution p { font-weight: 600; font-size: 0.92rem; line-height: 1.55; }
 
   .pains-closer {
     background: var(--green);
     color: var(--black);
-    text-align: center;
-    padding: 4rem 0;
+    padding: 5rem 0;
     margin-top: 2px;
   }
-  .pains-closer__title { font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 0.85rem; }
-  .pains-closer__text { max-width: 560px; margin: 0 auto 1.75rem; line-height: 1.7; font-weight: 500; }
+  .pains-closer__title {
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin: 0.75rem 0 2.5rem;
+  }
+  .pains-closer__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    max-width: 760px;
+    margin-bottom: 2.5rem;
+  }
+  .pains-closer__list li {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    padding: 1.15rem 0;
+    border-top: 2px solid var(--black);
+  }
+  .pains-closer__list li:last-child { border-bottom: 2px solid var(--black); }
+  .pains-closer__num {
+    flex-shrink: 0;
+    width: 2.4rem;
+    height: 2.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--black);
+    color: var(--green);
+    font-weight: 800;
+    font-size: 0.85rem;
+  }
+  .pains-closer__list strong {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.65);
+    margin-bottom: 0.25rem;
+  }
+  .pains-closer__list p { font-weight: 700; line-height: 1.55; font-size: 1rem; }
+  .pains-closer .cta-block__actions { justify-content: flex-start; }
 
   @media (prefers-reduced-motion: reduce) {
     .pain-band::before { transition: none; }
