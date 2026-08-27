@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { homeDicts } from '../i18n/locales';
+import { CURRENCIES } from '../scripts/currency';
 
 interface Props { locale: string; }
 const { locale } = Astro.props;
@@ -118,8 +119,9 @@ const contactHref = `/${locale}/contact/`;
       <div class="calc-widget" role="form">
         <label for="currency">{t.calcCurrency}</label>
         <select id="currency">
-          <option value="RM" selected>RM – Ringgit Malaysia</option>
-          <option value="USD">USD – US Dollar</option>
+          {Object.entries(CURRENCIES).map(([code, c]) => (
+            <option value={code} selected={code === 'RM'}>{c.label}</option>
+          ))}
         </select>
         <label for="pallets">{t.calcPallets}</label>
         <input type="number" id="pallets" placeholder="250" min="1" />
@@ -215,17 +217,19 @@ const contactHref = `/${locale}/contact/`;
 </style>
 
 <script>
+  import { CURRENCIES, fmt, detectCurrency } from '../scripts/currency';
+
   const pallets = document.getElementById('pallets') as HTMLInputElement;
   const rate = document.getElementById('rate') as HTMLInputElement;
   const currency = document.getElementById('currency') as HTMLSelectElement;
   const output = document.getElementById('savings-output');
 
   const KG_SAVED_PER_PALLET = 20;
-  const DEFAULT_RATES: Record<string, number> = { RM: 20, USD: 4.5 };
-  const fmt = (cur: string, v: number) => {
-    const n = v.toLocaleString('en-US', { maximumFractionDigits: 0 });
-    return cur === 'USD' ? `$${n}` : `RM ${n}`;
-  };
+  let userTouchedCurrency = false;
+
+  function applyRateDefault(code: string) {
+    if (rate) rate.value = String(CURRENCIES[code]?.rate ?? 20);
+  }
 
   function calc() {
     const cur = currency?.value || 'RM';
@@ -237,7 +241,17 @@ const contactHref = `/${locale}/contact/`;
   pallets?.addEventListener('input', calc);
   rate?.addEventListener('input', calc);
   currency?.addEventListener('change', () => {
-    if (rate) rate.value = String(DEFAULT_RATES[currency.value] ?? 20);
+    userTouchedCurrency = true;
+    applyRateDefault(currency.value);
     calc();
+  });
+
+  // Preselect the visitor's currency from their IP country (Cloudflare edge)
+  detectCurrency().then((code) => {
+    if (code && CURRENCIES[code] && currency && !userTouchedCurrency && currency.value !== code) {
+      currency.value = code;
+      applyRateDefault(code);
+      calc();
+    }
   });
 </script>
