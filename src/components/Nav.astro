@@ -3,12 +3,14 @@ interface Props { locale?: string; }
 const { locale = 'en' } = Astro.props;
 
 // Nav labels per language
+// Nav labels are kept short so the bar never wraps; the full phrases live
+// on the pages themselves.
 const navText: Record<string, { links: string[]; cta: string }> = {
-  en: { links: ['Industry Solutions', 'The Eco-Lab', 'Combat Zone', 'Regional', 'Story', 'Contact Us'], cta: 'Get a Paper Honeycomb Board Sample Kit' },
-  ms: { links: ['Penyelesaian Industri', 'Eco-Lab', 'Perbandingan Bahan', 'Serantau', 'Cerita', 'Hubungi Kami'], cta: 'Dapatkan Kit Sampel Honeycomb' },
-  zh: { links: ['行业解决方案', '环保实验室', '材料对比', '区域服务', '案例故事', '联系我们'], cta: '获取蜂窝纸板样品套装' },
-  ja: { links: ['産業ソリューション', 'エコラボ', '素材比較', '地域展開', 'ストーリー', 'お問い合わせ'], cta: 'サンプルキットを請求' },
-  ko: { links: ['산업 솔루션', '에코랩', '소재 비교', '지역 서비스', '스토리', '문의하기'], cta: '샘플 키트 신청' },
+  en: { links: ['Solutions', 'Eco-Lab', 'Combat Zone', 'Regional', 'Story', 'Contact'], cta: 'Get a Sample Kit' },
+  ms: { links: ['Penyelesaian', 'Eco-Lab', 'Perbandingan', 'Serantau', 'Cerita', 'Hubungi'], cta: 'Kit Sampel' },
+  zh: { links: ['解决方案', '环保实验室', '材料对比', '区域服务', '案例故事', '联系我们'], cta: '索取样品套装' },
+  ja: { links: ['ソリューション', 'エコラボ', '素材比較', '地域展開', 'ストーリー', 'お問い合わせ'], cta: 'サンプル請求' },
+  ko: { links: ['솔루션', '에코랩', '소재 비교', '지역 서비스', '스토리', '문의하기'], cta: '샘플 신청' },
 };
 const t = navText[locale] ?? navText.en;
 
@@ -62,6 +64,9 @@ const shortLabel: Record<string, string> = { en: 'EN', ms: 'BM', zh: '中文', j
             </a>
           </li>
         ))}
+        <li class="nav__item--cta">
+          <a href={ctaHref} class="btn btn--green">{t.cta}</a>
+        </li>
       </ul>
     </nav>
 
@@ -121,8 +126,9 @@ const shortLabel: Record<string, string> = { en: 'EN', ms: 'BM', zh: '中文', j
   .nav__inner {
     display: flex;
     align-items: center;
-    gap: 1.75rem;
-    height: 64px;
+    gap: clamp(0.75rem, 1.8vw, 2rem);
+    min-height: 64px;
+    flex-wrap: nowrap;
   }
   .nav__logo {
     font-size: 1.5rem;
@@ -130,17 +136,22 @@ const shortLabel: Record<string, string> = { en: 'EN', ms: 'BM', zh: '中文', j
     letter-spacing: -0.04em;
     flex-shrink: 0;
     margin-right: auto;
+    line-height: 1;
   }
   .nav__links {
     display: flex;
     list-style: none;
-    gap: 1.5rem;
+    align-items: center;
+    gap: clamp(0.85rem, 1.5vw, 1.6rem);
+    flex-wrap: nowrap;
   }
   .nav__link {
-    font-size: 0.75rem;
+    display: block;
+    font-size: clamp(0.66rem, 0.78vw, 0.74rem);
     font-weight: 700;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
+    white-space: nowrap;
     color: #666;
     padding-bottom: 2px;
     border-bottom: 2px solid transparent;
@@ -148,22 +159,37 @@ const shortLabel: Record<string, string> = { en: 'EN', ms: 'BM', zh: '中文', j
   }
   .nav__link:hover { color: #0a0a0a; }
   .nav__link--active { color: #0a0a0a; border-bottom-color: #0a0a0a; }
-  .nav__cta { padding: 0.5rem 1rem; font-size: 0.65rem; }
+
+  .nav__cta {
+    flex-shrink: 0;
+    padding: 0.55rem 1.1rem;
+    font-size: 0.66rem;
+    white-space: nowrap;
+    line-height: 1.1;
+  }
+  .nav__item--cta { display: none; }
+
   .nav__burger {
     display: none;
     flex-direction: column;
+    justify-content: center;
     gap: 5px;
     background: none;
     border: none;
-    padding: 4px;
+    padding: 6px 4px;
     cursor: pointer;
+    flex-shrink: 0;
   }
   .nav__burger span {
     display: block;
     width: 22px;
     height: 2px;
     background: #0a0a0a;
+    transition: transform 0.2s, opacity 0.2s;
   }
+  .nav__burger[aria-expanded='true'] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav__burger[aria-expanded='true'] span:nth-child(2) { opacity: 0; }
+  .nav__burger[aria-expanded='true'] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
   /* ===== Language selector ===== */
   .lang { position: relative; flex-shrink: 0; }
@@ -210,38 +236,94 @@ const shortLabel: Record<string, string> = { en: 'EN', ms: 'BM', zh: '中文', j
   .lang__option--active { background: #39FF14; }
   .lang__list li + li { border-top: 1px solid #e5e5e5; }
 
-  @media (max-width: 1100px) {
+  /* Mid widths: drop the CTA button, keep the full link row */
+  @media (max-width: 1180px) {
     .nav__cta { display: none; }
   }
-  @media (max-width: 768px) {
-    .nav__links { display: none; }
-    .nav__burger { display: flex; }
+
+  /* Narrow: collapse the links into a drawer */
+  @media (max-width: 940px) {
     .nav__logo { margin-right: 0; }
-    .nav__inner { gap: 1rem; }
     .lang { margin-left: auto; }
+    .nav__burger { display: flex; }
+
+    .nav__links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      background: #fff;
+      border-bottom: 2px solid #0a0a0a;
+      box-shadow: 0 10px 20px rgba(10, 10, 10, 0.08);
+      padding: 0.5rem 0 1rem;
+    }
+    .nav__links--open { display: flex; }
+    .nav__links li { border-top: 1px solid #eee; }
+    .nav__links li:first-child { border-top: none; }
+    .nav__link {
+      font-size: 0.82rem;
+      padding: 0.95rem 2rem;
+      border-bottom: none;
+      color: #0a0a0a;
+    }
+    .nav__link--active {
+      color: #0a0a0a;
+      box-shadow: inset 4px 0 0 #39FF14;
+    }
+
+    /* CTA lives inside the drawer at this size */
+    .nav__item--cta { display: block; border-top: 1px solid #eee; padding: 1rem 2rem 0.25rem; }
+    .nav__item--cta .btn { display: block; text-align: center; font-size: 0.7rem; }
+  }
+
+  @media (max-width: 480px) {
+    .nav__link { padding-left: 1rem; padding-right: 1rem; }
+    .nav__item--cta { padding-left: 1rem; padding-right: 1rem; }
+    .lang__code { display: none; }
   }
 </style>
 
 <script>
-  const burger = document.querySelector('.nav__burger') as HTMLButtonElement;
-  const navLinks = document.querySelector('.nav__links') as HTMLElement;
-  burger?.addEventListener('click', () => {
-    const expanded = burger.getAttribute('aria-expanded') === 'true';
-    burger.setAttribute('aria-expanded', String(!expanded));
-    navLinks.style.display = expanded ? '' : 'flex';
-    navLinks.style.flexDirection = 'column';
-    navLinks.style.position = 'absolute';
-    navLinks.style.top = '64px';
-    navLinks.style.left = '0';
-    navLinks.style.width = '100%';
-    navLinks.style.background = '#fff';
-    navLinks.style.padding = '1rem 2rem';
-    navLinks.style.borderBottom = '2px solid #0a0a0a';
+  const burger = document.querySelector('.nav__burger') as HTMLButtonElement | null;
+  const navLinks = document.querySelector('.nav__links') as HTMLElement | null;
+  const lang = document.getElementById('lang-menu') as HTMLDetailsElement | null;
+
+  const setMenu = (open: boolean) => {
+    burger?.setAttribute('aria-expanded', String(open));
+    navLinks?.classList.toggle('nav__links--open', open);
+  };
+
+  burger?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    setMenu(burger.getAttribute('aria-expanded') !== 'true');
+    if (lang) lang.open = false;
   });
 
-  // Close the language menu when clicking outside it
-  const lang = document.getElementById('lang-menu') as HTMLDetailsElement | null;
-  document.addEventListener('click', (e) => {
-    if (lang?.open && !lang.contains(e.target as Node)) lang.open = false;
+  // Opening the language menu closes the nav drawer, and vice versa
+  lang?.addEventListener('toggle', () => {
+    if (lang.open) setMenu(false);
   });
+
+  document.addEventListener('click', (e) => {
+    const target = e.target as Node;
+    if (lang?.open && !lang.contains(target)) lang.open = false;
+    if (navLinks?.classList.contains('nav__links--open') && !navLinks.contains(target) && !burger?.contains(target)) {
+      setMenu(false);
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    setMenu(false);
+    if (lang) lang.open = false;
+  });
+
+  // Reset state when resizing back up to the desktop layout
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 940) setMenu(false);
+  }, { passive: true });
 </script>
