@@ -1,0 +1,104 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { locations } from '../content/locations';
+import { LOC_LOCALES, LOC_LANG, locPath, locHubPath, locTemplate } from '../content/locations/types';
+import type { LocLocale } from '../content/locations/types';
+
+interface Props { locale: LocLocale; }
+const { locale } = Astro.props;
+const t = locTemplate[locale];
+const site = 'https://www.paperhoneycombboard.com';
+
+const alternates = [
+  ...LOC_LOCALES.map((l) => ({ code: l, href: locHubPath(l) })),
+  { code: 'x-default', href: locHubPath('en') },
+];
+
+const listSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: t.hubTitle,
+  description: t.hubDesc,
+  url: `${site}${locHubPath(locale)}`,
+  inLanguage: LOC_LANG[locale],
+  hasPart: locations.map((l) => ({
+    '@type': 'WebPage',
+    name: t.h1For(l.i18n[locale].name),
+    url: `${site}${locPath(locale, l.slug)}`,
+  })),
+};
+---
+
+<Layout
+  title={t.hubTitle + ' | phb'}
+  description={t.hubDesc}
+  canonical={locHubPath(locale)}
+  lang={LOC_LANG[locale]}
+  locale={locale}
+  alternates={alternates}
+  schema={listSchema}
+>
+  <section class="hub-hero">
+    <div class="container">
+      <span class="badge">{t.hubBadge}</span>
+      <h1 class="hub-hero__title">{t.hubTitle}</h1>
+      <p class="hub-hero__sub">{t.hubIntro}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="hub-label">{t.hubGroupsLabel}</h2>
+      <div class="hub-grid">
+        {locations.map((l) => (
+          <a href={locPath(locale, l.slug)} class="hub-card">
+            <div class="hub-card__img" style={`--bg:url('${l.image}')`} aria-hidden="true"></div>
+            <div class="hub-card__body">
+              <h3>{l.i18n[locale].name}</h3>
+              <p>{l.i18n[locale].industries.slice(0, 3).join(' · ')}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hub-hero { background: var(--black); color: var(--white); padding: 4rem 0 3.5rem; }
+  .hub-hero__title {
+    font-size: clamp(2rem, 4.6vw, 3.4rem);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin: 0.75rem 0 1rem;
+    max-width: 800px;
+  }
+  .hub-hero__sub { color: #aaa; line-height: 1.8; max-width: 680px; }
+
+  .hub-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #0a0a0a;
+    margin-bottom: 1.75rem;
+  }
+  .hub-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+  .hub-card { border: 2px solid #0a0a0a; display: flex; flex-direction: column; transition: transform 0.15s; }
+  .hub-card:hover { transform: translateY(-3px); }
+  .hub-card__img {
+    height: 110px;
+    background-image: var(--bg);
+    background-size: cover;
+    background-position: center;
+    border-bottom: 2px solid #0a0a0a;
+  }
+  .hub-card__body { padding: 1rem 1.15rem 1.2rem; }
+  .hub-card__body h3 { font-size: 1rem; font-weight: 800; margin-bottom: 0.3rem; }
+  .hub-card__body p { font-size: 0.75rem; color: #666; line-height: 1.5; }
+
+  @media (max-width: 1000px) { .hub-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 760px) { .hub-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .hub-grid { grid-template-columns: 1fr; } }
+</style>
