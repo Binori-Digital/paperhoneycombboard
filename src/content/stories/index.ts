@@ -12,9 +12,10 @@ import { post as p07 } from './post-07-dimensional-weight';
 import { post as p08 } from './post-08-automation';
 import { post as p09 } from './post-09-electronics';
 import { post as p10 } from './post-10-furniture';
+import { post as p11 } from './post-11-global-buyers';
 
 /** Newest first. */
-export const posts: Post[] = [p01, p02, p03, p04, p05, p06, p07, p08, p09, p10].sort(
+export const posts: Post[] = [p01, p02, p03, p04, p05, p06, p07, p08, p09, p10, p11].sort(
   (a, b) => b.date.localeCompare(a.date),
 );
 

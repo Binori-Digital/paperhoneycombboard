@@ -1,27 +1,35 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { bySlug, posts, readingMinutes } from '../content/stories';
-import { LOCALES, LOCALE_LANG, postPath, storyPath, prefixFor, formatDate } from '../content/stories/types';
-import type { Locale } from '../content/stories/types';
+import { LOCALE_LANG, MAIN_LOCALES, storyPath, formatDate } from '../content/stories/types';
+import type { StoryLocale, Locale } from '../content/stories/types';
 
-interface Props { slug: string; locale: Locale; }
+interface Props { slug: string; locale: StoryLocale; }
 const { slug, locale } = Astro.props;
 
 const post = bySlug(slug)!;
-const t = post.i18n[locale];
+const t = post.i18n[locale]!;
 const site = 'https://www.paperhoneycombboard.com';
-const url = `${site}${postPath(locale, slug)}`;
-const prefix = prefixFor(locale);
-const minutes = readingMinutes(post, locale);
 
+// Article-only languages (th/es/fr) use English site chrome and prefix-only URLs
+const isMain = (MAIN_LOCALES as string[]).includes(locale);
+const navLocale = (isMain ? locale : 'en') as Locale;
+const pathFor = (l: string) => (l === 'en' ? `/story/${slug}/` : `/${l}/story/${slug}/`);
+const url = `${site}${pathFor(locale)}`;
+const prefix = isMain && locale !== 'en' ? `/${locale}` : '';
+const backHref = isMain ? storyPath(locale as Locale) : '/story/';
+const minutes = readingMinutes(post, locale as any);
+
+const relatedLocale = (p: NonNullable<ReturnType<typeof bySlug>>) =>
+  (p.i18n as any)[locale] ? locale : 'en';
 const related = post.related
   .map((s) => posts.find((p) => p.slug === s))
   .filter(Boolean)
   .slice(0, 2);
 
 const alternates = [
-  ...LOCALES.map((l) => ({ code: l, href: postPath(l, slug) })),
-  { code: 'x-default', href: postPath('en', slug) },
+  ...Object.keys(post.i18n).map((l) => ({ code: l, href: pathFor(l) })),
+  { code: 'x-default', href: pathFor('en') },
 ];
 
 const articleSchema = {
@@ -59,7 +67,7 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: `${site}${prefix}/` },
-    { '@type': 'ListItem', position: 2, name: 'Story', item: `${site}${storyPath(locale)}` },
+    { '@type': 'ListItem', position: 2, name: 'Story', item: `${site}${backHref}` },
     { '@type': 'ListItem', position: 3, name: t.title },
   ],
 };
@@ -77,10 +85,10 @@ const ctaSecondaryHref = slug === 'air-freight-tare-weight-cost'
 <Layout
   title={t.title}
   description={t.description}
-  canonical={postPath(locale, slug)}
+  canonical={pathFor(locale)}
   ogImage={post.image}
   lang={LOCALE_LANG[locale]}
-  locale={locale}
+  locale={navLocale}
   alternates={alternates}
   schema={articleSchema}
 >
@@ -90,7 +98,7 @@ const ctaSecondaryHref = slug === 'air-freight-tare-weight-cost'
   <article class="post">
     <header class="post__head">
       <div class="container post__head-inner">
-        <a href={storyPath(locale)} class="post__back">&larr; Story</a>
+        <a href={backHref} class="post__back">&larr; Story</a>
         <h1 class="post__title">{t.title}</h1>
         <p class="post__excerpt">{t.excerpt}</p>
         <p class="post__meta">
@@ -152,11 +160,11 @@ const ctaSecondaryHref = slug === 'air-freight-tare-weight-cost'
           <h2>{t.relatedLabel}</h2>
           <div class="post__related-grid">
             {related.map((r) => (
-              <a href={postPath(locale, r!.slug)} class="rel-card">
+              <a href={relatedLocale(r!) === 'en' ? `/story/${r!.slug}/` : `/${relatedLocale(r!)}/story/${r!.slug}/`} class="rel-card">
                 <div class="rel-card__img" style={`--bg:url('${r!.image}')`} aria-hidden="true"></div>
                 <div class="rel-card__body">
-                  <h3>{r!.i18n[locale].title}</h3>
-                  <p>{r!.i18n[locale].excerpt}</p>
+                  <h3>{(r!.i18n as any)[relatedLocale(r!)].title}</h3>
+                  <p>{(r!.i18n as any)[relatedLocale(r!)].excerpt}</p>
                 </div>
               </a>
             ))}
