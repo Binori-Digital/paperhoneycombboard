@@ -1,14 +1,28 @@
 ---
 import Layout from '../layouts/Layout.astro';
+const updated = 'September 2026';
 ---
-<Layout title="Terms of Use | phb" description="Terms of use for phb Paper Honeycomb Board website." canonical="/terms/" noindex={false}>
+<Layout title="Terms of Use | phb" description="Terms of use for the phb Paper Honeycomb Board website, operated by Quinocycle Sdn Bhd, Malaysia." canonical="/terms/">
   <section class="section"><div class="container" style="max-width:720px">
     <h1>Terms of Use</h1>
-    <p style="color:#666;margin:1rem 0 2rem">Last updated: January 2024</p>
-    <p>By accessing www.paperhoneycombboard.com you agree to these terms. All content is owned by phb and may not be reproduced without permission.</p>
+    <p style="color:#666;margin:1rem 0 2rem">Last updated: {updated}</p>
+
+    <p>By accessing www.paperhoneycombboard.com you agree to these terms. This site is operated by Quinocycle Sdn Bhd (SSM 202001029919), trading as phb Paper Honeycomb Board. Site content and branding are owned by Quinocycle Sdn Bhd and may not be reproduced without permission.</p>
+
+    <h2 style="margin:2rem 0 0.75rem">Product Information and Figures</h2>
+    <p>Specifications on this site describe typical builds. Because every product is made to specification, actual weights, dimensions and load performance depend on the build agreed for your cargo.</p>
+    <p>Cost and savings figures — including freight savings per pallet and the savings calculator — are illustrative estimates based on stated assumptions such as a 20kg tare-weight difference and the freight rate you enter. They are not quotations and not a guarantee of results. Freight rates vary by route, carrier and season, so please verify against your own freight invoices.</p>
+
+    <h2 style="margin:2rem 0 0.75rem">Regulatory Statements</h2>
+    <p>Paper honeycomb is exempt from ISPM-15 because processed paper is not regulated wood packaging material. This describes the material, not a certification issued to us. Importers remain responsible for their own compliance with the rules of the destination country.</p>
+
     <h2 style="margin:2rem 0 0.75rem">Limitation of Liability</h2>
-    <p>phb provides product specifications in good faith. Actual performance may vary. We recommend testing materials for your specific application before bulk ordering.</p>
+    <p>Product information is provided in good faith. Actual performance varies with cargo, handling and transit conditions, and standard honeycomb is not waterproof. We recommend testing samples for your specific application before placing a bulk order.</p>
+
     <h2 style="margin:2rem 0 0.75rem">Governing Law</h2>
     <p>These terms are governed by the laws of Malaysia.</p>
+
+    <h2 style="margin:2rem 0 0.75rem">Contact</h2>
+    <p>Questions about these terms: <a href="mailto:sales@quinocycle.com" style="text-decoration:underline">sales@quinocycle.com</a>.</p>
   </div></section>
 </Layout>

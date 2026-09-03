@@ -27,7 +27,7 @@ const faqSchema = {
       "name": "Where is phb paper honeycomb board available in Malaysia?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "phb maintains KL logistics hub stock in Kuala Lumpur with JIT delivery to Shah Alam, Petaling Jaya, Klang Valley, and Johor Bahru. Direct routes to Port Klang (North and West Ports) are available daily."
+        "text": "phb manufactures in Balakong, Selangor, with delivery across the Klang Valley including Shah Alam, Petaling Jaya, Kuala Lumpur, Kajang and Cheras, and scheduled runs to Johor Bahru and Port Klang."
       }
     },
     {
@@ -89,16 +89,21 @@ const productSchema = {
   "brand": { "@type": "Brand", "name": "phb" },
   "manufacturer": {
     "@type": "Organization",
-    "name": "phb Paper Honeycomb Board",
-    "address": { "@type": "PostalAddress", "addressLocality": "Johor Bahru", "addressCountry": "MY" }
+    "name": "Quinocycle Sdn Bhd",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "No.13, Jalan Taming P/1, Taming Jaya",
+      "addressLocality": "Balakong",
+      "postalCode": "43300",
+      "addressRegion": "Selangor",
+      "addressCountry": "MY"
+    }
   },
   "offers": {
     "@type": "Offer",
-    "price": 0,
-    "priceCurrency": "USD",
     "availability": "https://schema.org/InStock",
-    "url": "https://www.paperhoneycombboard.com/#contact",
-    "description": "Custom quote — contact for pricing."
+    "url": "https://www.paperhoneycombboard.com/contact/",
+    "description": "Made to specification — contact for a quote."
   }
 };
 ---
@@ -250,8 +255,8 @@ const productSchema = {
         <div class="compliance-row">
           <div class="feature-card__icon">📋</div>
           <div>
-            <strong>Automated Compliance</strong>
-            <p>Certifications are pre-baked into the material properties of every unit.</p>
+            <strong>Exempt by Material, Not by Paperwork</strong>
+            <p>The exemption comes from what the material is, so there is no certificate to chase for any shipment.</p>
           </div>
         </div>
       </div>
@@ -267,7 +272,7 @@ const productSchema = {
           Each phb pallet weighs ~5kg vs ~25kg for wood — 20kg less tare weight per pallet.
           Enter your monthly pallet volume and freight rate to see the estimated air-freight saving.
         </p>
-        <a href="/contact/" class="btn btn--green">Open Widget</a>
+        <a href="/contact/" class="btn btn--green">Get a Quote</a>
       </div>
       <div class="calc-widget" role="form" aria-label="Weight savings calculator">
         <label for="currency">Currency</label>
@@ -303,7 +308,7 @@ const productSchema = {
           <div class="feature-card__icon" style="background:#F5C8A0">⚙️</div>
           <h3 class="feature-card__title">Electronics</h3>
           <p class="feature-card__text">
-            Anti-static, shock-absorbent packaging for high-value components and microchips.
+            Shock-absorbent crating and die-cut fitments for high-value components, pairing with your ESD inner packaging.
           </p>
           <a href="/honeycomb-panels/" class="explore-link">Explore →</a>
         </article>
@@ -342,7 +347,7 @@ const productSchema = {
         </details>
         <details class="faq-item">
           <summary>Where is phb available in Malaysia?</summary>
-          <p>We maintain KL hub stock with JIT delivery to Shah Alam, Petaling Jaya, Klang Valley, and Johor Bahru. Direct routes to Port Klang (North &amp; West Ports) available daily.</p>
+          <p>We manufacture in Balakong, Selangor with JIT delivery across the Klang Valley &mdash; Shah Alam, Petaling Jaya, Kuala Lumpur, Kajang and Cheras &mdash; plus scheduled runs to Johor Bahru and Port Klang.</p>
         </details>
         <details class="faq-item">
           <summary>Is paper honeycomb board 100% recyclable?</summary>
