@@ -1,0 +1,138 @@
+---
+import { notice } from '../content/notice';
+
+interface Props { locale?: string; }
+const { locale = 'en' } = Astro.props;
+
+// Not rendered at all if the site is built after the notice has expired
+const active = !!notice && Date.now() < Date.parse(notice.showUntil);
+const t = notice ? ((notice.text as Record<string, typeof notice.text.en>)[locale] ?? notice.text.en) : null;
+---
+
+{active && notice && t && (
+  <aside
+    class="holiday"
+    aria-label={t.eyebrow}
+    data-notice-id={notice.id}
+    data-show-from={notice.showFrom}
+    data-show-until={notice.showUntil}
+  >
+    <div class="container holiday__inner">
+      <span class="holiday__flag" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><defs><clipPath id="cf-my-notice"><circle cx="12" cy="12" r="12"/></clipPath></defs><g clip-path="url(#cf-my-notice)"><rect width="24" height="24" fill="#fff"/><g fill="#cc0001"><rect y="0" width="24" height="1.75"/><rect y="3.5" width="24" height="1.75"/><rect y="7" width="24" height="1.75"/><rect y="10.5" width="24" height="1.75"/><rect y="14" width="24" height="1.75"/><rect y="17.5" width="24" height="1.75"/><rect y="21" width="24" height="1.75"/></g><rect width="13" height="12.25" fill="#010066"/><circle cx="5.5" cy="6" r="3.1" fill="#fc0"/><circle cx="6.7" cy="6" r="2.6" fill="#010066"/><path fill="#fc0" d="M10.2 6l1.9.44-1.86.55 1.19 1.54-1.7-.95-.48 1.86-.47-1.86-1.7.95 1.19-1.54L6.4 6.44 8.3 6l-1.9-.44 1.87-.55-1.19-1.54 1.7.95.47-1.86.48 1.86 1.7-.95-1.19 1.54 1.86.55z"/></g></svg>
+      </span>
+      <div class="holiday__text">
+        <p class="holiday__eyebrow">{t.eyebrow}</p>
+        <p class="holiday__title">{t.title}</p>
+        <p class="holiday__body">{t.body}</p>
+      </div>
+      <button type="button" class="holiday__close" aria-label={t.close}>
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </aside>
+)}
+
+<style>
+  .holiday {
+    position: relative;
+    background: #010066;
+    color: #fff;
+    border-bottom: 5px solid #cc0001;
+  }
+  /* Yellow rule along the top, echoing the Jalur Gemilang */
+  .holiday::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 4px;
+    background: #ffcc00;
+  }
+  .holiday__inner {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding-top: 1.35rem;
+    padding-bottom: 1.2rem;
+  }
+  .holiday__flag {
+    flex-shrink: 0;
+    display: flex;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px #fff;
+  }
+  .holiday__flag svg { width: 100%; height: 100%; display: block; }
+  .holiday__text { flex: 1; min-width: 0; }
+  .holiday__eyebrow {
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.75);
+  }
+  .holiday__title {
+    font-size: clamp(1.35rem, 2.6vw, 1.95rem);
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: #ffcc00;
+    margin: 0.15rem 0 0.35rem;
+  }
+  .holiday__body {
+    font-size: clamp(0.9rem, 1.2vw, 1.02rem);
+    line-height: 1.6;
+    max-width: 880px;
+  }
+  .holiday__close {
+    flex-shrink: 0;
+    align-self: flex-start;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    color: #fff;
+    font-size: 1.6rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .holiday__close:hover,
+  .holiday__close:focus-visible {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #fff;
+  }
+
+  @media (max-width: 640px) {
+    .holiday__inner { gap: 0.85rem; align-items: flex-start; padding-top: 1.15rem; }
+    .holiday__flag { width: 38px; height: 38px; box-shadow: 0 0 0 2px #fff; margin-top: 0.2rem; }
+    .holiday__close { width: 34px; height: 34px; font-size: 1.35rem; }
+  }
+</style>
+
+<script>
+  const banner = document.querySelector<HTMLElement>('.holiday');
+  if (banner) {
+    const now = Date.now();
+    const from = Date.parse(banner.dataset.showFrom ?? '');
+    const until = Date.parse(banner.dataset.showUntil ?? '');
+    const key = `phb-notice-dismissed:${banner.dataset.noticeId}`;
+
+    let dismissed = false;
+    try { dismissed = localStorage.getItem(key) === '1'; } catch { /* storage blocked */ }
+
+    // Hides itself after the holiday even if the site has not been rebuilt
+    if (now < from || now >= until || dismissed) {
+      banner.remove();
+    } else {
+      banner.querySelector('.holiday__close')?.addEventListener('click', () => {
+        try { localStorage.setItem(key, '1'); } catch { /* storage blocked */ }
+        banner.remove();
+      });
+    }
+  }
+</script>

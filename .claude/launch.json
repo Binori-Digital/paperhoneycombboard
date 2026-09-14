@@ -12,6 +12,13 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "preview"],
       "port": 4322
+    },
+    {
+      "name": "Astro Preview 4330",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "preview", "--", "--port", "4330"],
+      "port": 4330,
+      "autoPort": false
     }
   ]
 }
