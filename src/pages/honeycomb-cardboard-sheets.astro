@@ -1,0 +1,239 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const site = 'https://www.paperhoneycombboard.com';
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Honeycomb Cardboard Sheets (Paper Honeycomb Board)",
+  "description": "Rigid, lightweight honeycomb cardboard sheets made from kraft paper — a hexagonal core laminated between flat liners. Cut to size in thicknesses from about 10mm upward. Manufactured in Malaysia, shipped worldwide.",
+  "brand": { "@type": "Brand", "name": "phb" },
+  "material": "Kraft paper, water-based adhesive",
+  "manufacturer": {
+    "@type": "Organization",
+    "name": "Quinocycle Sdn Bhd",
+    "address": { "@type": "PostalAddress", "addressLocality": "Balakong", "addressRegion": "Selangor", "addressCountry": "MY" }
+  },
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock",
+    "url": `${site}/contact/`,
+    "description": "Cut to size and made to specification — contact for a quote."
+  }
+};
+
+const faq = [
+  {
+    q: 'What are honeycomb cardboard sheets?',
+    a: 'Honeycomb cardboard sheets are rigid sandwich panels made entirely of paper: a core of kraft paper formed into hexagonal cells, glued between two flat kraft liners. The hexagonal geometry spreads load across the cell walls, so a sheet that is mostly air behaves like a much heavier solid board. They are also called paper honeycomb board or honeycomb paperboard.',
+  },
+  {
+    q: 'What thicknesses do honeycomb cardboard sheets come in?',
+    a: 'Core thickness starts at roughly 10mm and runs to 50mm and beyond, with cell sizes of about 8–25mm. Thinner, small-cell sheets suit layer pads and displays; thicker, large-cell sheets suit pallets, crates and structural panels. Every sheet phb makes is cut to the customer\'s specification.',
+  },
+  {
+    q: 'How strong is a honeycomb cardboard sheet compared to corrugated cardboard?',
+    a: 'Far stiffer in bending and far stronger in flat compression. Corrugated board is designed to fold into boxes; honeycomb board is designed to stay flat and carry load. Engineered honeycomb panels handle compression forces around 12kN, which is why they replace plywood in pallets and crates rather than replacing carton board.',
+  },
+  {
+    q: 'Are honeycomb cardboard sheets waterproof?',
+    a: 'No. Like all paper products, standard sheets lose strength when saturated. Moisture-resistant coatings, PE lamination or wax treatment can be specified for humid transit or damp environments. For permanently wet duty, plastic or treated plywood is the better material.',
+  },
+  {
+    q: 'Where can I buy honeycomb cardboard sheets in Malaysia?',
+    a: 'phb (Quinocycle Sdn Bhd) manufactures honeycomb cardboard sheets in Balakong, Selangor, and delivers across the Klang Valley, Johor and nationwide, with export via Port Klang and KLIA. Send your sheet size, thickness and quantity by WhatsApp to +6016-891 6381 or email sales@quinocycle.com for a quote.',
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faq.map(f => ({ "@type": "Question", "name": f.q, "acceptedAnswer": { "@type": "Answer", "text": f.a } })),
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": `${site}/` },
+    { "@type": "ListItem", "position": 2, "name": "Honeycomb Cardboard Sheets" }
+  ]
+};
+---
+
+<Layout
+  title="Honeycomb Cardboard Sheets Malaysia – Cut to Size | phb"
+  description="Rigid, lightweight honeycomb cardboard sheets cut to your size and thickness (10mm+). 100% recyclable, ISPM-15 exempt, made in Malaysia. Sample kit available."
+  canonical="/honeycomb-cardboard-sheets/"
+  schema={productSchema}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} slot="head" />
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="sheets-heading">
+    <div class="container hero__grid">
+      <div>
+        <span class="badge">Product – Honeycomb Sheets</span>
+        <h1 class="hero__title" id="sheets-heading">Honeycomb<br />Cardboard Sheets</h1>
+        <p class="hero__desc">
+          Rigid, flat and startlingly light. Paper honeycomb board sheets give you plywood-class
+          stiffness at a fraction of the weight — cut to your size and thickness, 100% recyclable,
+          and made in Balakong, Selangor.
+        </p>
+        <div class="hero__actions">
+          <a href="/contact/" class="btn btn--green">Get a Sheet Quote</a>
+          <a href="/paper-honeycomb-board-guide/" class="btn btn--outline">How It's Made</a>
+        </div>
+      </div>
+      <div class="hero__img-wrap">
+        <img
+          src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80"
+          alt="Close-up of a paper honeycomb sheet showing the hexagonal kraft cell structure"
+          width="600" height="450"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- TAKEAWAYS (AI answer engines) -->
+  <section class="section" style="padding-bottom:0">
+    <div class="container">
+      <aside class="lp-takeaways" aria-label="Key facts">
+        <h2>Honeycomb cardboard sheets at a glance</h2>
+        <ul>
+          <li>All-paper sandwich panel: hexagonal kraft core laminated between two flat kraft liners.</li>
+          <li>Thickness from about 10mm upward; cell sizes of roughly 8–25mm; every sheet cut to specification.</li>
+          <li>Engineered panels handle compression forces around 12kN — stiff enough to replace plywood, not just corrugated.</li>
+          <li>Up to 80% lighter than the solid board it replaces; 100% recyclable in ordinary paper streams.</li>
+          <li>ISPM-15 exempt worldwide; not waterproof unless coated or laminated.</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- PROSE -->
+  <section class="section">
+    <div class="container lp-prose">
+      <h2>What makes a honeycomb sheet different from cardboard</h2>
+      <p>
+        Ordinary corrugated cardboard is built to fold. It has a single fluted layer, it bends easily
+        across the flute, and it collapses under a few hundred kilograms of flat load. That is exactly
+        what you want in a shipping carton and exactly what you do not want in a pallet deck, a
+        display panel or a crate wall.
+      </p>
+      <p>
+        A honeycomb cardboard sheet is built to stay flat. Its core is thousands of hexagonal cells
+        standing on edge, each one a tiny column. Load applied to the face is carried straight down
+        those cell walls, which is why a 20mm sheet that is mostly air can support a machine, a
+        stacked pallet load or a two-metre exhibition wall without bowing.
+      </p>
+      <p>
+        The result is a material that lives in the gap between corrugated and plywood: far stiffer
+        and stronger than the former, far lighter and fully recyclable compared with the latter.
+      </p>
+
+      <h2>Choosing thickness and cell size</h2>
+      <p>
+        Two numbers decide how a sheet behaves. <strong>Core thickness</strong> governs stiffness over
+        a span — a thicker sheet resists bending over a longer unsupported distance. <strong>Cell
+        size</strong> governs point-load and crush strength — smaller cells put more wall under every
+        square centimetre. Paper grammage and liner grade fine-tune both.
+      </p>
+      <div class="table-wrap" role="region" aria-label="Typical honeycomb sheet specifications" tabindex="0">
+        <table class="lp-specs">
+          <thead><tr><th>Typical use</th><th>Core thickness</th><th>Cell size</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Layer pads &amp; dividers</td><td>10–15mm</td><td>8–12mm</td><td>Flat, light, stacks tight; the corrugated upgrade.</td></tr>
+            <tr><td>Displays, signage, models</td><td>10–25mm</td><td>10–15mm</td><td>Takes print and paint; clean cut edges.</td></tr>
+            <tr><td>Crate walls &amp; fitments</td><td>20–40mm</td><td>12–20mm</td><td>Impact absorption through progressive cell crushing.</td></tr>
+            <tr><td>Pallet decks &amp; structural panels</td><td>30–50mm+</td><td>15–25mm</td><td>Plywood-class static loads; pair with runners or frames.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="lp-note">
+        Typical ranges only. Every phb sheet is made to specification — tell us the load, span and
+        finish you need and we will set thickness, cell size and paper grade accordingly.
+      </p>
+
+      <h2>Sizes and finishing</h2>
+      <p>
+        Sheets are supplied cut to your dimensions, including large formats for panels and pallets.
+        Kraft liners take flexo or screen print for branding, and moisture-resistant coatings or PE
+        lamination are available for humid routes. For die-cut fitments, edge protectors and
+        corner blocks, see <a href="/honeycomb-board-packaging/">honeycomb board packaging</a>.
+      </p>
+      <p>
+        Working on props, models, furniture prototypes or set pieces rather than packaging? Our
+        <a href="/cardboard-sheets-for-crafts/">thick cardboard sheets for crafts and makers</a> page
+        covers cutting, finishing and small-quantity supply for studios and schools.
+      </p>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="lp-story">
+        <p class="lp-story__label">A typical brief — illustrative</p>
+        <p>
+          Picture a display builder making exhibition walls from 10mm foam board and 18mm plywood.
+          The foam bows after a day under the lights; the plywood needs two people to carry and a
+          truck to move. The question that lands in our inbox: can one material replace both?
+        </p>
+        <p>
+          A 25mm honeycomb sheet with a 12mm cell is the usual answer. Stiff enough to stand two
+          metres tall unsupported, light enough for one person to carry a 1.2m panel under each
+          arm, and it takes printed graphics directly on the kraft face. When the show ends, the
+          walls go into the venue's paper recycling instead of a skip.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section lp-faq" aria-labelledby="sheets-faq-heading">
+    <div class="container lp-faq__inner">
+      <h2 id="sheets-faq-heading">Honeycomb cardboard sheets — questions we get asked</h2>
+      {faq.map(f => (
+        <details>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <!-- RELATED -->
+  <section class="section">
+    <div class="container">
+      <h2 style="margin-bottom:1.5rem">Where honeycomb sheets go next</h2>
+      <div class="lp-links">
+        <a href="/honeycomb-pallet/" class="lp-link"><strong>Paper Pallets</strong><span>~5kg pallets built from thick honeycomb sheet and runners. ISPM-15 exempt.</span><em>See pallets &rarr;</em></a>
+        <a href="/honeycomb-box/" class="lp-link"><strong>Honeycomb Boxes &amp; Crates</strong><span>Crate walls from 20–40mm sheet replace plywood at up to 80% less weight.</span><em>See boxes &rarr;</em></a>
+        <a href="/honeycomb-panels/" class="lp-link"><strong>Panels for Furniture &amp; Displays</strong><span>Architectural and retail applications of large-format honeycomb sheet.</span><em>See panels &rarr;</em></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="lp-cta">
+        <h2>Tell us the sheet. We'll tell you the spec.</h2>
+        <p>Send the dimensions, thickness and quantity you have in mind — or the job you're trying to do — and get a quote plus a sample kit with three densities to test.</p>
+        <div class="lp-cta__actions">
+          <a href="/contact/" class="btn btn--dark">Get a Sheet Quote</a>
+          <a href="https://wa.me/60168916381" target="_blank" rel="noopener" class="btn btn--outline">WhatsApp Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 1rem; }
+</style>

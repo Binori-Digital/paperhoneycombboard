@@ -60,6 +60,11 @@ Every product is produced to specification: dimensions (incl. rack-compatible an
 - **/honeycomb-pallet/** — ISPM-15 exempt paper pallets
 - **/honeycomb-board-vs-plywood/** — Comparison vs plywood and plastic
 - **/honeycomb-panels/** — Panels for furniture, displays, architecture
+- **/honeycomb-board-packaging/** — Packaging system hub: pallets, crates, edge protectors, layer pads, fitments, void fill
+- **/honeycomb-cardboard-sheets/** — Cut-to-size honeycomb cardboard sheets; thickness (10–50mm+) and cell size (8–25mm) guide
+- **/cardboard-sheets-for-crafts/** — Thick rigid sheets for makers, schools, props, cosplay, displays; cutting and finishing guide
+- **/honeycomb-supplier-malaysia/** — Supplier overview: range, Klang Valley and nationwide coverage, ordering process, export
+- **/paper-pallet-manufacturer/** — Manufacturing process, typical footprints (1200x1000, 1200x800 EUR, 1100x1100, 1219x1016), limits
 - **/regional/** — Malaysia & Singapore logistics: Klang Valley JIT delivery, Port Klang access
 - **/story/** — Blog: 11+ articles on ISPM-15 rejections, PPWR/EPR regulation, tare weight, container humidity, dimensional weight, warehouse automation, electronics packaging, furniture damage claims, timber volatility, manual handling, and a global buyer's guide
 - **/contact/** — Sample kit requests: WhatsApp-based enquiry form, address, hours

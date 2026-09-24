@@ -1,0 +1,273 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const site = 'https://www.paperhoneycombboard.com';
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Thick Cardboard Sheets for Crafts, Models & Props",
+  "description": "Thick, rigid, lightweight honeycomb cardboard sheets for makers, schools, set builders and designers. Cuts clean with a craft knife, stays flat, takes paint and print. Supplied in sheet quantities from Malaysia.",
+  "brand": { "@type": "Brand", "name": "phb" },
+  "material": "Kraft paper honeycomb",
+  "manufacturer": {
+    "@type": "Organization",
+    "name": "Quinocycle Sdn Bhd",
+    "address": { "@type": "PostalAddress", "addressLocality": "Balakong", "addressRegion": "Selangor", "addressCountry": "MY" }
+  },
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock",
+    "url": `${site}/contact/`,
+    "description": "Sheet quantities for studios, schools and workshops — contact for a quote."
+  }
+};
+
+const faq = [
+  {
+    q: 'What is the best thick cardboard for crafts and models?',
+    a: 'For anything that must stay flat and rigid — architectural models, cosplay armour, stage props, display stands, furniture prototypes — paper honeycomb sheet outperforms corrugated cardboard and foam board. It does not bow under its own weight, cuts to a clean edge, and takes paint, glue and print directly on its kraft face.',
+  },
+  {
+    q: 'How do you cut honeycomb cardboard sheets?',
+    a: 'Sheets up to about 20mm cut cleanly with a sharp craft knife in two or three passes against a straight edge. Thicker sheets cut best with a fine-tooth hand saw, jigsaw or bandsaw. Curves can be cut with a jigsaw or hot-wire-free scroll saw. Seal cut edges with a strip of kraft tape or a filler paste for a finished look.',
+  },
+  {
+    q: 'Can you paint honeycomb cardboard?',
+    a: 'Yes. The kraft liner accepts acrylic, emulsion, spray paint and most primers. For a smooth gallery finish, apply a coat of gesso or PVA first, sand lightly, then paint. Water-heavy techniques should be built up in thin layers so the paper face does not saturate.',
+  },
+  {
+    q: 'Is honeycomb cardboard lighter than foam board?',
+    a: 'Comparable by area, but honeycomb is much stiffer for the same thickness and far more rigid in large panels. Foam board bows and dents; honeycomb resists both. It is also fully recyclable, where foam board is a laminate that usually goes to landfill.',
+  },
+  {
+    q: 'Can I order a small quantity of sheets in Malaysia?',
+    a: 'Tell us how many sheets you need and the size and thickness, and we will quote. We are a manufacturer rather than a retail shop, so orders are quoted per job — studios, schools, event builders and design offices are regular customers. Collection from Balakong, Selangor is welcome by appointment, and we deliver across the Klang Valley.',
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faq.map(f => ({ "@type": "Question", "name": f.q, "acceptedAnswer": { "@type": "Answer", "text": f.a } })),
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": `${site}/` },
+    { "@type": "ListItem", "position": 2, "name": "Cardboard Sheets for Crafts" }
+  ]
+};
+---
+
+<Layout
+  title="Thick Cardboard Sheets for Crafts, Models & Props | phb"
+  description="Thick, rigid, lightweight cardboard sheets for crafts, models, cosplay, props and displays. Cuts clean, stays flat, takes paint. Sheet quantities from Malaysia."
+  canonical="/cardboard-sheets-for-crafts/"
+  schema={productSchema}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} slot="head" />
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="crafts-heading">
+    <div class="container hero__grid">
+      <div>
+        <span class="badge badge--peach">For Makers, Studios &amp; Schools</span>
+        <h1 class="hero__title" id="crafts-heading">Thick Cardboard Sheets<br />for Crafts &amp; Models</h1>
+        <p class="hero__desc">
+          The board that stays flat. Lightweight honeycomb cardboard sheets that cut clean with a
+          craft knife, hold a two-metre wall without bowing, and take paint straight on the face —
+          for models, props, cosplay, displays and prototypes.
+        </p>
+        <div class="hero__actions">
+          <a href="/contact/" class="btn btn--green">Quote My Sheets</a>
+          <a href="#cutting" class="btn btn--outline">How to Cut &amp; Finish</a>
+        </div>
+      </div>
+      <div class="hero__img-wrap">
+        <img
+          src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=800&q=80"
+          alt="Craft desk with cutting mat, kraft tape, rotary cutter, scissors and washi tape"
+          width="600" height="450"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- TAKEAWAYS -->
+  <section class="section" style="padding-bottom:0">
+    <div class="container">
+      <aside class="lp-takeaways" aria-label="Key facts">
+        <h2>Why makers switch to honeycomb sheet</h2>
+        <ul>
+          <li>Stays flat and rigid at 10–50mm thick — no bowing like foam board, no flex like corrugated.</li>
+          <li>Cuts clean with a craft knife (up to ~20mm) or fine-tooth saw; edges seal with kraft tape or filler.</li>
+          <li>Takes acrylic, emulsion, spray paint, PVA, hot glue and print directly on the kraft face.</li>
+          <li>A 1.2m panel lifts with one hand; a full sheet is light enough to carry up a stairwell.</li>
+          <li>All paper, 100% recyclable — props and sets go to paper recycling, not the skip.</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- USES -->
+  <section class="section" aria-labelledby="uses-heading">
+    <div class="container">
+      <h2 id="uses-heading">What people build with it</h2>
+      <div class="grid-3" style="margin-top:2.5rem">
+        <article class="feature-card">
+          <div class="feature-card__icon">🏛️</div>
+          <h3 class="feature-card__title">Architectural &amp; Design Models</h3>
+          <p class="feature-card__text">Base boards, massing models and 1:1 mockups that stay dead flat on the table and survive the trip to the client.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-card__icon">🎭</div>
+          <h3 class="feature-card__title">Stage, Film &amp; Event Props</h3>
+          <p class="feature-card__text">Set flats, scenery, signage and oversized props — rigid enough to stand, light enough to strike in minutes.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-card__icon">🛡️</div>
+          <h3 class="feature-card__title">Cosplay &amp; Costume Armour</h3>
+          <p class="feature-card__text">Shields, plates and weapons with real rigidity at a weight you can wear all day. Sand, prime, paint.</p>
+        </article>
+        <article class="feature-card feature-card--peach">
+          <div class="feature-card__icon">🖼️</div>
+          <h3 class="feature-card__title">Exhibition &amp; Retail Displays</h3>
+          <p class="feature-card__text">Freestanding walls, plinths and point-of-sale units, printed direct or wrapped. Recyclable after the show.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-card__icon">🪑</div>
+          <h3 class="feature-card__title">Furniture Prototypes</h3>
+          <p class="feature-card__text">Full-scale chairs, tables and joinery mockups to test proportions before committing to timber or steel.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-card__icon">🎒</div>
+          <h3 class="feature-card__title">School &amp; University Projects</h3>
+          <p class="feature-card__text">Science fair boards, STEM structures, art installations and studio work — safe to cut, safe to recycle.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW TO -->
+  <section class="section section--dark" id="cutting" aria-labelledby="cut-heading">
+    <div class="container lp-prose" style="color:#fff">
+      <h2 id="cut-heading" style="border-color:#39FF14">How to cut, join and finish honeycomb sheet</h2>
+      <p style="color:#ddd">
+        <strong style="color:#39FF14">Cutting.</strong> Up to around 20mm, a fresh craft-knife blade against a
+        steel rule does it in two or three passes — score the top liner, cut the core, finish the
+        bottom liner. Thicker sheets want a fine-tooth hand saw, jigsaw or bandsaw. Curves: jigsaw or
+        scroll saw. Always cut on a mat or sacrificial board.
+      </p>
+      <p style="color:#ddd">
+        <strong style="color:#39FF14">Joining.</strong> PVA and hot glue both bond the kraft face well. For
+        butt joints, glue the edge and reinforce with kraft tape or a strip of liner. For structural
+        joints, slot the sheets together (half-lap) or add a timber or honeycomb corner post.
+      </p>
+      <p style="color:#ddd">
+        <strong style="color:#39FF14">Edges.</strong> Open cells show on a raw cut. Seal them with self-adhesive
+        kraft tape, a strip of paper liner, or a skim of filler paste sanded flush — or make them a
+        design feature.
+      </p>
+      <p style="color:#ddd">
+        <strong style="color:#39FF14">Finishing.</strong> Prime with gesso or diluted PVA, sand lightly, then use
+        acrylic, emulsion or spray paint. Build water-heavy techniques in thin layers. Printed graphics
+        can be applied direct to the kraft face or wrapped around the edges.
+      </p>
+      <p style="color:#aaa;font-size:0.9rem">
+        One honest limit: it is paper. Keep it dry, and for anything living outdoors specify a coated or laminated sheet.
+      </p>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="section">
+    <div class="container">
+      <div class="lp-story">
+        <p class="lp-story__label">A classroom scenario — illustrative</p>
+        <p>
+          Imagine a school design department losing a week of every project to foam board that
+          dents, warps and cannot be recycled. For a term's bridge-building unit they switch to 15mm
+          honeycomb sheet: students cut it with craft knives, glue it with PVA, and the strongest
+          bridge holds a stack of textbooks before it fails — through the joints, not the board.
+        </p>
+        <p>
+          From there it becomes a standing order of mixed thicknesses each term, with the offcuts
+          going to the school's paper recycling. That is the pattern we see: the material stops
+          being the reason a model doesn't match the drawing.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION IMAGE + THICKNESS -->
+  <section class="section" style="padding-top:0">
+    <div class="container feature-row">
+      <div class="feature-row__img">
+        <img
+          src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=700&q=80"
+          alt="School desk with stacked books, coloured pencils and alphabet blocks"
+          width="600" height="400"
+          loading="lazy"
+        />
+      </div>
+      <div class="feature-row__content">
+        <h2>Which thickness should I order?</h2>
+        <div class="table-wrap" role="region" aria-label="Thickness guide for craft projects" tabindex="0" style="margin-top:1.25rem">
+          <table class="lp-specs">
+            <thead><tr><th>Project</th><th>Thickness</th></tr></thead>
+            <tbody>
+              <tr><td>Model base boards, signage</td><td>10–15mm</td></tr>
+              <tr><td>Cosplay plates, small props</td><td>10–20mm</td></tr>
+              <tr><td>Display walls, set flats</td><td>20–30mm</td></tr>
+              <tr><td>Furniture prototypes, plinths</td><td>30–50mm</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="lp-note">Not sure? Ask for the sample kit — three densities to cut, glue and paint before you order.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section lp-faq" aria-labelledby="crafts-faq-heading">
+    <div class="container lp-faq__inner">
+      <h2 id="crafts-faq-heading">Craft &amp; model makers ask us</h2>
+      {faq.map(f => (
+        <details>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="container">
+      <div class="lp-cta">
+        <h2>Get sheets for your next build</h2>
+        <p>Tell us the project, the size and how many sheets you need. We'll quote it, and send a sample kit so you can cut, glue and paint before you commit.</p>
+        <div class="lp-cta__actions">
+          <a href="/contact/" class="btn btn--dark">Quote My Sheets</a>
+          <a href="https://wa.me/60168916381" target="_blank" rel="noopener" class="btn btn--outline">WhatsApp a Photo of Your Project</a>
+        </div>
+      </div>
+      <p style="text-align:center;margin-top:1.5rem;font-size:0.9rem;color:#666">
+        Need industrial quantities or packaging-grade sheet? See <a href="/honeycomb-cardboard-sheets/" style="text-decoration:underline">honeycomb cardboard sheets</a>.
+      </p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .feature-row { border: none; margin-bottom: 0; }
+  .feature-row__content { padding: 2rem 0 0 3rem; }
+  @media (max-width: 768px) { .feature-row__content { padding: 2rem 0 0; } }
+</style>

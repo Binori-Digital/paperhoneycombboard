@@ -1,0 +1,225 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const site = 'https://www.paperhoneycombboard.com';
+
+const businessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "phb Paper Honeycomb Board – Quinocycle Sdn Bhd",
+  "description": "Honeycomb supplier in Malaysia: paper honeycomb board sheets, honeycomb boxes and crates, paper pallets, edge protectors and fitments. Manufactured in Balakong, Selangor; delivered nationwide and exported worldwide.",
+  "url": `${site}/honeycomb-supplier-malaysia/`,
+  "telephone": "+60389626381",
+  "email": "sales@quinocycle.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "No.13, Jalan Taming P/1, Taming Jaya",
+    "addressLocality": "Balakong",
+    "postalCode": "43300",
+    "addressRegion": "Selangor",
+    "addressCountry": "MY"
+  },
+  "areaServed": ["Kuala Lumpur", "Selangor", "Klang Valley", "Johor", "Penang", "Melaka", "Malaysia", "Singapore"],
+  "makesOffer": [
+    { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Honeycomb cardboard sheets", "url": `${site}/honeycomb-cardboard-sheets/` } },
+    { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Honeycomb boxes and crates", "url": `${site}/honeycomb-box/` } },
+    { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Honeycomb paper pallets", "url": `${site}/honeycomb-pallet/` } }
+  ]
+};
+
+const faq = [
+  {
+    q: 'Who is the honeycomb supplier for Malaysia?',
+    a: 'phb, the packaging brand of Quinocycle Sdn Bhd, manufactures paper honeycomb products at its plant in Balakong, Selangor. It supplies honeycomb board sheets, honeycomb boxes and crates, paper pallets, edge protectors and die-cut fitments across Malaysia and exports worldwide.',
+  },
+  {
+    q: 'What honeycomb products can I order?',
+    a: 'Sheets cut to size (roughly 10mm thick upward), heavy-duty boxes and crates, paper pallets in standard and custom footprints, edge and corner protectors, layer pads and dividers, and die-cut internal fitments. Every item is made to specification rather than picked from a catalogue.',
+  },
+  {
+    q: 'Which areas of Malaysia do you deliver to?',
+    a: 'Regular deliveries cover the Klang Valley — Kuala Lumpur, Petaling Jaya, Shah Alam, Klang, Puchong, Kajang, Cheras, Balakong and Serdang — with scheduled runs to Johor, Melaka, Penang and Ipoh. Collection from the Balakong plant is welcome by appointment.',
+  },
+  {
+    q: 'What is the lead time for honeycomb packaging?',
+    a: 'It depends on whether the item is a standard sheet or a custom-engineered crate or pallet, and on quantity. Send the specification and volume and we will give you a dated lead time with the quote rather than a generic promise.',
+  },
+  {
+    q: 'Do you export honeycomb packaging from Malaysia?',
+    a: 'Yes. The Balakong plant is about 40 minutes from Port Klang and under an hour from KLIA. Because paper honeycomb is ISPM-15 exempt, shipments clear customs in any destination country without phytosanitary paperwork.',
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faq.map(f => ({ "@type": "Question", "name": f.q, "acceptedAnswer": { "@type": "Answer", "text": f.a } })),
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": `${site}/` },
+    { "@type": "ListItem", "position": 2, "name": "Honeycomb Supplier Malaysia" }
+  ]
+};
+---
+
+<Layout
+  title="Honeycomb Supplier Malaysia – Board, Boxes, Pallets | phb"
+  description="Honeycomb supplier in Malaysia: sheets, boxes, paper pallets and fitments made in Balakong, Selangor. Klang Valley delivery, nationwide runs, global export."
+  canonical="/honeycomb-supplier-malaysia/"
+  schema={businessSchema}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} slot="head" />
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="supplier-heading">
+    <div class="container hero__grid">
+      <div>
+        <span class="badge">Manufacturer &amp; Supplier</span>
+        <h1 class="hero__title" id="supplier-heading">Honeycomb Supplier<br />in Malaysia</h1>
+        <p class="hero__desc">
+          One plant in Balakong, Selangor. One material engineered into sheets, crates, pallets and
+          fitments. Delivered across the Klang Valley, on scheduled runs nationwide, and exported
+          from Port Klang and KLIA to anywhere your cargo goes.
+        </p>
+        <div class="hero__actions">
+          <a href="/contact/" class="btn btn--green">Request a Quote</a>
+          <a href="/honeycomb-board/" class="btn btn--outline">Coverage Areas</a>
+        </div>
+      </div>
+      <div class="hero__img-wrap">
+        <img
+          src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?w=800&q=80"
+          alt="Warehouse racking stacked with wrapped pallets ready for dispatch"
+          width="600" height="450"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- TAKEAWAYS -->
+  <section class="section" style="padding-bottom:0">
+    <div class="container">
+      <aside class="lp-takeaways" aria-label="Key facts">
+        <h2>phb as your honeycomb supplier</h2>
+        <ul>
+          <li>Manufacturer, not a reseller: paper honeycomb made at No.13 Jalan Taming P/1, Balakong, Selangor.</li>
+          <li>Full range from one material: sheets, boxes and crates, paper pallets, edge protectors, layer pads, fitments.</li>
+          <li>Klang Valley delivery, scheduled runs to Johor, Melaka, Penang and Ipoh; plant collection by appointment.</li>
+          <li>Export-ready: ISPM-15 exempt worldwide, ~40 minutes from Port Klang, under an hour from KLIA.</li>
+          <li>Quoted per job with a dated lead time; sample kit with three densities before you commit.</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- WHAT WE SUPPLY -->
+  <section class="section" aria-labelledby="supply-heading">
+    <div class="container">
+      <h2 id="supply-heading" style="margin-bottom:1.5rem">What we supply</h2>
+      <div class="lp-links">
+        <a href="/honeycomb-cardboard-sheets/" class="lp-link"><strong>Honeycomb Cardboard Sheets</strong><span>Cut to size from ~10mm up. Layer pads, dividers, displays, structural panels.</span><em>Sheets &rarr;</em></a>
+        <a href="/honeycomb-box/" class="lp-link"><strong>Honeycomb Boxes &amp; Crates</strong><span>The wooden crate alternative for machinery, electronics and furniture export.</span><em>Boxes &rarr;</em></a>
+        <a href="/honeycomb-pallet/" class="lp-link"><strong>Paper Pallets</strong><span>~5kg ISPM-15 exempt pallets in standard and custom footprints.</span><em>Pallets &rarr;</em></a>
+        <a href="/honeycomb-board-packaging/" class="lp-link"><strong>Edge Protectors &amp; Fitments</strong><span>Corner blocks, edge profiles, die-cut inserts and void fill engineered to the cargo.</span><em>Packaging &rarr;</em></a>
+        <a href="/honeycomb-panels/" class="lp-link"><strong>Panels for Furniture &amp; Display</strong><span>Large-format sheet for exhibitions, retail fixtures and prototypes.</span><em>Panels &rarr;</em></a>
+        <a href="/cardboard-sheets-for-crafts/" class="lp-link"><strong>Sheets for Studios &amp; Schools</strong><span>Small-quantity rigid sheet for models, props and student projects.</span><em>Crafts &rarr;</em></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW ORDERING WORKS -->
+  <section class="section section--dark" aria-labelledby="order-heading">
+    <div class="container">
+      <h2 id="order-heading">How ordering works</h2>
+      <div class="grid-4" style="margin-top:2.5rem">
+        <div class="stat-box"><div class="stat-box__value">01</div><div class="stat-box__label">Send cargo weight, dimensions, stacking plan and route — or just a photo and a question</div></div>
+        <div class="stat-box"><div class="stat-box__value">02</div><div class="stat-box__label">Our engineers return a specification, a quote in RM (or your currency) and a dated lead time</div></div>
+        <div class="stat-box"><div class="stat-box__value">03</div><div class="stat-box__label">Test the sample kit — three densities to load, cut and drop before you commit</div></div>
+        <div class="stat-box"><div class="stat-box__value">04</div><div class="stat-box__label">Production in Balakong, then delivery, collection or export booking</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY LOCAL -->
+  <section class="section">
+    <div class="container lp-prose">
+      <h2>Why buy honeycomb from a Malaysian manufacturer</h2>
+      <p>
+        Honeycomb board is bulky to ship empty. Importing finished sheets or pallets means paying
+        freight on air, waiting on a container, and living with whatever specification the overseas
+        mill happens to run. A local plant changes the economics: pricing in ringgit, lead times in
+        days rather than weeks, and the ability to change a cell size or a footprint between one
+        order and the next.
+      </p>
+      <p>
+        It also matters for the paperwork you are trying to avoid. Because our product is
+        manufactured from processed kraft paper, every sheet, crate and pallet is exempt from
+        ISPM-15 in every destination market. That is a property of the material, not a certificate
+        we hold — so there is nothing to renew, stamp or present at the border.
+      </p>
+      <h2>Coverage</h2>
+      <p>
+        Regular deliveries run across the Klang Valley: Kuala Lumpur, Petaling Jaya, Shah Alam,
+        Klang, Puchong, Subang Jaya, Kajang, Cheras, Balakong, Serdang, Cyberjaya, Rawang and
+        Sungai Buloh. Scheduled runs reach Johor, Melaka, Penang and Ipoh. Full details for each
+        area — industries served, delivery notes and local questions — are on our
+        <a href="/honeycomb-board/">coverage pages</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="lp-story">
+        <p class="lp-story__label">A typical first order — illustrative</p>
+        <p>
+          Take an electronics exporter in Shah Alam shipping 40 pallets a month to Europe on
+          wooden pallets, each one needing a heat-treatment stamp and a week's notice at the
+          treatment yard. They send us the pallet footprint, the load weight and the stacking
+          height.
+        </p>
+        <p>
+          The quote comes back with a 1200 x 1000mm honeycomb pallet at roughly a fifth of the
+          weight, a sample pair for their forklift team to abuse, and a lead time in days. The first
+          container leaves with no treatment booking on the calendar — and about 800kg less packaging
+          on the bill of lading.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section lp-faq" aria-labelledby="supplier-faq-heading">
+    <div class="container lp-faq__inner">
+      <h2 id="supplier-faq-heading">Supplier questions</h2>
+      {faq.map(f => (
+        <details>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="container">
+      <div class="lp-cta">
+        <h2>Start with a quote, not a commitment</h2>
+        <p>Send what you ship and where it goes. You'll get an engineered spec, a price in ringgit, a dated lead time and a sample kit to test.</p>
+        <div class="lp-cta__actions">
+          <a href="/contact/" class="btn btn--dark">Request a Quote</a>
+          <a href="https://wa.me/60168916381" target="_blank" rel="noopener" class="btn btn--outline">WhatsApp +6016-891 6381</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

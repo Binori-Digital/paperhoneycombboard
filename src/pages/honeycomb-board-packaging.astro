@@ -1,0 +1,215 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const site = 'https://www.paperhoneycombboard.com';
+
+const products = [
+  { name: 'Paper pallets', url: '/honeycomb-pallet/', blurb: '~5kg ISPM-15 exempt pallets in EUR, industrial, Asia and custom footprints.' },
+  { name: 'Honeycomb boxes & crates', url: '/honeycomb-box/', blurb: 'Wooden-crate replacement for machinery, electronics, furniture and project cargo.' },
+  { name: 'Honeycomb cardboard sheets', url: '/honeycomb-cardboard-sheets/', blurb: 'Layer pads, dividers and structural panels cut to size from ~10mm up.' },
+  { name: 'Edge & corner protectors', url: '/contact/', blurb: 'Rigid profiles that spread impact and stop strapping cutting into product edges.' },
+  { name: 'Die-cut fitments & inserts', url: '/contact/', blurb: 'Shaped to the product profile so it is held in place, not floating in void fill.' },
+  { name: 'Void fill & cushioning blocks', url: '/contact/', blurb: 'Honeycomb blocks that absorb impact by progressive cell crushing.' },
+];
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Honeycomb Board Packaging",
+  "description": "Paper honeycomb board packaging from Malaysia: pallets, crates, edge protectors, layer pads, die-cut fitments and void fill — ISPM-15 exempt, up to 80% lighter than wood, 100% recyclable.",
+  "url": `${site}/honeycomb-board-packaging/`,
+  "mainEntity": {
+    "@type": "ItemList",
+    "itemListElement": products.map((p, i) => ({ "@type": "ListItem", "position": i + 1, "name": p.name, "url": `${site}${p.url}` }))
+  }
+};
+
+const faq = [
+  {
+    q: 'What is honeycomb board packaging?',
+    a: 'Honeycomb board packaging is protective and transport packaging made from paper honeycomb — kraft paper formed into hexagonal cells and laminated between flat liners. It covers pallets, boxes and crates, edge and corner protectors, layer pads, die-cut fitments and cushioning blocks, all engineered from the same material.',
+  },
+  {
+    q: 'Why use honeycomb board instead of wood, foam or plastic packaging?',
+    a: 'Three reasons that show up on invoices: it is up to 80% lighter than the timber it replaces, so freight costs fall; it is ISPM-15 exempt, so export shipments need no fumigation or stamps; and it is mono-material kraft paper, so it recycles in the ordinary paper stream and sits in the lowest EPR fee bands.',
+  },
+  {
+    q: 'Is honeycomb packaging strong enough for heavy machinery?',
+    a: 'Yes, when engineered for it. Load capacity is set by core thickness, cell size and paper grade, and structural elements such as corner posts and frames carry stack weight through the packaging rather than the product. Engineered panels handle compression around 12kN; crate and pallet builds are specified from your cargo weight and dimensions.',
+  },
+  {
+    q: 'Can honeycomb packaging be customised?',
+    a: 'Everything phb makes is produced to specification: footprint and dimensions, deck and wall thickness, cell size, die-cut fitment shapes, moisture-resistant coatings and printed kraft liners. Send the cargo details and our engineers return a specification and quote.',
+  },
+  {
+    q: 'Where is honeycomb board packaging made in Malaysia?',
+    a: 'phb (Quinocycle Sdn Bhd) manufactures in Balakong, Selangor, and delivers across the Klang Valley and nationwide, with export via Port Klang and KLIA to any country. Contact +6016-891 6381 or sales@quinocycle.com.',
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faq.map(f => ({ "@type": "Question", "name": f.q, "acceptedAnswer": { "@type": "Answer", "text": f.a } })),
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": `${site}/` },
+    { "@type": "ListItem", "position": 2, "name": "Honeycomb Board Packaging" }
+  ]
+};
+---
+
+<Layout
+  title="Honeycomb Board Packaging – Pallets, Crates, Fitments | phb"
+  description="Honeycomb board packaging from Malaysia: paper pallets, crates, edge protectors, fitments and void fill. ISPM-15 exempt, up to 80% lighter, 100% recyclable."
+  canonical="/honeycomb-board-packaging/"
+  schema={pageSchema}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} slot="head" />
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="pkg-heading">
+    <div class="container hero__grid">
+      <div>
+        <span class="badge">Packaging System</span>
+        <h1 class="hero__title" id="pkg-heading">Honeycomb Board<br />Packaging</h1>
+        <p class="hero__desc">
+          One material, the whole packaging system. Pallets, crates, edge protectors, layer pads,
+          fitments and void fill — all engineered from kraft honeycomb board that is up to 80%
+          lighter than wood, ISPM-15 exempt everywhere, and recyclable at the other end.
+        </p>
+        <div class="hero__actions">
+          <a href="/contact/" class="btn btn--green">Get a Packaging Review</a>
+          <a href="/paper-honeycomb-board-guide/" class="btn btn--outline">Read the Guide</a>
+        </div>
+      </div>
+      <div class="hero__img-wrap">
+        <img
+          src="https://images.unsplash.com/photo-1595246140625-573b715d11dc?w=800&q=80"
+          alt="Two plain kraft shipping boxes of different sizes"
+          width="600" height="450"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- TAKEAWAYS -->
+  <section class="section" style="padding-bottom:0">
+    <div class="container">
+      <aside class="lp-takeaways" aria-label="Key facts">
+        <h2>Honeycomb board packaging at a glance</h2>
+        <ul>
+          <li>Six product families from one kraft honeycomb material — structure and cushioning specified separately.</li>
+          <li>Up to 80% lighter than the timber it replaces; ~US$90 (RM400) saved per air pallet at typical rates.</li>
+          <li>ISPM-15 exempt in every destination country: no fumigation, heat treatment or stamps.</li>
+          <li>Mono-material and 100% recyclable — lowest EPR fee bands, disposal free at destination.</li>
+          <li>Made to specification in Balakong, Selangor; delivered nationwide and exported worldwide.</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- THE SYSTEM -->
+  <section class="section" aria-labelledby="system-heading">
+    <div class="container">
+      <h2 id="system-heading" style="margin-bottom:0.5rem">The packaging system</h2>
+      <p style="color:#666;max-width:640px;line-height:1.7;margin-bottom:2rem">
+        Structure carries the load; cushioning protects the product. We specify the two jobs separately, then build both from the same board.
+      </p>
+      <div class="lp-links">
+        {products.map(p => (
+          <a href={p.url} class="lp-link"><strong>{p.name}</strong><span>{p.blurb}</span><em>{p.url === '/contact/' ? 'Ask for a spec' : 'See product'} &rarr;</em></a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section class="section section--dark" aria-labelledby="pkg-why-heading">
+    <div class="container">
+      <h2 id="pkg-why-heading">What it does to the invoice</h2>
+      <div class="grid-4" style="margin-top:2.5rem">
+        <div class="stat-box"><div class="stat-box__value">80%</div><div class="stat-box__label">Lighter than wood packaging</div></div>
+        <div class="stat-box"><div class="stat-box__value">$0</div><div class="stat-box__label">Fumigation &amp; treatment fees</div></div>
+        <div class="stat-box"><div class="stat-box__value">100%</div><div class="stat-box__label">Recyclable in paper streams</div></div>
+        <div class="stat-box"><div class="stat-box__value">1</div><div class="stat-box__label">Material to declare on EPR filings</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES -->
+  <section class="section">
+    <div class="container lp-prose">
+      <h2>Who it is built for</h2>
+      <p>
+        <strong>Electronics and equipment exporters</strong> — crates and die-cut fitments that hold the
+        product still and absorb shock, paired with your ESD inner packaging.
+        <strong>Furniture makers</strong> — edge and corner protection that stops the claims that come
+        from strapping and stack compression.
+        <strong>Automotive and white-goods lines</strong> — dimensionally consistent layer pads and
+        dunnage that keep automated lines running.
+        <strong>Freight forwarders and 3PLs</strong> — ~5kg pallets that clear any border without a stamp.
+      </p>
+      <p>
+        Each application has its own article in our <a href="/story/">Story</a> section — from
+        <a href="/story/furniture-export-damage-claims-packaging/">furniture damage claims</a> to
+        <a href="/story/electronics-packaging-shock-esd-protection/">electronics shock and ESD</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="lp-story">
+        <p class="lp-story__label">A packaging review — illustrative</p>
+        <p>
+          Suppose a white-goods manufacturer ships washing machines on wooden pallets with foam
+          corner blocks, plastic strapping and a polystyrene top cap. Four materials, three
+          disposal streams, and an EPR bill that grows every year.
+        </p>
+        <p>
+          The review swaps the pallet for a 5kg honeycomb unit, the foam corners for honeycomb
+          edge protectors, and the top cap for a honeycomb layer pad. Everything except the strap
+          is now one recyclable material, the tare weight per unit drops by close to 20kg, and the
+          stack-compression damage that drove most of the claims stops at the corner posts instead
+          of the product.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section lp-faq" aria-labelledby="pkg-faq-heading">
+    <div class="container lp-faq__inner">
+      <h2 id="pkg-faq-heading">Honeycomb packaging questions</h2>
+      {faq.map(f => (
+        <details>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="container">
+      <div class="lp-cta">
+        <h2>Get your current packaging reviewed</h2>
+        <p>List what you ship on — pallet, crate, corners, wrap — and we'll map which components can move to honeycomb, what it does to weight and freight, and what to declare on your ESG filings.</p>
+        <div class="lp-cta__actions">
+          <a href="/contact/" class="btn btn--dark">Get a Packaging Review</a>
+          <a href="https://wa.me/60168916381" target="_blank" rel="noopener" class="btn btn--outline">WhatsApp Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

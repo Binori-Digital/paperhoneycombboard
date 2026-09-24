@@ -1,0 +1,245 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const site = 'https://www.paperhoneycombboard.com';
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Paper Pallets (Honeycomb Paper Pallet)",
+  "description": "Paper pallets manufactured in Malaysia from kraft honeycomb board. Around 5kg per pallet, ISPM-15 exempt, 100% recyclable, made to standard or custom footprints for export and domestic logistics.",
+  "brand": { "@type": "Brand", "name": "phb" },
+  "material": "Kraft paper honeycomb",
+  "weight": { "@type": "QuantitativeValue", "value": "5", "unitCode": "KGM", "description": "Typical; varies with footprint and build" },
+  "manufacturer": {
+    "@type": "Organization",
+    "name": "Quinocycle Sdn Bhd",
+    "address": { "@type": "PostalAddress", "streetAddress": "No.13, Jalan Taming P/1, Taming Jaya", "addressLocality": "Balakong", "postalCode": "43300", "addressRegion": "Selangor", "addressCountry": "MY" }
+  },
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock",
+    "url": `${site}/contact/`,
+    "description": "Standard and custom footprints — contact for a quote."
+  }
+};
+
+const faq = [
+  {
+    q: 'What is a paper pallet made of?',
+    a: 'A paper pallet is built from kraft honeycomb board: a hexagonal paper core laminated between flat kraft liners for the deck, with honeycomb or laminated-paper runners or blocks underneath. The whole unit is paper and water-based adhesive, which is why it weighs around 5kg and recycles in the ordinary paper stream.',
+  },
+  {
+    q: 'How much weight can a paper pallet hold?',
+    a: 'It depends on the build. Load capacity is set through deck thickness, cell size, paper grade and runner configuration, and phb specifies each pallet to the cargo. Typical export builds carry static loads comparable to plywood pallets. Share your load weight, dimensions and how the pallet will be supported — floor, racking or conveyor — and we will engineer it accordingly.',
+  },
+  {
+    q: 'Are paper pallets ISPM-15 compliant?',
+    a: 'They are ISPM-15 exempt, which is better than compliant. The standard regulates solid wood packaging; processed paper is biologically inert and outside its scope entirely. No heat treatment, no fumigation, no IPPC stamp and no phytosanitary certificate is needed in any destination country.',
+  },
+  {
+    q: 'What sizes do paper pallets come in?',
+    a: 'Common footprints include 1200 x 1000mm (industrial), 1200 x 800mm (EUR), 1100 x 1100mm (Asia) and 1219 x 1016mm (48 x 40 inch). Custom footprints are routine, including half and quarter pallets and container-optimised sizes. Two-way and four-way entry are both available.',
+  },
+  {
+    q: 'Who manufactures paper pallets in Malaysia?',
+    a: 'phb (Quinocycle Sdn Bhd) manufactures honeycomb paper pallets in Balakong, Selangor. Pallets are delivered across the Klang Valley and nationwide, and exported via Port Klang and KLIA. WhatsApp +6016-891 6381 or email sales@quinocycle.com for a specification and quote.',
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faq.map(f => ({ "@type": "Question", "name": f.q, "acceptedAnswer": { "@type": "Answer", "text": f.a } })),
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": `${site}/` },
+    { "@type": "ListItem", "position": 2, "name": "Paper Pallet Manufacturer" }
+  ]
+};
+---
+
+<Layout
+  title="Paper Pallet Manufacturer Malaysia – Honeycomb Pallets | phb"
+  description="Paper pallet manufacturer in Malaysia. Honeycomb paper pallets ~5kg, ISPM-15 exempt, 100% recyclable, in EUR, Asia and custom sizes. Exported worldwide."
+  canonical="/paper-pallet-manufacturer/"
+  schema={productSchema}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} slot="head" />
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="pm-heading">
+    <div class="container hero__grid">
+      <div>
+        <span class="badge">Manufacturer</span>
+        <h1 class="hero__title" id="pm-heading">Paper Pallet<br />Manufacturer</h1>
+        <p class="hero__desc">
+          We make paper pallets, not just sell them. Kraft honeycomb decks and runners engineered
+          to your load, built in Balakong, Selangor — around 5kg a pallet, ISPM-15 exempt in every
+          country, and recyclable wherever they land.
+        </p>
+        <div class="hero__actions">
+          <a href="/contact/" class="btn btn--green">Spec My Pallet</a>
+          <a href="/honeycomb-pallet/" class="btn btn--outline">Pallet Product Page</a>
+        </div>
+      </div>
+      <div class="hero__img-wrap">
+        <img
+          src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80"
+          alt="Engineer working on a laptop on a factory production floor"
+          width="600" height="450"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- TAKEAWAYS -->
+  <section class="section" style="padding-bottom:0">
+    <div class="container">
+      <aside class="lp-takeaways" aria-label="Key facts">
+        <h2>Paper pallets from phb</h2>
+        <ul>
+          <li>Made in-house from kraft honeycomb board at our Balakong, Selangor plant.</li>
+          <li>Around 5kg per pallet against roughly 25kg for wood — about 20kg of tare weight removed per position.</li>
+          <li>ISPM-15 exempt worldwide: no heat treatment, fumigation, stamps or certificates.</li>
+          <li>EUR, industrial, Asia, 48x40 and custom footprints; two-way or four-way entry; runner or block base.</li>
+          <li>Every pallet engineered to the load and support condition, with a sample pair to test first.</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- HOW IT'S MADE -->
+  <section class="section">
+    <div class="container lp-prose">
+      <h2>How we make a paper pallet</h2>
+      <p>
+        <strong>1. Core.</strong> Kraft paper is glued in offset lines, stacked, pressed and sliced,
+        then expanded into a hexagonal honeycomb core and dried so the cells hold their shape.
+      </p>
+      <p>
+        <strong>2. Deck.</strong> The core is laminated between heavy kraft liners to the deck
+        thickness the load calls for, then cut to the pallet footprint.
+      </p>
+      <p>
+        <strong>3. Base.</strong> Honeycomb or laminated-paper runners or blocks are cut and
+        positioned for two-way or four-way forklift entry, matched to how the pallet will be
+        supported — floor, racking or conveyor.
+      </p>
+      <p>
+        <strong>4. Assembly.</strong> Deck and base are bonded with water-based adhesive. Optional
+        moisture-resistant coating or PE lamination is applied for humid routes.
+      </p>
+      <p>
+        <strong>5. Check.</strong> Dimensions and flatness are checked against the specification
+        before the batch is stacked for delivery or flat-packed for export.
+      </p>
+
+      <h2>Typical footprints</h2>
+      <div class="table-wrap" role="region" aria-label="Typical paper pallet footprints" tabindex="0">
+        <table class="lp-specs">
+          <thead><tr><th>Footprint</th><th>Standard</th><th>Typical use</th></tr></thead>
+          <tbody>
+            <tr><td>1200 x 1000mm</td><td>Industrial</td><td>General export, ASEAN and global lanes</td></tr>
+            <tr><td>1200 x 800mm</td><td>EUR</td><td>Shipments into the EU and UK</td></tr>
+            <tr><td>1100 x 1100mm</td><td>Asia</td><td>Japan, Korea and intra-Asia trade</td></tr>
+            <tr><td>1219 x 1016mm</td><td>48 x 40 in</td><td>North American consignees</td></tr>
+            <tr><td>Custom</td><td>—</td><td>Half and quarter pallets, container-optimised, machinery-specific</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="lp-note">
+        Weight is around 5kg for typical export builds and varies with footprint and deck thickness.
+        Load ratings are engineered per pallet from your cargo and support condition rather than
+        quoted as a single generic number.
+      </p>
+
+      <h2>Where paper pallets win — and where they don't</h2>
+      <p>
+        One-way export is the sweet spot: the pallet ships once, the customer recycles it, and you
+        have paid freight on 5kg instead of 25kg. Air freight amplifies the saving — at typical
+        rates the difference is around US$90 (about RM400) per pallet. Automated warehouses
+        benefit from dimensional consistency that timber cannot offer.
+      </p>
+      <p>
+        Where we will steer you elsewhere: permanently wet environments, open-deck exposure and
+        multi-year closed-loop reuse. Standard honeycomb is not waterproof, and for a pallet that
+        must survive a decade of return trips, plastic or hardwood remains the better tool.
+      </p>
+    </div>
+  </section>
+
+  <!-- COMPARISON -->
+  <section class="section section--dark" aria-labelledby="pm-compare-heading">
+    <div class="container">
+      <h2 id="pm-compare-heading">Paper vs wood vs plastic pallets</h2>
+      <div class="grid-4" style="margin-top:2.5rem">
+        <div class="stat-box"><div class="stat-box__value">~5KG</div><div class="stat-box__label">Paper pallet</div></div>
+        <div class="stat-box"><div class="stat-box__value">~25KG</div><div class="stat-box__label">Wooden pallet</div></div>
+        <div class="stat-box"><div class="stat-box__value">~18KG</div><div class="stat-box__label">Plastic pallet</div></div>
+        <div class="stat-box"><div class="stat-box__value">0</div><div class="stat-box__label">ISPM-15 stamps needed on paper</div></div>
+      </div>
+      <p style="color:#aaa;margin-top:2rem;max-width:640px;line-height:1.7">
+        Full comparison, including recyclability and cost, on the
+        <a href="/honeycomb-board-vs-plywood/" style="color:#39FF14;text-decoration:underline">honeycomb board vs plywood vs plastic</a> page.
+      </p>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="section">
+    <div class="container">
+      <div class="lp-story">
+        <p class="lp-story__label">A typical specification — illustrative</p>
+        <p>
+          Say a machinery exporter needs to move 600kg pumps on 1200 x 1000mm pallets, four-way
+          entry, stacked two high in a 40-foot container, sea freight to the Middle East.
+        </p>
+        <p>
+          The spec that comes back: a 30mm deck with a 15mm cell and heavy liners, nine honeycomb
+          blocks for four-way entry, and a moisture-resistant coating for the humid crossing. Weight
+          a little over 5kg. A sample pair goes to the customer's loading bay first, and the
+          production run is scheduled once the forklift team has signed it off.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section lp-faq" aria-labelledby="pm-faq-heading">
+    <div class="container lp-faq__inner">
+      <h2 id="pm-faq-heading">Paper pallet questions</h2>
+      {faq.map(f => (
+        <details>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="container">
+      <div class="lp-cta">
+        <h2>Send us the load. We'll send back the pallet.</h2>
+        <p>Cargo weight, footprint, stacking plan and route — that's all we need to engineer a paper pallet, quote it, and ship a sample pair for your team to test.</p>
+        <div class="lp-cta__actions">
+          <a href="/contact/" class="btn btn--dark">Spec My Pallet</a>
+          <a href="https://wa.me/60168916381" target="_blank" rel="noopener" class="btn btn--outline">WhatsApp Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 1rem; }
+</style>
