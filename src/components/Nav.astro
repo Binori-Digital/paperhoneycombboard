@@ -1,6 +1,10 @@
 ---
-interface Props { locale?: string; }
-const { locale = 'en' } = Astro.props;
+interface Props {
+  locale?: string;
+  /** hreflang alternates of the current page; when given, the language menu only links to these */
+  alternates?: { code: string; href: string }[];
+}
+const { locale = 'en', alternates = [] } = Astro.props;
 
 // Nav labels per language
 // Nav labels are kept short so the bar never wraps; the full phrases live
@@ -33,7 +37,13 @@ const basePath = path.replace(/^\/(ms|zh|ja|ko)(?=\/|$)/, '') || '/';
 // Pages that exist in every language — including all /story/ articles.
 const translatedPaths = ['/', '/contact/', '/story/'];
 const isTranslated = translatedPaths.includes(basePath) || basePath.startsWith('/story/');
+const pageAlternates = alternates.filter((a) => a.code !== 'x-default');
 const langHref = (code: string) => {
+  // Prefer the page's own hreflang set: a Story post may exist in only some languages
+  if (pageAlternates.length) {
+    const hit = pageAlternates.find((a) => a.code === code);
+    return hit ? hit.href : code === 'en' ? '/' : '/' + code + '/';
+  }
   const target = isTranslated ? basePath : '/';
   return code === 'en' ? target : '/' + code + target;
 };

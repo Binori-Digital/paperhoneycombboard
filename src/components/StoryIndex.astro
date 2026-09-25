@@ -52,6 +52,8 @@ const copy: Record<Locale, { badge: string; title: string; sub: string; latest: 
   },
 };
 const c = copy[locale];
+// Only posts that exist in this language (ja/ko are optional per post)
+const available = posts.filter((p) => (p.i18n as any)[locale]);
 
 const alternates = [
   ...LOCALES.map((l) => ({ code: l, href: storyPath(l) })),
@@ -66,7 +68,7 @@ const blogSchema = {
   url: `${site}${storyPath(locale)}`,
   inLanguage: LOCALE_LANG[locale],
   publisher: { '@type': 'Organization', name: 'phb Paper Honeycomb Board', logo: { '@type': 'ImageObject', url: `${site}/logo.png` } },
-  blogPost: posts.map((p) => ({
+  blogPost: available.map((p) => ({
     '@type': 'BlogPosting',
     headline: p.i18n[locale].title,
     description: p.i18n[locale].description,
@@ -85,7 +87,7 @@ const breadcrumbSchema = {
   ],
 };
 
-const [lead, ...rest] = posts;
+const [lead, ...rest] = available;
 ---
 
 <Layout

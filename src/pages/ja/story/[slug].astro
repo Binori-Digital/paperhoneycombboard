@@ -3,7 +3,9 @@ import StoryPost from "../../../components/StoryPost.astro";
 import { posts } from "../../../content/stories";
 
 export function getStaticPaths() {
-  return posts.map((p) => ({ params: { slug: p.slug } }));
+  return posts
+    .filter((p) => (p.i18n as any).ja)
+    .map((p) => ({ params: { slug: p.slug } }));
 }
 
 const { slug } = Astro.params;

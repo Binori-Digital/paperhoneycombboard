@@ -2,6 +2,8 @@
 // language versions, so publishing a new day = adding one file.
 
 export type Locale = 'en' | 'ms' | 'zh' | 'ja' | 'ko';
+/** Languages every Story post must carry */
+export type CoreLocale = 'en' | 'ms' | 'zh';
 /** Additional article-only languages; these have no site chrome of their own */
 export type ExtraLocale = 'th' | 'es' | 'fr';
 export type StoryLocale = Locale | ExtraLocale;
@@ -39,7 +41,8 @@ export interface Post {
   image: string;
   /** Slugs of related posts, for internal linking */
   related: string[];
-  i18n: Record<Locale, PostBody> & Partial<Record<ExtraLocale, PostBody>>;
+  /** en, ms and zh are required; ja, ko and the article-only languages are optional per post */
+  i18n: Record<CoreLocale, PostBody> & Partial<Record<'ja' | 'ko' | ExtraLocale, PostBody>>;
 }
 
 export const LOCALES: Locale[] = ['en', 'ms', 'zh', 'ja', 'ko'];
