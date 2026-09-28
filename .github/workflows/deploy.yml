@@ -1,0 +1,52 @@
+name: Build and deploy
+
+# Rebuilds the site every morning (Malaysia time) so the Story post queued for
+# that date goes live, and on every push to master. Deploys to Cloudflare Pages
+# when the CLOUDFLARE_API_TOKEN repository secret is set; otherwise it builds,
+# verifies and stops with a warning so nothing breaks.
+
+on:
+  push:
+    branches: [master]
+  schedule:
+    - cron: '5 0 * * *' # 08:05 Asia/Kuala_Lumpur every day
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Build including queued posts and verify
+        run: |
+          STORY_PUBLISH_ALL=1 npm run build
+          node scripts/verify-stories.mjs
+
+      - name: Build the live site (queued posts excluded)
+        run: npm run build
+
+      - name: Deploy to Cloudflare Pages
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: 99250c832cc94bbfac2a8d92dec156be
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+            echo "::warning::CLOUDFLARE_API_TOKEN secret is not set — build verified but not deployed. Add the secret in GitHub → Settings → Secrets and variables → Actions."
+            exit 0
+          fi
+          npx --yes wrangler pages deploy --branch=master --commit-dirty=true
