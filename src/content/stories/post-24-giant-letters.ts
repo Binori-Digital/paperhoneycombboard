@@ -3,7 +3,7 @@ import type { Post } from './types';
 export const post: Post = {
   slug: 'honeycomb-board-giant-3d-letters-photo-walls',
   date: '2026-10-03',
-  image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=1600&q=75',
+  image: 'https://images.unsplash.com/photo-1523438885200-e635ba2c371e?w=1600&q=75',
   related: ['honeycomb-board-event-decorations-backdrops', 'printing-on-honeycomb-board-signage-displays'],
   i18n: {
     en: {
@@ -59,7 +59,7 @@ export const post: Post = {
       ctaText: 'Send us the words or initials, the height you want and the finish. We will suggest a thickness and build method and quote the honeycomb sheets for the job.',
       ctaPrimary: 'Quote My Event Build',
       ctaSecondary: 'Sheets for Crafts & Displays',
-      imageAlt: 'Banquet hall set with round tables and large presentation screens before an event',
+      imageAlt: 'Garden wedding ceremony set-up with a floral gazebo, white chairs and a pink aisle runner',
       tags: ['giant 3D letters honeycomb board', 'wedding giant letters Malaysia', 'photo wall backdrop panels for events', 'marquee letters alternative to plywood', 'recyclable event decoration letters'],
       relatedLabel: 'Continue reading',
       takeawaysLabel: 'Key takeaways',
@@ -119,7 +119,7 @@ export const post: Post = {
       ctaText: 'Hantar perkataan atau huruf awal, ketinggian yang anda mahu dan kemasannya. Kami akan mencadangkan ketebalan dan kaedah binaan serta memberikan sebut harga kepingan honeycomb untuk kerja itu.',
       ctaPrimary: 'Sebut Harga Binaan Acara Saya',
       ctaSecondary: 'Kepingan untuk Kraf & Paparan',
-      imageAlt: 'Dewan bankuet dengan meja bulat dan skrin pembentangan besar sebelum acara',
+      imageAlt: 'Susunan majlis perkahwinan taman dengan gazebo berbunga, kerusi putih dan permaidani lorong merah jambu',
       tags: ['huruf gergasi 3D papan honeycomb', 'huruf gergasi majlis perkahwinan Malaysia', 'panel dinding foto untuk acara', 'alternatif papan lapis untuk huruf hiasan', 'huruf hiasan acara boleh dikitar semula'],
       relatedLabel: 'Teruskan membaca',
       takeawaysLabel: 'Intipati penting',
@@ -179,7 +179,7 @@ export const post: Post = {
       ctaText: '请发来要做的文字或首字母、想要的高度和表面效果。我们会建议合适的厚度和制作方法，并为这项工作报出蜂窝板材的价格。',
       ctaPrimary: '为我的活动搭建报价',
       ctaSecondary: '手工与陈列用板材',
-      imageAlt: '活动开始前摆好圆桌和大型投影屏幕的宴会厅',
+      imageAlt: '花园婚礼布置：花艺凉亭、白色座椅和粉色通道地毯',
       tags: ['蜂窝纸板 巨型立体字', '婚礼 巨型字 马来西亚', '活动 拍照墙 背景板', '胶合板替代 装饰字', '可回收 活动布置 立体字'],
       relatedLabel: '继续阅读',
       takeawaysLabel: '要点速览',

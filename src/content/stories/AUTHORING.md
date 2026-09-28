@@ -74,8 +74,10 @@ Per language (`PostBody`):
 ## Image
 
 - One Unsplash photo per post, URL form `https://images.unsplash.com/photo-<id>?w=1600&q=75`.
-- Find candidates on `https://unsplash.com/s/photos/<topic>` (image `src` attributes contain `photo-<id>`). Check `curl -sI "https://images.unsplash.com/photo-<id>?w=360" | head -1` returns 200, download it at `?w=360&q=55` and **look at it**. It must show the subject of the post (a warehouse, a studio, a stand, a press…), not an abstract or unrelated scene, and no visible third-party logos or faces in close-up.
-- Do not reuse an image already used by another post (`grep -h "image:" src/content/stories/post-*.ts`).
+- **Pick from the library first**: `src/content/stories/image-library.json` lists photos that a person has already opened, looked at and approved, each with an `alt` description and `tags`. Choose an entry whose tags match the post's subject and whose `id` is **not yet used** by any post (`grep -h "image:" src/content/stories/post-*.ts`). Write its `alt` into `imageAlt` (translated for BM and ZH). This works without network access.
+- Only if no unused library entry fits, and only where Unsplash is reachable: find candidates on `https://unsplash.com/s/photos/<topic>` (image `src` attributes contain `photo-<id>`), download at `?w=360&q=55` (must return 200) and **look at it**. It must show the subject of the post (a warehouse, a studio, a stand, a press…), not an abstract or unrelated scene, with no prominent third-party logos or close-up faces. Then add it to the library with an honest `alt` and tags.
+- Never reuse an image already used by another post. If the library runs dry and Unsplash is blocked, say so in your report rather than reusing.
+- Keeping the library stocked: whenever fewer than 7 unused entries remain, whoever has Unsplash access (the daily local task does) adds at least 7 new viewed entries covering all five industries.
 
 ## SEO / AEO / AIO / GEO checklist
 

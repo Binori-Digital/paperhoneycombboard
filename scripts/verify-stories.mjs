@@ -65,6 +65,21 @@ const imgUse = new Map();
 for (const p of posts) { const id = p.image?.match(/photo-[0-9a-z-]+/)?.[0]; if (id) imgUse.set(id, [...(imgUse.get(id) || []), p.f]); }
 for (const [id, fs] of imgUse) if (fs.length > 1) warn.push(`image ${id} reused by ${fs.join(', ')}`);
 
+// Image library: every post image should come from the reviewed library, and
+// enough unused entries must remain for the next week of posts.
+try {
+  const lib = JSON.parse(readFileSync(join(storiesDir, 'image-library.json'), 'utf8'));
+  const ids = new Set(lib.images.map((i) => i.id));
+  for (const i of lib.images) if (!/^photo-[0-9a-z-]+$/.test(i.id) || !i.alt || !Array.isArray(i.tags) || !i.tags.length) problems.push(`image-library.json: bad entry ${JSON.stringify(i).slice(0, 60)}`);
+  const used = new Set([...imgUse.keys()]);
+  for (const p of posts) { const id = p.image?.match(/photo-[0-9a-z-]+/)?.[0]; if (id && !ids.has(id)) warn.push(`${p.f}: image ${id} is not in image-library.json (add it with alt + tags)`); }
+  const unused = lib.images.filter((i) => !used.has(i.id)).length;
+  console.log(`Image library: ${lib.images.length} entries, ${unused} unused.`);
+  if (unused < 7) warn.push(`image library has only ${unused} unused photo(s); add viewed photos so the weekly writer can pick fresh ones`);
+} catch (e) {
+  problems.push(`image-library.json missing or invalid: ${e.message}`);
+}
+
 // Queue depth: how many days of posts are dated after today (Malaysia)
 const today = new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Kuala_Lumpur' });
 const queued = posts.filter((p) => p.date > today).map((p) => p.date).sort();

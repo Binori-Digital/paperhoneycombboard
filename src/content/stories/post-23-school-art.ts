@@ -3,7 +3,7 @@ import type { Post } from './types';
 export const post: Post = {
   slug: 'honeycomb-board-school-art-projects-classrooms',
   date: '2026-10-02',
-  image: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=1600&q=75',
+  image: 'https://images.unsplash.com/photo-1609174112693-52fdcebffd89?w=1600&q=75',
   related: ['honeycomb-board-art-craft-sculpture-material', 'honeycomb-board-architectural-model-making'],
   i18n: {
     en: {
@@ -58,7 +58,7 @@ export const post: Post = {
       ctaText: 'Tell us the project, the age group and roughly how many pupils. We will suggest a thickness and send a sample kit so you can test cutting and painting in your own art room.',
       ctaPrimary: 'Get a Sample Kit',
       ctaSecondary: 'Sheets for Crafts & Models',
-      imageAlt: 'Paint brushes loaded with red and yellow acrylic on a painted board',
+      imageAlt: 'Child seen from behind painting on a large sheet in a paint-splattered art studio',
       tags: ['honeycomb board for school art projects', 'classroom sculpture material recyclable', 'art room cardboard alternative to foam board', 'large school art project board Malaysia', 'honeycomb board for kids crafts'],
       relatedLabel: 'Continue reading',
       takeawaysLabel: 'Key takeaways',
@@ -117,7 +117,7 @@ export const post: Post = {
       ctaText: 'Beritahu kami projek, peringkat umur dan anggaran bilangan murid. Kami akan mencadangkan ketebalan dan menghantar kit sampel supaya anda boleh menguji pemotongan dan pengecatan di bilik seni anda sendiri.',
       ctaPrimary: 'Dapatkan Kit Sampel',
       ctaSecondary: 'Kepingan untuk Kraf & Model',
-      imageAlt: 'Berus cat dengan akrilik merah dan kuning di atas papan yang telah dicat',
+      imageAlt: 'Kanak-kanak dilihat dari belakang melukis pada kepingan besar di studio seni yang berpercikan cat',
       tags: ['papan honeycomb untuk projek seni sekolah', 'bahan arca bilik darjah boleh dikitar semula', 'alternatif papan foam untuk bilik seni', 'papan projek seni sekolah bersaiz besar Malaysia', 'papan honeycomb untuk kraf kanak-kanak'],
       relatedLabel: 'Teruskan membaca',
       takeawaysLabel: 'Intipati penting',
@@ -176,7 +176,7 @@ export const post: Post = {
       ctaText: '告诉我们项目内容、学生年龄段和大致人数。我们会建议合适的厚度，并寄出样品套装，让您在自己的美术室里测试裁切和上色。',
       ctaPrimary: '获取样品套装',
       ctaSecondary: '手工与模型用板材',
-      imageAlt: '沾着红色和黄色丙烯颜料的画笔放在一块已上色的板上',
+      imageAlt: '在满是颜料飞溅的美术教室里，一名孩子背对镜头在大幅纸上作画',
       tags: ['蜂窝纸板 学校美术课', '课堂雕塑材料 可回收', '美术室 泡沫板替代品', '大型学校美术作品 板材 马来西亚', '蜂窝纸板 儿童手工'],
       relatedLabel: '继续阅读',
       takeawaysLabel: '要点速览',

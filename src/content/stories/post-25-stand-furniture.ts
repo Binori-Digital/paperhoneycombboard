@@ -3,7 +3,7 @@ import type { Post } from './types';
 export const post: Post = {
   slug: 'honeycomb-board-exhibition-counters-plinths-furniture',
   date: '2026-10-04',
-  image: 'https://images.unsplash.com/photo-1560439514-4e9645039924?w=1600&q=75',
+  image: 'https://images.unsplash.com/photo-1766802981817-776406db6807?w=1600&q=75',
   related: ['honeycomb-board-exhibition-stands-trade-shows', 'honeycomb-board-roadshow-mall-activation-booth'],
   i18n: {
     en: {
@@ -59,7 +59,7 @@ export const post: Post = {
       ctaText: 'Send us a list of the counters, plinths and shelves you need, the products they carry and the show dates. We will suggest thicknesses and quote the board for the build.',
       ctaPrimary: 'Quote My Stand',
       ctaSecondary: 'Honeycomb Panels',
-      imageAlt: 'Crowded exhibition hall seen from above, with rows of visitors walking between booth counters and banners',
+      imageAlt: 'Bright exhibition space with low display plinths, wall panels and a tall printed banner',
       tags: ['honeycomb board exhibition counter', 'cardboard display plinths for trade shows', 'flat-pack exhibition stand furniture', 'recyclable booth furniture Malaysia', 'honeycomb display cubes and shelving'],
       relatedLabel: 'Continue reading',
       takeawaysLabel: 'Key takeaways',
@@ -119,7 +119,7 @@ export const post: Post = {
       ctaText: 'Hantar senarai kaunter, alas pameran dan rak yang anda perlukan, produk yang akan diletakkan dan tarikh pameran. Kami akan mencadangkan ketebalan dan memberikan sebut harga papan untuk binaan itu.',
       ctaPrimary: 'Sebut Harga Reruai Saya',
       ctaSecondary: 'Panel Honeycomb',
-      imageAlt: 'Dewan pameran yang sesak dilihat dari atas, dengan barisan pengunjung berjalan di antara kaunter reruai dan sepanduk',
+      imageAlt: 'Ruang pameran terang dengan plinth paparan rendah, panel dinding dan sepanduk bercetak tinggi',
       tags: ['kaunter pameran papan honeycomb', 'alas paparan kadbod untuk pameran perdagangan', 'perabot reruai pameran dipek rata', 'perabot reruai boleh dikitar semula Malaysia', 'kiub paparan dan rak honeycomb'],
       relatedLabel: 'Teruskan membaca',
       takeawaysLabel: 'Intipati penting',
@@ -179,7 +179,7 @@ export const post: Post = {
       ctaText: '请发来所需柜台、展示底座和层架的清单，要摆放的展品以及展会日期。我们会建议合适的厚度，并为这次搭建报出板材价格。',
       ctaPrimary: '为我的展台报价',
       ctaSecondary: '查看蜂窝板材',
-      imageAlt: '从高处俯瞰人潮拥挤的展馆，一排排观众在展位柜台和横幅之间走动',
+      imageAlt: '明亮的展览空间，配有低矮展台、墙面展板和高大的印刷横幅',
       tags: ['蜂窝纸板 展会柜台', '贸易展 纸质展示底座', '平板包装 展位家具', '可回收 展位家具 马来西亚', '蜂窝 展示方块 层架'],
       relatedLabel: '继续阅读',
       takeawaysLabel: '要点速览',

@@ -3,7 +3,7 @@ import type { Post } from './types';
 export const post: Post = {
   slug: 'honeycomb-pallet-vs-plastic-pallet-export',
   date: '2026-10-06',
-  image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1600&q=75',
+  image: 'https://images.unsplash.com/photo-1601912552080-0fb89fd08042?w=1600&q=75',
   related: ['ispm-15-wood-packaging-rejected-at-customs', 'air-freight-tare-weight-cost'],
   i18n: {
     en: {
@@ -59,7 +59,7 @@ export const post: Post = {
       ctaText: 'Tell us your cargo, pallet size, load weight and whether it ships by air or sea. We will review the case for honeycomb against your current pallet and suggest a trial on one lane.',
       ctaPrimary: 'Get a Packaging Review',
       ctaSecondary: 'See Paper Pallets',
-      imageAlt: 'Warehouse worker moving palletised goods with a forklift',
+      imageAlt: 'Forklift carrying a wrapped pallet load beside a red shipping container under a blue sky',
       tags: ['honeycomb pallet vs plastic pallet', 'best pallet for one-way export', 'ISPM-15 exempt pallets comparison', 'paper pallet for air freight', 'plastic pallet alternative Malaysia'],
       relatedLabel: 'Continue reading',
       takeawaysLabel: 'Key takeaways',
@@ -119,7 +119,7 @@ export const post: Post = {
       ctaText: 'Beritahu kami kargo, saiz palet, berat beban dan sama ada ia dihantar melalui udara atau laut. Kami akan menilai kes palet honeycomb berbanding palet semasa anda dan mencadangkan percubaan pada satu laluan.',
       ctaPrimary: 'Dapatkan Semakan Pembungkusan',
       ctaSecondary: 'Lihat Palet Kertas',
-      imageAlt: 'Pekerja gudang memindahkan barangan berpalet dengan forklift',
+      imageAlt: 'Forklif membawa muatan palet berbalut di sebelah kontena merah di bawah langit biru',
       tags: ['palet honeycomb lwn palet plastik', 'palet terbaik untuk eksport sehala', 'perbandingan palet dikecualikan ISPM-15', 'palet kertas untuk kargo udara', 'alternatif palet plastik Malaysia'],
       relatedLabel: 'Teruskan membaca',
       takeawaysLabel: 'Intipati penting',
@@ -179,7 +179,7 @@ export const post: Post = {
       ctaText: '请告诉我们货物类型、托盘尺寸、货物重量，以及走空运还是海运。我们会对比蜂窝托盘与您现用托盘，并建议先在一条航线上试用。',
       ctaPrimary: '获取包装评估',
       ctaSecondary: '查看纸托盘',
-      imageAlt: '仓库工人用叉车搬运托盘货物',
+      imageAlt: '蓝天下叉车在红色集装箱旁搬运缠膜托盘货物',
       tags: ['蜂窝纸托盘 对比 塑料托盘', '单程出口 托盘选择', '豁免ISPM-15 托盘比较', '空运 纸托盘', '塑料托盘替代 马来西亚'],
       relatedLabel: '继续阅读',
       takeawaysLabel: '要点速览',

@@ -3,7 +3,7 @@ import type { Post } from './types';
 export const post: Post = {
   slug: 'printed-honeycomb-boxes-branded-packaging',
   date: '2026-10-05',
-  image: 'https://images.unsplash.com/photo-1595246140625-573b715d11dc?w=1600&q=75',
+  image: 'https://images.unsplash.com/photo-1595246007497-15e0ed4b8d96?w=1600&q=75',
   related: ['printing-on-honeycomb-board-signage-displays', 'dimensional-volumetric-weight-packaging'],
   i18n: {
     en: {
@@ -59,7 +59,7 @@ export const post: Post = {
       ctaText: 'Send us the product, its weight and size, and how you want the box branded. We will suggest a construction and print route and send a sample to check the fit.',
       ctaPrimary: 'Get a Packaging Review',
       ctaSecondary: 'Honeycomb Sheets',
-      imageAlt: 'Two plain cardboard shipping boxes of different sizes on a neutral background',
+      imageAlt: 'Two kraft gift boxes with a small embossed gold mark on a beige background',
       tags: ['printed honeycomb boxes', 'branded packaging for heavy products', 'custom printed paper packaging Malaysia', 'premium gift box honeycomb board', 'retail ready packaging recyclable'],
       relatedLabel: 'Continue reading',
       takeawaysLabel: 'Key takeaways',
@@ -119,7 +119,7 @@ export const post: Post = {
       ctaText: 'Hantar maklumat produk, berat dan saiznya, serta cara anda mahu kotak itu dijenamakan. Kami akan mencadangkan binaan dan laluan cetakan serta menghantar sampel untuk menyemak kesesuaiannya.',
       ctaPrimary: 'Dapatkan Semakan Pembungkusan',
       ctaSecondary: 'Kepingan Honeycomb',
-      imageAlt: 'Dua kotak penghantaran kadbod kosong berlainan saiz di atas latar belakang neutral',
+      imageAlt: 'Dua kotak hadiah kraf dengan tanda emas timbul kecil di atas latar kuning air',
       tags: ['kotak honeycomb bercetak', 'pembungkusan berjenama untuk produk berat', 'pembungkusan kertas bercetak khas Malaysia', 'kotak hadiah premium papan honeycomb', 'pembungkusan sedia runcit boleh dikitar semula'],
       relatedLabel: 'Teruskan membaca',
       takeawaysLabel: 'Intipati penting',
@@ -179,7 +179,7 @@ export const post: Post = {
       ctaText: '请告诉我们产品是什么、重量和尺寸，以及您希望纸箱如何体现品牌。我们会建议结构和印刷方式，并寄出样品供您核对尺寸。',
       ctaPrimary: '获取包装评估',
       ctaSecondary: '蜂窝板材',
-      imageAlt: '中性背景上两个大小不同的素面纸箱',
+      imageAlt: '米色背景上两只带小型烫金标记的牛皮纸礼盒',
       tags: ['印刷蜂窝纸箱', '重型产品 品牌包装', '定制印刷纸包装 马来西亚', '蜂窝纸板 高档礼盒', '可回收 零售即用包装'],
       relatedLabel: '继续阅读',
       takeawaysLabel: '要点速览',

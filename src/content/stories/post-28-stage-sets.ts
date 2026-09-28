@@ -3,7 +3,7 @@ import type { Post } from './types';
 export const post: Post = {
   slug: 'honeycomb-board-theatre-stage-sets-props',
   date: '2026-10-07',
-  image: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=1600&q=75',
+  image: 'https://images.unsplash.com/photo-1576544403918-c47d52572a9a?w=1600&q=75',
   related: ['honeycomb-board-art-craft-sculpture-material', 'honeycomb-board-giant-3d-letters-photo-walls'],
   i18n: {
     en: {
@@ -59,7 +59,7 @@ export const post: Post = {
       ctaText: 'Send us the set list or drawings, the venue and how the show moves. We will suggest thicknesses for each piece and send a sample kit for your scenic workshop to test.',
       ctaPrimary: 'Get a Sample Kit',
       ctaSecondary: 'Sheets for Crafts & Displays',
-      imageAlt: 'Speaker presenting on a large screen to an audience in an exhibition hall',
+      imageAlt: 'Painted theatre backdrop with a single wooden chair on an empty stage',
       tags: ['honeycomb board stage sets', 'lightweight theatre scenery material', 'stage props from cardboard board', 'school drama set building Malaysia', 'recyclable set design material'],
       relatedLabel: 'Continue reading',
       takeawaysLabel: 'Key takeaways',
@@ -119,7 +119,7 @@ export const post: Post = {
       ctaText: 'Hantar senarai set atau lukisan, tempat persembahan dan cara persembahan itu bergerak. Kami akan mencadangkan ketebalan bagi setiap bahagian dan menghantar kit sampel untuk diuji di bengkel set anda.',
       ctaPrimary: 'Dapatkan Kit Sampel',
       ctaSecondary: 'Kepingan untuk Kraf & Paparan',
-      imageAlt: 'Penceramah membentang pada skrin besar kepada penonton di dewan pameran',
+      imageAlt: 'Latar teater bercat dengan sebuah kerusi kayu di atas pentas kosong',
       tags: ['set pentas papan honeycomb', 'bahan set teater yang ringan', 'prop pentas daripada papan kertas', 'binaan set drama sekolah Malaysia', 'bahan reka bentuk set boleh dikitar semula'],
       relatedLabel: 'Teruskan membaca',
       takeawaysLabel: 'Intipati penting',
@@ -179,7 +179,7 @@ export const post: Post = {
       ctaText: '请发来布景清单或图纸、演出场地，以及演出如何转场。我们会为每个部件建议合适的厚度，并寄出样品套装供您的布景工坊测试。',
       ctaPrimary: '获取样品套装',
       ctaSecondary: '手工与陈列用板材',
-      imageAlt: '展馆内一位演讲者对着观众在大屏幕前演讲',
+      imageAlt: '空舞台上的手绘剧场背景幕布与一把木椅',
       tags: ['蜂窝纸板 舞台布景', '轻量 剧场布景材料', '纸板 舞台道具', '学校戏剧 布景制作 马来西亚', '可回收 舞美设计材料'],
       relatedLabel: '继续阅读',
       takeawaysLabel: '要点速览',

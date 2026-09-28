@@ -3,7 +3,7 @@ import type { Post } from './types';
 export const post: Post = {
   slug: 'honeycomb-dunnage-void-fill-shipping-containers',
   date: '2026-10-01',
-  image: 'https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1600&q=75',
+  image: 'https://images.unsplash.com/photo-1532635042-a6f6ad4745f9?w=1600&q=75',
   related: ['honeycomb-layer-pads-dividers-pallet-loads', 'container-humidity-mould-cargo-damage'],
   i18n: {
     en: {
@@ -59,7 +59,7 @@ export const post: Post = {
       ctaText: 'Send us your load plan, the gap sizes you usually see and your route. We will propose honeycomb panels and blocks to fill them and send a sample kit to try at your loading bay.',
       ctaPrimary: 'Get a Packaging Review',
       ctaSecondary: 'See Paper Pallets',
-      imageAlt: 'Container terminal with stacked shipping containers awaiting loading',
+      imageAlt: 'View from inside an empty trailer toward a forklift carrying a pallet load on a loading dock',
       tags: ['honeycomb dunnage for shipping containers', 'container void fill without timber', 'ISPM-15 exempt container bracing', 'paper honeycomb blocking and bracing', 'honeycomb void fill Malaysia'],
       relatedLabel: 'Continue reading',
       takeawaysLabel: 'Key takeaways',
@@ -119,7 +119,7 @@ export const post: Post = {
       ctaText: 'Hantar pelan muatan, ukuran celah yang biasa anda temui dan laluan penghantaran anda. Kami akan mencadangkan panel dan blok honeycomb untuk mengisinya dan menghantar kit sampel untuk dicuba di ruang muat anda.',
       ctaPrimary: 'Dapatkan Semakan Pembungkusan',
       ctaSecondary: 'Lihat Palet Kertas',
-      imageAlt: 'Terminal kontena dengan kontena perkapalan bertindih yang menunggu untuk dimuatkan',
+      imageAlt: 'Pemandangan dari dalam treler kosong ke arah forklif membawa muatan palet di dok pemunggahan',
       tags: ['penyendal honeycomb untuk kontena perkapalan', 'pengisi ruang kontena tanpa kayu', 'penyokong kontena dikecualikan ISPM-15', 'blok honeycomb kertas untuk kargo', 'pengisi ruang honeycomb Malaysia'],
       relatedLabel: 'Teruskan membaca',
       takeawaysLabel: 'Intipati penting',
@@ -179,7 +179,7 @@ export const post: Post = {
       ctaText: '请发来您的装载方案、平时常见的空隙尺寸和运输航线。我们会提出蜂窝板片和垫块的填充方案，并寄出样品套装供您在装货区试用。',
       ctaPrimary: '获取包装评估',
       ctaSecondary: '查看纸托盘',
-      imageAlt: '集装箱码头上堆叠着等待装船的集装箱',
+      imageAlt: '从空拖车内部望向装卸平台上叉车搬运托盘货物的景象',
       tags: ['蜂窝纸板 集装箱填充', '集装箱 空隙填充 免木材', '豁免ISPM-15 货物支撑', '纸蜂窝垫块 货物加固', '蜂窝填充垫块 马来西亚'],
       relatedLabel: '继续阅读',
       takeawaysLabel: '要点速览',
