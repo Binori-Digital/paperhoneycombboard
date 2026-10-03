@@ -30,11 +30,19 @@ import { post as p25 } from './post-25-stand-furniture';
 import { post as p26 } from './post-26-printed-boxes';
 import { post as p27 } from './post-27-plastic-pallet';
 import { post as p28 } from './post-28-stage-sets';
+import { post as p29 } from './post-29-party-backdrops';
+import { post as p30 } from './post-30-gallery-walls';
+import { post as p31 } from './post-31-display-trays';
+import { post as p32 } from './post-32-automotive-parts';
+import { post as p33 } from './post-33-cosplay-props';
+import { post as p34 } from './post-34-wedding-signage';
+import { post as p35 } from './post-35-pop-up-shop';
 
 /** Every post in the repo, newest first — including ones queued for a future date. */
 export const allPosts: Post[] = [
   p01, p02, p03, p04, p05, p06, p07, p08, p09, p10, p11, p12, p13, p14, p15, p16,
   p17, p18, p19, p20, p21, p22, p23, p24, p25, p26, p27, p28,
+  p29, p30, p31, p32, p33, p34, p35,
 ].sort((a, b) => b.date.localeCompare(a.date));
 
 /**
