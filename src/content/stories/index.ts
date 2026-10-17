@@ -44,6 +44,13 @@ import { post as p39 } from './post-39-produce-decor';
 import { post as p40 } from './post-40-property-expo';
 import { post as p41 } from './post-41-pallet-displays';
 import { post as p42 } from './post-42-lcl-sea-freight';
+import { post as p43 } from './post-43-paper-art-installations';
+import { post as p44 } from './post-44-pelamin-stage';
+import { post as p45 } from './post-45-wayfinding-totems';
+import { post as p46 } from './post-46-artwork-setup';
+import { post as p47 } from './post-47-bagged-goods-pallets';
+import { post as p48 } from './post-48-colouring-contests';
+import { post as p49 } from './post-49-balloon-backdrops';
 
 /** Every post in the repo, newest first — including ones queued for a future date. */
 export const allPosts: Post[] = [
@@ -51,6 +58,7 @@ export const allPosts: Post[] = [
   p17, p18, p19, p20, p21, p22, p23, p24, p25, p26, p27, p28,
   p29, p30, p31, p32, p33, p34, p35,
   p36, p37, p38, p39, p40, p41, p42,
+  p43, p44, p45, p46, p47, p48, p49,
 ].sort((a, b) => b.date.localeCompare(a.date));
 
 /**
